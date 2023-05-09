@@ -2,19 +2,17 @@
 
 
 # Indice
+<a href="#indice"></a>
 
 1. [Deployment](#deployment)
 2. [Contribuyentes](#contribuyentes)
-
-<br>
 
 # Deployment
 <a href="#deployment"></a>
 1) Requerimientos 
     * Composer [Web oficial](https://getcomposer.org/download/)
     * MySQL [Web Oficial](https://www.mysql.com/downloads/)
-    <br>
-    <br>
+
 2) Instalación
     * Descargue el repositorio en su máquina local
     * Instalar dependencias en el directorio **Backend**
@@ -26,7 +24,7 @@
     * Cree una base de datos del proyecto (( **mercadocountry** ))
     
         ```bash
-            CREATE DATABASE mercadocountry;
+        CREATE DATABASE mercadocountry;
         ```
 
     * En el directorio **Backend** ejecute
@@ -35,17 +33,16 @@
         $ cp .env.example .env && php artisan key:generate && php artisan migrate
         ```
 
-3) Configuracion Variables de Entorno (( **.env** ))
-    * Modifique su conexión de Base de Datos
+    * Si ha tenido problemas para realizar las migraciones, configure sus variables de entorno (( **.env** ))
 
-    ```yaml
-        DB_CONNECTION=mysql
-        DB_HOST=127.0.0.1
-        DB_PORT=3306
-        DB_DATABASE=mercadocountry
-        DB_USERNAME=root
-        DB_PASSWORD=password
-    ```
+        ```yaml
+            DB_CONNECTION=mysql
+            DB_HOST=your_host_database
+            DB_PORT=3306
+            DB_DATABASE=mercadocountry
+            DB_USERNAME=your_user
+            DB_PASSWORD=your_password
+        ```
 
 4) Ejecución del servidor
     * Ejecute en el directorio **Backend**
@@ -54,9 +51,7 @@
         $ php artisan serve
         ```
 
-    * Ingresa a la [URL proporcionada](http://localhost:8000)
-<br>
-<br>
+    * Ingresa a la <a href="http://localhost:8000" target="_blank">URL Proporcionada</a>
 
 # Contribuyentes
 <a href="#contribuyentes"></a>
@@ -69,7 +64,7 @@
 
 <!-- Enlaces LinkedIn -->
 
-[portfolio]: https://img.shields.io/badge/-Porfolio-orange?style=for-the-badge&logo=appveyor
+[portfolio]: https://img.shields.io/badge/-Portfolio-orange?style=for-the-badge&logo=appveyor
 
 [linkedin-shield-alansanchez]: https://img.shields.io/badge/-Alan_Sanchez-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
 [linkedin-alansanchez-url]: https://linkedin.com/in/alansanchez96
@@ -84,3 +79,7 @@
 [linkedin-shield-rafaellopez]: https://img.shields.io/badge/-Rafael_Lopez-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
 [linkedin-rafaellopez-url]: https://www.linkedin.com/in/rafael-lopez-942610247/
 
+<br>
+<br>
+
+<p align="left"><a href="#indice">Volver al Indice</a></p>
