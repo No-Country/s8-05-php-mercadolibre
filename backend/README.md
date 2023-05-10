@@ -1,66 +1,85 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# Indice
+<a href="#indice"></a>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. [Deployment](#deployment)
+2. [Contribuyentes](#contribuyentes)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Deployment
+<a href="#deployment"></a>
+1) Requerimientos 
+    * Composer [Web oficial](https://getcomposer.org/download/)
+    * MySQL [Web Oficial](https://www.mysql.com/downloads/)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2) Instalación
+    * Descargue el repositorio en su máquina local
+    * Instalar dependencias en el directorio **Backend**
+     
+        ```bash
+        $ composer install
+        ```
 
-## Learning Laravel
+    * Cree una base de datos del proyecto (( **mercadocountry** ))
+    
+        ```bash
+        CREATE DATABASE mercadocountry;
+        ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    * En el directorio **Backend** ejecute
+        
+        ```bash
+        $ cp .env.example .env && php artisan key:generate && php artisan migrate
+        ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    * Si ha tenido problemas para realizar las migraciones, configure sus variables de entorno (( **.env** ))
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+        ```yaml
+            DB_CONNECTION=mysql
+            DB_HOST=your_host_database
+            DB_PORT=3306
+            DB_DATABASE=mercadocountry
+            DB_USERNAME=your_user
+            DB_PASSWORD=your_password
+        ```
 
-## Laravel Sponsors
+4) Ejecución del servidor
+    * Ejecute en el directorio **Backend**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+        ```bash
+        $ php artisan serve
+        ```
 
-### Premium Partners
+    * Ingresa a la <a href="http://localhost:8000" target="_blank">URL Proporcionada</a>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+# Contribuyentes
+<a href="#contribuyentes"></a>
 
-## Contributing
+[![linkedin-shield-alansanchez]][linkedin-alansanchez-url] [![portfolio]][portfolio-alansanchez] <br>
+[![linkedin-shield-luisfelipe]][linkedin-luisfelipe-url]  <br>
+[![linkedin-shield-lorenzorueda]][linkedin-lorenzorueda-url]  <br>
+[![linkedin-shield-rafaellopez]][linkedin-rafaellopez-url]  <br>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+<!-- Enlaces LinkedIn -->
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+[portfolio]: https://img.shields.io/badge/-Portfolio-orange?style=for-the-badge&logo=appveyor
 
-## Security Vulnerabilities
+[linkedin-shield-alansanchez]: https://img.shields.io/badge/-Alan_Sanchez-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
+[linkedin-alansanchez-url]: https://linkedin.com/in/alansanchez96
+[portfolio-alansanchez]: https://dev-alansan.netlify.app/
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+[linkedin-shield-luisfelipe]: https://img.shields.io/badge/-Luis_Felipe-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
+[linkedin-luisfelipe-url]: https://www.linkedin.com/in/luis-felipe-fern%C3%A1ndez-betancur-474639267/
 
-## License
+[linkedin-shield-lorenzorueda]: https://img.shields.io/badge/-Lorenzo_Rueda-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
+[linkedin-lorenzorueda-url]: https://www.linkedin.com/in/lorenzo-rueda-582758263/
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[linkedin-shield-rafaellopez]: https://img.shields.io/badge/-Rafael_Lopez-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
+[linkedin-rafaellopez-url]: https://www.linkedin.com/in/rafael-lopez-942610247/
+
+<br>
+<br>
+
+<p align="left"><a href="#indice">Volver al Indice</a></p>
