@@ -10,6 +10,7 @@
 # Deployment
 <a href="#deployment"></a>
 1) Requerimientos 
+    * PHP 8.1 o superior
     * Composer [Web oficial](https://getcomposer.org/download/)
     * MySQL [Web Oficial](https://www.mysql.com/downloads/)
 
