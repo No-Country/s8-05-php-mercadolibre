@@ -1,7 +1,12 @@
+import CarouselComponent from "@/Components/CarouselComponent";
+import Layout from "@/Components/Layout";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Mercado libre {":)"}</h1>
-    </main>
+    <Layout>
+      <div>
+        <CarouselComponent />
+      </div>
+    </Layout>
   );
 }
