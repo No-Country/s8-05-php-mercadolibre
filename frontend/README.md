@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mercado Country
 
-## Getting Started
+_Esta app es un clone de mercado libre donde buscamos replicar la mayor cantidad de funcionalidad de dicha app. A su vez, mejoramos y agregamos nuevas funcionalidades y diseños_
 
-First, run the development server:
+## Comenzando 🚀
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+
+Mira **Deployment** para conocer como desplegar el proyecto.
+
+### Instalación 🔧
+
+_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+
+_Luego de clonar el repo ejecuta en /frontend_
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## APP
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+_Recuerda que esta aplicacion debe ejecutar tambien el backend para poder acceder a la mayoria de funcionalidades_
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Iniciar APP
 
-## Learn More
+_Luego de instalar las dependencias debemos correr la app con:_
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Despliegue 📦
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+_URL del proyecto desplegado:_
 
-## Deploy on Vercel
+## Construido con 🛠️
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+_Menciona las herramientas que utilizaste para crear tu proyecto_
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [NEXTJS](https://nextjs.org/) - React Framework
+- [REACTJS](https://es.react.dev/) - Biblioteca de desarrollo
+- [TAILWIND](https://tailwindcss.com/) - CSS framework
+
+## Autores ✒️
+
+_Desarrolladores FrontEnd_
+
+- **Felipe Suarez** - [Felipe-Suarez](https://github.com/Felipe-Suarez)
+- **Yenifer Ramírez** - [yeniferrosana](https://github.com/yeniferrosana)
+- **Diego Yako** - [diegoyako](https://github.com/diegoyako)
+
+## Licencia 📄
+
+Este proyecto está bajo la Licencia de No-Country
+
+## Expresiones de Gratitud 🎁
+
+- Gracias a [No-Country](https://github.com/No-Country) por la oportunidad
