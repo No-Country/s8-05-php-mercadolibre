@@ -4,11 +4,14 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use Illuminate\Database\Seeder;
+use Database\Seeders\CitySeeder;
 use Database\Seeders\BrandSeeder;
+use Database\Seeders\OrderSeeder;
+use Database\Seeders\StateSeeder;
+use Database\Seeders\ProductSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\SubcategorySeeder;
-use Database\Seeders\ProductSeeder;
-use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +26,10 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             CategorySeeder::class,
             SubcategorySeeder::class,
-            ProductSeeder::class
+            ProductSeeder::class,
+            StateSeeder::class,
+            CitySeeder::class,
+            OrderSeeder::class
         ]);
     }
 }
