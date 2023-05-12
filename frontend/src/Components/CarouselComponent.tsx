@@ -11,8 +11,8 @@ function LeftArrow(show: boolean) {
   return (
     <div
       className={`${
-        show && "translate-x-0"
-      } -translate-x-10 transition-transform bg-white px-4 py-8 relative right-5 rounded-lg shadow-lg`}
+        show ? "translate-x-0" : "-translate-x-12"
+      } transition-transform bg-white px-4 py-8 relative right-5 rounded-lg shadow-lg`}
     >
       {<SlArrowLeft className="text-[#3483fa]" />}
     </div>
@@ -23,8 +23,8 @@ function RightArrow(show: boolean) {
   return (
     <div
       className={`${
-        show && "translate-x-0"
-      } translate-x-10 transition-transform bg-white px-4 py-8 relative left-5 rounded-lg shadow-lg`}
+        show ? "translate-x-0" : "translate-x-12"
+      } transition-transform bg-white px-4 py-8 relative left-5 rounded-lg shadow-lg`}
     >
       {<SlArrowRight className="text-[#3483fa]" />}
     </div>
