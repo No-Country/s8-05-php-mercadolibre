@@ -9,6 +9,6 @@ class Product extends Model
 {
     use HasFactory;
 
-    const PUBLICADO = 1;
-    const BORRADOR = 0;
+    const PUBLISH = 'PUBLISH';
+    const UNPUBLISH = 'UNPUBLISH';
 }

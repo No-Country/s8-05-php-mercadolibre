@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreign('subcategory_id')
                 ->references('id')
                 ->on('subcategories');
-            $table->enum('status',[Product::PUBLICADO,Product::BORRADOR]);
+            $table->enum('status',[Product::PUBLISH, Product::UNPUBLISH]);
             $table->timestamps();
         });
     }
