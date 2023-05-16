@@ -25,9 +25,7 @@ class RegisterController extends Controller
      */
     public function validateNames(ValidateNameRequest $request): JsonResponse
     {
-        return response()->json([
-            'status' => '1'
-        ]);
+        return $this->response->statusOk();
     }
 
     /**
@@ -38,7 +36,7 @@ class RegisterController extends Controller
      */
     public function validateEmail(ValidateEmailRequest $request)
     {
-        if (!empty($request)) {
+        try {
             // Añadir logica para enviar instrucciones al correo
             $user = User::create([
                 'email' => $request->email,
@@ -51,6 +49,8 @@ class RegisterController extends Controller
             return response()->json([
                 'message' => 'Se ha enviado un codigo a tu casilla de correo electronico.'
             ]);
+        } catch (\Exception $e) {
+            return $this->response->catch($e->getMessage());
         }
     }
 
@@ -62,9 +62,7 @@ class RegisterController extends Controller
      */
     public function validatePassword(ValidatePasswordRequest $request): JsonResponse
     {
-        return response()->json([
-            'status' => '1'
-        ]);
+        return $this->response->statusOk();
     }
 
     public function confirmEmail(UserCodeRequest $request)
@@ -82,15 +80,9 @@ class RegisterController extends Controller
             $user->code = null;
             $user->save();
 
-            return response()->json([
-                'status' => '1'
-            ]);
+            return $this->response->statusOk();
         } catch (\Exception $e) {
-            Log::error('error', $e->getMessage());
-
-            return response()->json([
-                'message' => 'Ocurrio un error interno.'
-            ], 500);
+            return $this->response->catch($e->getMessage());
         }
     }
 
@@ -111,12 +103,7 @@ class RegisterController extends Controller
                 'message' => 'Te has registrado con satisfactoriamente.'
             ], 201);
         } catch (\Exception $e) {
-            // Guardar los Logs de Errors
-            Log::error('error: ' . $e->getMessage());
-
-            return response()->json([
-                'message' => 'Ocurrio un error interno.'
-            ], 500);
+            return $this->response->catch($e->getMessage());
         }
     }
 }
