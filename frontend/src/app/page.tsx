@@ -1,5 +1,4 @@
 import CarouselComponent from "@/Components/CarouselComponent";
-import NavbarComponent from "@/Components/NavbarComponent";
 import Layout from "@/Components/Layout";
 
 export default function Home() {
@@ -13,9 +12,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div>
-        <CarouselComponent imgs={imgs} />
-      </div>
+      <CarouselComponent imgs={imgs} />
     </Layout>
   );
 }
