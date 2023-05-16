@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function AlternativeNav() {
   return (
-    <div className="bg-primary py-2 pl-5">
+    <div className="bg-primary py-2 pl-5 w-full">
       <Link href={"/"}>
         <Image
           src={
