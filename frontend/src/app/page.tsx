@@ -1,5 +1,5 @@
 import CarouselComponent from "@/Components/CarouselComponent";
-import NavbarComponent from "@/Components/NavbarComponent";
+import NavbarComponent from "@/Components/Navbar";
 import Layout from "@/Components/Layout";
 
 export default function Home() {
