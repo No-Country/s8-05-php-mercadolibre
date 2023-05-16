@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Jobs\ResetPasswordJob;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -64,10 +65,10 @@ class LoginController extends Controller
             $user = User::where("email", $request->email)->first();
 
             $user->remember_token = Str::random(15);
-            
+
             $user->save();
 
-            // ResetPasswordInstructionsJob::dispatch($user);
+            ResetPasswordJob::dispatch($user);
 
             return response()->json(['message' => 'revisa tu email para poder cambiar tu contraseña']);
         } catch (ModelNotFoundException $e) {
@@ -94,14 +95,14 @@ class LoginController extends Controller
             if (!$user) {
                 return response()->json(['message' => 'Token incorrecto, vuelve a intentarlo']);
             }
-            
+
             $user->remember_token = "";
 
             $user->password = bcrypt($request->password);
 
             $user->save();
-           
-            return $this->response->success('contraseña cambiada');
+
+            return $this->response->success('cambiado la contraseña');
         } catch (ModelNotFoundException $e) {
             return $this->response->ModelError($e->getMessage(), "token");
         } catch (\Exception $e) {

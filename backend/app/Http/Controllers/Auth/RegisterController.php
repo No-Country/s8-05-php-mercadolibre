@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Jobs\SendCodeJob;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -17,17 +18,7 @@ use App\Http\Requests\Auth\ValidatePasswordRequest;
 
 class RegisterController extends Controller
 {
-    /**
-     * Validamos los nombres y apellido
-     *
-     * @param ValidatePasswordRequest $request
-     * @return JsonResponse
-     */
-    public function validateNames(ValidateNameRequest $request): JsonResponse
-    {
-        return $this->response->statusOk();
-    }
-
+   
     /**
      * Validamos el email
      *
@@ -43,7 +34,7 @@ class RegisterController extends Controller
                 'code' => Str::upper(Str::random(4))
             ]);
 
-            //$user->notify(SendCodeNotification::class, $user);
+            SendCodeJob::dispatch($user);
 
             // Respuesta si la validacion pasa
             return response()->json([
@@ -53,6 +44,18 @@ class RegisterController extends Controller
             return $this->response->catch($e->getMessage());
         }
     }
+
+     /**
+     * Validamos los nombres y apellido
+     *
+     * @param ValidatePasswordRequest $request
+     * @return JsonResponse
+     */
+    public function validateNames(ValidateNameRequest $request): JsonResponse
+    {
+        return $this->response->statusOk();
+    }
+
 
     /**
      * Validamos la password
@@ -65,6 +68,7 @@ class RegisterController extends Controller
         return $this->response->statusOk();
     }
 
+    
     public function confirmEmail(UserCodeRequest $request)
     {
         try {
@@ -102,6 +106,8 @@ class RegisterController extends Controller
             return response()->json([
                 'message' => 'Te has registrado con satisfactoriamente.'
             ], 201);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return $this->response->ModelError($e->getMessage(), 'email');
         } catch (\Exception $e) {
             return $this->response->catch($e->getMessage());
         }
