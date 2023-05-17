@@ -24,13 +24,13 @@ export default function Card({ title, subTitle, icon, completed, route, currentS
         </div>
         {completed ? (
           <Link href={route}>
-            <MdOutlineModeEditOutline className="text-blue text-xl" />
+            <MdOutlineModeEditOutline className="text-blue text-xl w-20" />
           </Link>
         ) : (
           currentStep && (
             <Link
               href={route}
-              className="bg-blue px-3 ml-3 py-1 rounded-md text-white text-sm font-semibold"
+              className="bg-blue w-20 text-center ml-3 py-1 rounded-md text-white text-sm font-semibold"
             >
               Agregar
             </Link>

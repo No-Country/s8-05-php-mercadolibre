@@ -2,7 +2,7 @@
 
 import LayoutAuth from "@/Components/LayoutAuth";
 import { useState } from "react";
-import { setComplete, setStep } from "@/Redux/registerSlice";
+import { setComplete, setData, setStep } from "@/Redux/registerSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 
@@ -16,6 +16,7 @@ export default function PasswordPage() {
   const handleSubmit = () => {
     dispatch(setComplete("password"));
     dispatch(setStep(5));
+    dispatch(setData({ password }));
     push("/register");
   };
 

@@ -8,6 +8,12 @@ type registerState = {
     phone: boolean;
     password: boolean;
   };
+  data: {
+    mail: string | null;
+    user: string | null;
+    phone: string | null;
+    password: string | null;
+  };
 };
 
 const initialState: registerState = {
@@ -17,6 +23,12 @@ const initialState: registerState = {
     user: false,
     phone: false,
     password: false,
+  },
+  data: {
+    mail: null,
+    user: null,
+    phone: null,
+    password: null,
   },
 };
 
@@ -32,12 +44,16 @@ const { actions, reducer } = createSlice({
     setComplete: (state: registerState, { payload }: PayloadAction<completeKey>) => {
       state.complete[payload] = true;
     },
+    setData: (state: registerState, { payload }: PayloadAction<any>) => {
+      state.data = { ...state.data, ...payload };
+    },
   },
 });
 
-export const { setStep, setComplete } = actions;
+export const { setStep, setComplete, setData } = actions;
 
 export const getStep = (state: any) => state.register.step;
 export const getComplete = (state: any) => state.register.complete;
+export const getData = (state: any) => state.register.data;
 
 export default reducer;
