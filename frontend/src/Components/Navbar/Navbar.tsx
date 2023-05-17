@@ -44,7 +44,7 @@ export default function NavbarComponent() {
         <input
           style={{ borderLeft: "2px solid #000" }}
           type="search"
-          className="border-none border-l-2 border-black focus:outline-none"
+          className="border-none border-l-2 border-black"
           placeholder="Buscar"
         />
         <FiSearch className="absolute top-0 bottom-0 text-2xl right-2 m-auto" />

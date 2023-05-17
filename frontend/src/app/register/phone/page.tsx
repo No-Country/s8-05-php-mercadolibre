@@ -26,13 +26,20 @@ export default function PhonePage() {
           <h1 className="text-2xl font-semibold">Validá tu teléfono</h1>
           <h2>Podrás usarlo para ingresar a tu cuenta</h2>
         </div>
-        <input
-          type="text"
-          className="w-full rounded-lg"
-          placeholder="+xx xxx xxx-xxxx"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
+        <div className="flex flex-row gap-2">
+          <select className="rounded-lg">
+            <option value="54">+54</option>
+            <option value="55">+55</option>
+            <option value="56">+56</option>
+          </select>
+          <input
+            type="text"
+            className="w-full rounded-lg"
+            placeholder="+xx xxx xxx-xxxx"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+        </div>
       </div>
       <button type="submit" className="bg-blue text-white py-3 rounded-full" onClick={handleSubmit}>
         Continuar

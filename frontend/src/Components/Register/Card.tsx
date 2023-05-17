@@ -24,7 +24,7 @@ export default function Card({ title, subTitle, icon, completed, route, currentS
         </div>
         {completed ? (
           <Link href={route}>
-            <MdOutlineModeEditOutline className="text-blue text-lg" />
+            <MdOutlineModeEditOutline className="text-blue text-xl" />
           </Link>
         ) : (
           currentStep && (

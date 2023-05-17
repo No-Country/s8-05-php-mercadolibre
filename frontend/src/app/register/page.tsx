@@ -10,10 +10,21 @@ import LayoutAuth from "@/Components/LayoutAuth";
 
 import { useSelector } from "react-redux";
 import { getComplete, getStep } from "@/Redux/registerSlice";
+import { useEffect, useState } from "react";
 
 export default function Register() {
   const isComplete = useSelector(getComplete);
   const step = useSelector(getStep);
+
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (Object.values(isComplete).every((value) => value)) {
+      setEnabled(true);
+    } else {
+      setEnabled(false);
+    }
+  }, []);
 
   return (
     <LayoutAuth>
@@ -52,9 +63,11 @@ export default function Register() {
           currentStep={step === 4}
         />
       </div>
-      <button type="submit" className="bg-blue text-white py-3 rounded-full">
-        Continuar
-      </button>
+      {enabled && (
+        <button type="submit" className="bg-blue text-white py-3 rounded-full">
+          Continuar
+        </button>
+      )}
     </LayoutAuth>
   );
 }
