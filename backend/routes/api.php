@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,9 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/forget-password', 'forgetPassword')->name('auth.forgetPassword');
     Route::post('/reset-password', 'resetPassword')->name('auth.resetPassword');
     Route::get('/token/{token}', 'token')->name('auth.token');
+});
+
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/products', 'index')->name('product.index');
+    Route::get('/products/{id}', 'show')->name('product.show');
 });
