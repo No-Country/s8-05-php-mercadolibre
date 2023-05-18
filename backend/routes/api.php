@@ -31,5 +31,4 @@ Route::controller(LoginController::class)->group(function () {
     });
     Route::post('/forget-password', 'forgetPassword')->name('auth.forgetPassword');
     Route::post('/reset-password', 'resetPassword')->name('auth.resetPassword');
-    Route::get('/token/{token}', 'token')->name('auth.token');
 });
