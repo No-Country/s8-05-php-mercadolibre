@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,5 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::apiResource('products', ProductController::class);
+Route::apiResource('categories', CategoryController::class);
+
