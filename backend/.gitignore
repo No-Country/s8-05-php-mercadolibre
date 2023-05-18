@@ -17,3 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/database/seeders/ProductSeeder.php
+/app/Providers/AppServiceProvider.php

@@ -35,7 +35,4 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/token/{token}', 'token')->name('auth.token');
 });
 
-Route::controller(ProductController::class)->group(function () {
-    Route::get('/products', 'index')->name('product.index');
-    Route::get('/products/{id}', 'show')->name('product.show');
-});
+Route::apiResource('products', ProductController::class);

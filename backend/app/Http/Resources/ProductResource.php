@@ -33,7 +33,7 @@ class ProductResource extends JsonResource
                 ]
             ],
             'links' => [
-                'self' => route('product.show', $this->id)
+                'self' => route('products.show', $this->id)
             ]
         ];
     }
