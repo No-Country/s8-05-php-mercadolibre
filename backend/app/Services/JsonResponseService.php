@@ -8,9 +8,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class JsonResponseService
 {
-    public function success(string $action): JsonResponse
+    public function success(string $action, mixed $value = null): JsonResponse
     {
-        return response()->json(['msg' => "Se ha {$action} satisfactoriamente."], Response::HTTP_OK);
+        $data = [
+            'msg' => "Se ha {$action} satisfactoriamente.",
+            ($value === null) ?: 'data' => $value,
+        ];
+
+        return response()->json(array_filter($data), Response::HTTP_OK);
     }
 
     public function catch(string $message): JsonResponse
@@ -22,7 +27,6 @@ class JsonResponseService
         ], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-  
     public function ModelError(string $message, string $type): JsonResponse
     {
         Log::error('Ocurrió un error: ' . $message);
@@ -34,9 +38,8 @@ class JsonResponseService
 
     public function statusOk(): JsonResponse
     {
-         return response()->json([
+        return response()->json([
             'status' => '1'
         ]);
     }
-
 }

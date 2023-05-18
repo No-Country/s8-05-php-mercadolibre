@@ -17,8 +17,8 @@ class ProductController extends Controller
             $products = Product::select('id', 'name', 'description', 'price', 'stock', 'brand_id', 'subcategory_id')
                 ->where('status', Product::PUBLISH)
                 ->limit(10)
-                ->get();
-
+                ->get()
+                ->shuffle();
 
             return new ProductCollection($products);
         } catch (\Exception $e) {
@@ -36,28 +36,31 @@ class ProductController extends Controller
             return $this->response->catch($e->getMessage());
         }
     }
-    public function store(ProductRequest $request) //
+
+    public function store(ProductRequest $request)
     {
         try {
-            Product::create($request->all());
+            $product = Product::create($request->validated());
 
-            return $this->response->success('creado');
+            return $this->response->success('creado', new ProductResource($product));
         } catch (\Exception $e) {
             return $this->response->catch($e->getMessage());
         }
     }
+
     public function update(ProductRequest $request, int $id)
     {
-        try {   
+        try {
             $product = Product::find($id);
+            
+            $product->update($request->validated());
 
-            $product->update($request->all());
-
-            return $this->response->success('actualizado');
+            return $this->response->success('actualizado', new ProductResource($product));
         } catch (\Exception $e) {
             return $this->response->catch($e->getMessage());
         }
     }
+
     public function destroy(Product $product)
     {
         try {
