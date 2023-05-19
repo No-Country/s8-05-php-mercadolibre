@@ -1,5 +1,6 @@
-import CarouselComponent from '@/Components/CarouselComponent';
+import CarouselComponent from '@/Components/UI/CarouselComponent';
 import Layout from '@/Components/Layout';
+import CategorySlider from '@/Components/UI/CategorySlider';
 
 export default function Home() {
   const imgs = [
@@ -13,6 +14,8 @@ export default function Home() {
   return (
     <Layout>
       <CarouselComponent imgs={imgs} />
+      <CategorySlider route={'/'} />
+      <CategorySlider route={'/'} />
     </Layout>
   );
 }
