@@ -1,21 +1,22 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export default function LayoutAuth({ children }: { children: ReactNode }) {
   return (
     <>
-      <div className="bg-primary py-2 pl-5 w-full">
-        <Link href={"/"}>
+      <div className="w-full flex justify-center mt-20">
+        <Link href={'/'} className="flex items-center gap-2">
           <Image
             src={
-              "https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.22.8/mercadolibre/logo__small.png"
+              'https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.22.8/mercadolibre/logo__small.png'
             }
             width={50}
             height={50}
             alt="logo"
           />
+          <span>Mercado Country</span>
         </Link>
       </div>
       <div className="flex flex-row justify-center w-full mt-10">

@@ -35,7 +35,11 @@ export default function PasswordPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <button type="submit" className="bg-blue text-white py-3 rounded-full" onClick={handleSubmit}>
+      <button
+        type="submit"
+        className="bg-darkBlue text-white py-3 rounded-full"
+        onClick={handleSubmit}
+      >
         Continuar
       </button>
     </LayoutAuth>

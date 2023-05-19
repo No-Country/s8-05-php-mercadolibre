@@ -57,7 +57,11 @@ export default function UserPage() {
           onChange={handleChange}
         />
       </div>
-      <button type="submit" className="bg-blue text-white py-3 rounded-full" onClick={handleSubmit}>
+      <button
+        type="submit"
+        className="bg-darkBlue text-white py-3 rounded-full"
+        onClick={handleSubmit}
+      >
         Continuar
       </button>
     </LayoutAuth>

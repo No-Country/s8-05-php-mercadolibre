@@ -35,7 +35,11 @@ export default function EmailPage() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <button type="submit" className="bg-blue text-white py-3 rounded-full" onClick={handleSubmit}>
+      <button
+        type="submit"
+        className="bg-darkBlue text-white py-3 rounded-full"
+        onClick={handleSubmit}
+      >
         Continuar
       </button>
     </LayoutAuth>

@@ -69,7 +69,7 @@ export default function Register() {
         />
       </div>
       {enabled && (
-        <button type="submit" className="bg-blue text-white py-3 rounded-full">
+        <button type="submit" className="bg-darkBlue text-white py-3 rounded-full">
           Continuar
         </button>
       )}
