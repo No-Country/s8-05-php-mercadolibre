@@ -1,10 +1,11 @@
 'use client';
 
 import LayoutAuth from '@/Components/LayoutAuth';
-import { BaseSyntheticEvent, useState } from 'react';
-import { setComplete, setData, setStep } from '@/redux/registerSlice';
-import { useDispatch } from 'react-redux';
+import { BaseSyntheticEvent, useEffect, useState } from 'react';
+import { getStep, setComplete, setData, setStep } from '@/redux/registerSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 type phoneState = {
   first: string;
@@ -18,12 +19,13 @@ export default function PhonePage() {
   });
 
   const dispatch = useDispatch();
+  const step = useSelector(getStep);
 
   const { push } = useRouter();
 
   const handleSubmit = () => {
     dispatch(setComplete('phone'));
-    dispatch(setStep(4));
+    step <= 3 && dispatch(setStep(4));
     dispatch(setData({ phone: `+${phone.first}-${phone.second}` }));
     push('/register');
   };
@@ -33,7 +35,13 @@ export default function PhonePage() {
     setPhone({ ...phone, [name]: value });
   };
 
-  return (
+  const [currentStep, setCurrentStep] = useState<boolean>(false);
+
+  useEffect(() => {
+    setCurrentStep(step >= 3);
+  }, [step]);
+
+  return currentStep ? (
     <LayoutAuth>
       <div className="flex flex-col gap-5">
         <div>
@@ -64,5 +72,13 @@ export default function PhonePage() {
         Continuar
       </button>
     </LayoutAuth>
+  ) : (
+    <div className="w-full h-screen justify-center items-center flex flex-col gap-2">
+      <span className="text-3xl">ERROR - Ruta restringida</span>
+      <div className="flex gap-5">
+        <Link href={'/'}>HOME</Link>
+        <Link href={'/register'}>REGISTRO</Link>
+      </div>
+    </div>
   );
 }
