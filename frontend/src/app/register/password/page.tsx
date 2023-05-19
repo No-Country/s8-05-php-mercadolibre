@@ -29,14 +29,6 @@ export default function PasswordPage() {
   }, [step]);
 
   return currentStep ? (
-    <div className="w-full h-screen justify-center items-center flex flex-col gap-2">
-      <span className="text-3xl">ERROR - Ruta restringida</span>
-      <div className="flex gap-5">
-        <Link href={'/'}>HOME</Link>
-        <Link href={'/register'}>REGISTRO</Link>
-      </div>
-    </div>
-  ) : (
     <LayoutAuth>
       <div className="flex flex-col gap-5">
         <div>
@@ -59,5 +51,13 @@ export default function PasswordPage() {
         Continuar
       </button>
     </LayoutAuth>
+  ) : (
+    <div className="w-full h-screen justify-center items-center flex flex-col gap-2">
+      <span className="text-3xl">ERROR - Ruta restringida</span>
+      <div className="flex gap-5">
+        <Link href={'/'}>HOME</Link>
+        <Link href={'/register'}>REGISTRO</Link>
+      </div>
+    </div>
   );
 }
