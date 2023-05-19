@@ -1,20 +1,5 @@
+import { type completeKey, type registerState } from "@/types/slice/register.types";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
-type registerState = {
-  step: number;
-  complete: {
-    mail: boolean;
-    user: boolean;
-    phone: boolean;
-    password: boolean;
-  };
-  data: {
-    mail: string | null;
-    user: string | null;
-    phone: string | null;
-    password: string | null;
-  };
-};
 
 const initialState: registerState = {
   step: 1,
@@ -31,8 +16,6 @@ const initialState: registerState = {
     password: null,
   },
 };
-
-type completeKey = keyof registerState["complete"];
 
 const { actions, reducer } = createSlice({
   name: "register",
