@@ -1,5 +1,5 @@
-import { type completeKey, type registerState } from "@/types/slice/register.types";
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { type completeKey, type registerState } from '@/types/slice/register.types';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: registerState = {
   step: 1,
@@ -18,7 +18,7 @@ const initialState: registerState = {
 };
 
 const { actions, reducer } = createSlice({
-  name: "register",
+  name: 'register',
   initialState,
   reducers: {
     setStep: (state: registerState, { payload }: PayloadAction<any>) => {
