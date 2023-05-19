@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import LayoutAuth from "@/Components/LayoutAuth";
-import { BaseSyntheticEvent, useState } from "react";
-import { setComplete, setData, setStep } from "@/redux/registerSlice";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
+import LayoutAuth from '@/Components/LayoutAuth';
+import { BaseSyntheticEvent, useState } from 'react';
+import { setComplete, setData, setStep } from '@/redux/registerSlice';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 type userState = {
   name: string;
@@ -13,8 +13,8 @@ type userState = {
 
 export default function UserPage() {
   const [user, setUser] = useState<userState>({
-    name: "",
-    lastName: "",
+    name: '',
+    lastName: '',
   });
 
   const dispatch = useDispatch();
@@ -22,10 +22,10 @@ export default function UserPage() {
   const { push } = useRouter();
 
   const handleSubmit = () => {
-    dispatch(setComplete("user"));
+    dispatch(setComplete('user'));
     dispatch(setStep(3));
     dispatch(setData({ user: `${user.name} ${user.lastName}` }));
-    push("/register");
+    push('/register');
   };
 
   const handleChange = (e: BaseSyntheticEvent) => {

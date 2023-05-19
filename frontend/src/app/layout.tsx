@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import "./globals.css";
-import { Inter } from "next/font/google";
-import { ReactNode } from "react";
+import './globals.css';
+import { Inter } from 'next/font/google';
+import { ReactNode } from 'react';
 
-import store from "@/redux/store";
-import { Provider } from "react-redux";
+import store from '@/redux/store';
+import { Provider } from 'react-redux';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

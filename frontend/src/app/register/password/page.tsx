@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import LayoutAuth from "@/Components/LayoutAuth";
-import { useState } from "react";
-import { setComplete, setData, setStep } from "@/redux/registerSlice";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
+import LayoutAuth from '@/Components/LayoutAuth';
+import { useState } from 'react';
+import { setComplete, setData, setStep } from '@/redux/registerSlice';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 export default function PasswordPage() {
-  const [password, setPassword] = useState<string>("");
+  const [password, setPassword] = useState<string>('');
 
   const dispatch = useDispatch();
 
   const { push } = useRouter();
 
   const handleSubmit = () => {
-    dispatch(setComplete("password"));
+    dispatch(setComplete('password'));
     dispatch(setStep(5));
     dispatch(setData({ password }));
-    push("/register");
+    push('/register');
   };
 
   return (
