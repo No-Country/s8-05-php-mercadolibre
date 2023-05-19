@@ -14,9 +14,9 @@ export default function EmailPage() {
   const { push } = useRouter();
 
   const handleSubmit = () => {
-    dispatch(setComplete('mail'));
+    dispatch(setComplete('email'));
     dispatch(setStep(2));
-    dispatch(setData({ mail: email }));
+    dispatch(setData({ email }));
     push('/register');
   };
 

@@ -24,7 +24,7 @@ export default function UserPage() {
   const handleSubmit = () => {
     dispatch(setComplete('user'));
     dispatch(setStep(3));
-    dispatch(setData({ user: `${user.name} ${user.lastName}` }));
+    dispatch(setData({ name: user.name, lastName: user.lastName }));
     push('/register');
   };
 
