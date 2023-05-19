@@ -4,14 +4,15 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 const initialState: registerState = {
   step: 1,
   complete: {
-    mail: false,
+    email: false,
     user: false,
     phone: false,
     password: false,
   },
   data: {
-    mail: null,
-    user: null,
+    email: null,
+    name: null,
+    lastName: null,
     phone: null,
     password: null,
   },

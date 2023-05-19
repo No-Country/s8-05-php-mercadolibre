@@ -1,26 +1,34 @@
 'use client';
 
 import LayoutAuth from '@/Components/LayoutAuth';
-import { useState } from 'react';
-import { setComplete, setData, setStep } from '@/redux/registerSlice';
-import { useDispatch } from 'react-redux';
+import { use, useEffect, useState } from 'react';
+import { getStep, setComplete, setData, setStep } from '@/redux/registerSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function EmailPage() {
   const [email, setEmail] = useState<string>('');
 
   const dispatch = useDispatch();
+  const step = useSelector(getStep);
 
   const { push } = useRouter();
 
   const handleSubmit = () => {
-    dispatch(setComplete('mail'));
-    dispatch(setStep(2));
-    dispatch(setData({ mail: email }));
+    dispatch(setComplete('email'));
+    step <= 1 && dispatch(setStep(2));
+    dispatch(setData({ email }));
     push('/register');
   };
 
-  return (
+  const [currentStep, setCurrentStep] = useState<boolean>(false);
+
+  useEffect(() => {
+    setCurrentStep(step >= 1);
+  }, [step]);
+
+  return currentStep ? (
     <LayoutAuth>
       <div className="flex flex-col gap-5">
         <div>
@@ -35,9 +43,21 @@ export default function EmailPage() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <button type="submit" className="bg-blue text-white py-3 rounded-full" onClick={handleSubmit}>
+      <button
+        type="submit"
+        className="bg-darkBlue text-white py-3 rounded-full"
+        onClick={handleSubmit}
+      >
         Continuar
       </button>
     </LayoutAuth>
+  ) : (
+    <div className="w-full h-screen justify-center items-center flex flex-col gap-2">
+      <span className="text-3xl">ERROR - Ruta restringida</span>
+      <div className="flex gap-5">
+        <Link href={'/'}>HOME</Link>
+        <Link href={'/register'}>REGISTRO</Link>
+      </div>
+    </div>
   );
 }

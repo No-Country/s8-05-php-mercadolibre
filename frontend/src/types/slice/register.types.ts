@@ -1,17 +1,20 @@
+export type registerDataState = {
+  email: string | null;
+  name: string | null;
+  lastName: string | null;
+  phone: string | null;
+  password: string | null;
+};
+
 export type registerState = {
   step: number;
   complete: {
-    mail: boolean;
+    email: boolean;
     user: boolean;
     phone: boolean;
     password: boolean;
   };
-  data: {
-    mail: string | null;
-    user: string | null;
-    phone: string | null;
-    password: string | null;
-  };
+  data: registerDataState;
 };
 
-export type completeKey = keyof registerState["complete"];
+export type completeKey = keyof registerState['complete'];

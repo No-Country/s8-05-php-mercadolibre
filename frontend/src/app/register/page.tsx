@@ -11,6 +11,7 @@ import LayoutAuth from '@/Components/LayoutAuth';
 import { useSelector } from 'react-redux';
 import { getComplete, getData, getStep } from '@/redux/registerSlice';
 import { useEffect, useState } from 'react';
+import { apiClient } from '@/utils/apiClient';
 
 export default function Register() {
   const isComplete = useSelector(getComplete);
@@ -27,21 +28,36 @@ export default function Register() {
     }
   }, []);
 
+  const handleSubmit = () => {
+    apiClient
+      .post('/register', { registerData })
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
+
+  const user = () => {
+    if (registerData.name + registerData.lastName) {
+      return registerData.name + ' ' + registerData.lastName;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <LayoutAuth>
       <h1 className="text-2xl font-semibold">Completá los datos para crear tu cuenta</h1>
       <div className="flex flex-col gap-5 lg:gap-1">
         <Card
-          title={`${registerData.mail ? 'Editá' : 'Agregá'} tu e-mail`}
-          subTitle={registerData.mail || 'Recibirás información de tu cuenta'}
+          title={`${registerData.email ? 'Editá' : 'Agregá'} tu e-mail`}
+          subTitle={registerData.email || 'Recibirás información de tu cuenta'}
           icon={<VscMail />}
-          completed={isComplete.mail}
+          completed={isComplete.email}
           route={'/register/email'}
           currentStep={step === 1}
         />
         <Card
-          title={`${registerData.user ? 'Editá' : 'Agregá'} tu nombre`}
-          subTitle={registerData.user || 'Contanos cómo querés que te llamemos'}
+          title={`${user() ? 'Editá' : 'Agregá'} tu nombre`}
+          subTitle={user() || 'Contanos cómo querés que te llamemos'}
           icon={<BiUserCircle />}
           completed={isComplete.user}
           route={'/register/user'}
@@ -69,7 +85,11 @@ export default function Register() {
         />
       </div>
       {enabled && (
-        <button type="submit" className="bg-blue text-white py-3 rounded-full">
+        <button
+          type="submit"
+          className="bg-darkBlue text-white py-3 rounded-full"
+          onClick={handleSubmit}
+        >
           Continuar
         </button>
       )}
