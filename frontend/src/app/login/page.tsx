@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Badge, Avatar } from "flowbite-react";
+import { Badge, Avatar } from 'flowbite-react';
 
 const Login = () => {
   const [step, setStep] = useState(1);
@@ -52,8 +52,10 @@ const Login = () => {
               />
             </div>
             {showError && (
-              <div className='text-center'>
-                <p className="text-red-500 mt-2 text-xs">Por favor, ingresa un correo electrónico válido.</p>
+              <div className="text-center">
+                <p className="text-red-500 mt-2 text-xs">
+                  Por favor, ingresa un correo electrónico válido.
+                </p>
               </div>
             )}
           </>
@@ -64,10 +66,10 @@ const Login = () => {
             <h2 className="mt-6 text-xl font-semibold sm:text-2xl">Contraseña</h2>
 
             <div className="flex flex-wrap gap-2">
-              <Avatar rounded={true} size="xs"/>
-              <p className='mt-2 text-xs font-semibold'>{email}</p>
+              <Avatar rounded={true} size="xs" />
+              <p className="mt-2 text-xs font-semibold">{email}</p>
             </div>
-            
+
             <div className="relative flex items-center mt-4">
               <input
                 type="password"
@@ -86,32 +88,36 @@ const Login = () => {
               onClick={handleContinue}
               disabled={!isEmailValid}
               className={`w-full px-6 py-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue rounded-3xl ${
-                !isEmailValid ? 'opacity-50 rounded-3xl cursor-not-allowed' : 'hover:bg-blue-700 rounded-3xl'
+                !isEmailValid
+                  ? 'opacity-50 rounded-3xl cursor-not-allowed'
+                  : 'hover:bg-blue-700 rounded-3xl'
               } focus:outline-none focus:ring focus:ring-blue focus:ring-opacity-50 rounded-3xl`}
             >
               Continuar
             </button>
           )}
-         {step === 2 && (
-          <button
-            onClick={handleContinue}
-            disabled={!isPasswordValid}
-            className={`w-full px-6 py-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue rounded-3xl ${
-              !isEmailValid ? 'opacity-50 rounded-3xl cursor-not-allowed' : 'hover:bg-blue-700 rounded-3xl'
-            } focus:outline-none focus:ring focus:ring-blue focus:ring-opacity-50 rounded-3xl`}
-          >
-            Iniciar sesión
-          </button>
-         )}
-        <div className="mt-6 text-center">
-          <a href="/register" className="text-sm text-blue-500 hover:underline">
-            ¿No tienes cuenta?, Registrate
-          </a>
+          {step === 2 && (
+            <button
+              onClick={handleContinue}
+              disabled={!isPasswordValid}
+              className={`w-full px-6 py-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue rounded-3xl ${
+                !isEmailValid
+                  ? 'opacity-50 rounded-3xl cursor-not-allowed'
+                  : 'hover:bg-blue-700 rounded-3xl'
+              } focus:outline-none focus:ring focus:ring-blue focus:ring-opacity-50 rounded-3xl`}
+            >
+              Iniciar sesión
+            </button>
+          )}
+          <div className="mt-6 text-center">
+            <a href="/register" className="text-sm text-blue-500 hover:underline">
+              ¿No tienes cuenta?, Registrate
+            </a>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
-);
+      </form>
+    </div>
+  );
 };
 
 export default Login;

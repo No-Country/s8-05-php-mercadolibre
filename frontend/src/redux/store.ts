@@ -1,5 +1,5 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import register from "./registerSlice";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import register from './registerSlice';
 
 const store = configureStore({
   reducer: combineReducers({
