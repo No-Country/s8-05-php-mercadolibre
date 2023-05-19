@@ -2,7 +2,7 @@
 
 import LayoutAuth from "@/Components/LayoutAuth";
 import { useState } from "react";
-import { setComplete, setData, setStep } from "@/Redux/registerSlice";
+import { setComplete, setData, setStep } from "@/redux/registerSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 

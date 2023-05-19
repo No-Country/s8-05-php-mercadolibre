@@ -9,7 +9,7 @@ import Card from "@/Components/Register/Card";
 import LayoutAuth from "@/Components/LayoutAuth";
 
 import { useSelector } from "react-redux";
-import { getComplete, getData, getStep } from "@/Redux/registerSlice";
+import { getComplete, getData, getStep } from "@/redux/registerSlice";
 import { useEffect, useState } from "react";
 
 export default function Register() {
