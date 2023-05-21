@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Badge, Avatar } from 'flowbite-react';
+import { apiClient } from '@/utils/apiClient';
 
 const Login = () => {
   const [step, setStep] = useState(1);
@@ -13,10 +14,10 @@ const Login = () => {
     if (step === 1) {
       setStep(2);
     } else if (step === 2) {
-      // Aquí puedes realizar las validaciones o acciones necesarias con los valores de email y password
-      console.log('Email:', email);
-      console.log('Password:', password);
-      // Luego puedes redirigir o realizar otras acciones pertinentes
+      apiClient
+        .post('/login', { email, password })
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
     }
   };
 

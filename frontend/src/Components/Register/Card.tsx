@@ -19,7 +19,7 @@ export default function Card({ title, subTitle, icon, completed, route, currentS
     <div
       className={`${
         completed ? 'bg-skyBlue' : 'bg-white border-black border'
-      } flex flex-row gap-5 bg-white justify-left items-center px-5 py-2 min-h-[90px] rounded-lg`}
+      } flex flex-row gap-5 justify-left items-center px-5 py-2 min-h-[90px] rounded-lg`}
     >
       <div className="text-3xl text-black">{icon}</div>
       <div className="flex flex-row justify-between w-full items-center h-unset">
