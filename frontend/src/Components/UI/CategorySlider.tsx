@@ -12,7 +12,7 @@ export default function CategorySlider({ route }: categoryProp) {
         <span className="text-2xl font-semibold">Tecnología</span>
         <Link href={route}>VER MÁS</Link>
       </div>
-      <div className="flex flex-row overflow-y-auto hiddeScroll pb-2">
+      <div className="flex flex-row overflow-x-auto hiddeScroll pb-2">
         <Product />
         <Product />
         <Product />

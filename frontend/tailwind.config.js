@@ -18,6 +18,9 @@ module.exports = {
         'darkGrey': '#3B4758',
         'green': '#00751B'
       },
+      backgroundImage: {
+        card: 'linear-gradient(89.59deg, #319DFF 2.75%, #686EFF 98.9%)'
+      }
     },
   },
   plugins: [
