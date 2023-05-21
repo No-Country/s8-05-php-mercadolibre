@@ -1,49 +1,75 @@
-import { FaUserCircle } from 'react-icons/fa';
-import { IoIosNotifications } from 'react-icons/io';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { HiSquares2X2 } from 'react-icons/hi2';
-import { HiOutlineMenuAlt2 } from 'react-icons/hi';
+import { BaseSyntheticEvent, useEffect, useRef } from 'react';
+
+import { FaUserAlt, FaStore } from 'react-icons/fa';
+import { HiUserCircle } from 'react-icons/hi2';
+import { IoHeartSharp, IoNotifications } from 'react-icons/io5';
+import { TiHome } from 'react-icons/ti';
+import { FiSearch } from 'react-icons/fi';
+import { BsHandbagFill } from 'react-icons/bs';
+import { MdLocalOffer } from 'react-icons/md';
 
 export default function Menu({ menuToggle }: { menuToggle: () => void }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = (e: BaseSyntheticEvent) => {
+    if (e.target === containerRef.current) {
+      menuToggle();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => menuToggle());
+
+    () => window.removeEventListener('scroll', () => {});
+  }, [menuToggle]);
+
   return (
-    <div className="absolute top-0 left-0 bg-white w-10/12 h-full z-[100] p-5 flex flex-col gap-6 shadow-lg">
-      <div className="flex w-full flex-row gap-5">
-        <HiOutlineMenuAlt2 className="text-2xl" onClick={menuToggle} />
-        <span>Mercado Country</span>
-      </div>
-      <div className="flex flex-row justify-between items-center">
-        <div className="flex flex-row items-center gap-2">
-          <FaUserCircle className="text-4xl" />
-          <div className="flex flex-col text-lg">
-            <span>Name</span>
-            <span>LastName</span>
+    <div
+      className="fixed top-0 left-0 z-[100] h-full w-full bg-[#0005]"
+      onClick={handleClick}
+      ref={containerRef}
+    >
+      <div className="bg-white w-10/12 h-full flex flex-col gap-6 shadow-lg">
+        <div className="flex flex-row justify-between items-center bg-darkBlue p-5">
+          <div className="flex flex-row items-center gap-5">
+            <div className="bg-grey rounded-full p-3">
+              <FaUserAlt className="text-[30px] text-darkGrey" />
+            </div>
+            <div className="flex flex-row text-lg gap-2 text-white">
+              <span>Name</span>
+              <span>LastName</span>
+            </div>
           </div>
-          <MdKeyboardArrowDown className="text-2xl" />
         </div>
-        <IoIosNotifications className="text-2xl" />
-      </div>
-      <div className="flex flex-col w-full h-full justify-between">
-        <ul>
-          <li className="flex flex-row gap-4 items-center text-2xl">
-            <HiSquares2X2 /> Lorem
-          </li>
-          <li className="flex flex-row gap-4 items-center text-2xl">
-            <HiSquares2X2 /> Lorem
-          </li>
-          <li className="flex flex-row gap-4 items-center text-2xl">
-            <HiSquares2X2 /> Lorem
-          </li>
-          <li className="flex flex-row gap-4 items-center text-2xl">
-            <HiSquares2X2 /> Lorem
-          </li>
-          <li className="flex flex-row gap-4 items-center text-2xl">
-            <HiSquares2X2 /> Lorem
-          </li>
-          <li className="flex flex-row gap-4 items-center text-2xl">
-            <HiSquares2X2 /> Lorem
-          </li>
-        </ul>
-        <button className="w-full bg-black text-white py-3">Cerrar sesion</button>
+        <div className="flex flex-col w-full h-full justify-between p-5">
+          <ul className="flex flex-col gap-5 text-darkGrey">
+            <li className="flex flex-row gap-4 items-center text-2xl">
+              <TiHome /> Inicio
+            </li>
+            <li className="flex flex-row gap-4 items-center text-2xl">
+              <FiSearch /> Buscar
+            </li>
+            <li className="flex flex-row gap-4 items-center text-2xl">
+              <IoHeartSharp /> Favoritos
+            </li>
+            <li className="flex flex-row gap-4 items-center text-2xl">
+              <IoNotifications /> Notificaciones
+            </li>
+            <li className="flex flex-row gap-4 items-center text-2xl">
+              <BsHandbagFill /> Mis compras
+            </li>
+            <li className="flex flex-row gap-4 items-center text-2xl">
+              <MdLocalOffer /> Ofertas
+            </li>
+            <li className="flex flex-row gap-4 items-center text-2xl">
+              <HiUserCircle /> Mi cuenta
+            </li>
+            <li className="flex flex-row gap-4 items-center text-2xl">
+              <FaStore /> Vender
+            </li>
+          </ul>
+          <button className="w-full bg-black text-white py-3">Cerrar sesion</button>
+        </div>
       </div>
     </div>
   );
