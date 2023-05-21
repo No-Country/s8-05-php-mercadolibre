@@ -2,7 +2,6 @@
 
 import { HiOutlineMenuAlt2, HiShoppingCart } from 'react-icons/hi';
 import { FiSearch } from 'react-icons/fi';
-import { IoHeartSharp, IoNotifications } from 'react-icons/io5';
 
 import { useState } from 'react';
 import Menu from './Menu';
@@ -20,9 +19,7 @@ export default function NavbarComponent() {
         <div className="flex-grow">
           <Link href={'/'}>Mercado Country</Link>
         </div>
-        <div className="flex flex-row text-2xl gap-3">
-          <IoHeartSharp />
-          <IoNotifications />
+        <div className="flex flex-row text-2xl gap-3 text-darkGrey">
           <HiShoppingCart />
         </div>
         {open && <Menu menuToggle={menuToggle} />}
