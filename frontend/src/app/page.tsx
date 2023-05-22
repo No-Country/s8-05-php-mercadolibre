@@ -1,6 +1,7 @@
 import CarouselComponent from '@/Components/UI/CarouselComponent';
 import Layout from '@/Components/Layout';
 import CategorySlider from '@/Components/UI/CategorySlider';
+import { apiClient } from '@/utils/apiClient';
 
 export default function Home() {
   const imgs = [
@@ -10,6 +11,11 @@ export default function Home() {
     'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683821125894-home-sliderdesktop1-full.jpg',
     'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683832284499-msdesktop-samsung-hs.jpg',
   ];
+
+  apiClient
+    .get('/products')
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
 
   return (
     <Layout>

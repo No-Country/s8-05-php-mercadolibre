@@ -2,8 +2,7 @@
 module.exports = {
   content: [
     "./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/Components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -18,6 +17,9 @@ module.exports = {
         'darkGrey': '#3B4758',
         'green': '#00751B'
       },
+      backgroundImage: {
+        card: 'linear-gradient(89.59deg, #319DFF 2.75%, #686EFF 98.9%)'
+      }
     },
   },
   plugins: [

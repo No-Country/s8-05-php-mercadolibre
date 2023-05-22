@@ -6,6 +6,7 @@ import { getStep, setComplete, setData, setStep } from '@/redux/registerSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { apiClient } from '@/utils/apiClient';
 
 export default function PasswordPage() {
   const [password, setPassword] = useState<string>('');
@@ -16,10 +17,17 @@ export default function PasswordPage() {
   const { push } = useRouter();
 
   const handleSubmit = () => {
-    dispatch(setComplete('password'));
-    step <= 4 && dispatch(setStep(5));
-    dispatch(setData({ password }));
-    push('/register');
+    apiClient
+      .post('/validate-password', { password })
+      .then((data) => {
+        console.log(data);
+
+        dispatch(setComplete('password'));
+        step <= 4 && dispatch(setStep(5));
+        dispatch(setData({ password }));
+        push('/register');
+      })
+      .catch((err) => console.log(err));
   };
 
   const [currentStep, setCurrentStep] = useState<boolean>(false);

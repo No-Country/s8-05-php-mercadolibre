@@ -30,9 +30,9 @@ export default function Register() {
 
   const handleSubmit = () => {
     apiClient
-      .post('/register', { registerData })
+      .post('/register', registerData)
       .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.response.data));
   };
 
   const user = () => {
@@ -54,6 +54,7 @@ export default function Register() {
           completed={isComplete.email}
           route={'/register/email'}
           currentStep={step === 1}
+          block={true}
         />
         <Card
           title={`${user() ? 'Editá' : 'Agregá'} tu nombre`}
@@ -65,7 +66,13 @@ export default function Register() {
         />
         <Card
           title={`${registerData.phone ? 'Editá' : 'Valida'} tu telefono`}
-          subTitle={registerData.phone || 'Podrás usarlo para ingresar a tu cuenta'}
+          subTitle={
+            registerData.phone
+              ? `+${registerData.phone.toString().slice(0, 2)}-${registerData.phone
+                  .toString()
+                  .slice(2, -1)}`
+              : 'Podrás usarlo para ingresar a tu cuenta'
+          }
           icon={<GiSmartphone />}
           completed={isComplete.phone}
           route={'/register/phone'}

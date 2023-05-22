@@ -6,6 +6,7 @@ import { getStep, setComplete, setData, setStep } from '@/redux/registerSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { apiClient } from '@/utils/apiClient';
 
 type userState = {
   name: string;
@@ -24,10 +25,16 @@ export default function UserPage() {
   const { push } = useRouter();
 
   const handleSubmit = () => {
-    dispatch(setComplete('user'));
-    step <= 2 && dispatch(setStep(3));
-    dispatch(setData({ name: user.name, lastName: user.lastName }));
-    push('/register');
+    apiClient
+      .post('/validate-names', user)
+      .then((data) => {
+        console.log(data);
+        dispatch(setComplete('user'));
+        step <= 2 && dispatch(setStep(3));
+        dispatch(setData({ name: user.name, lastName: user.lastName }));
+        push('/register');
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleChange = (e: BaseSyntheticEvent) => {
@@ -45,7 +52,7 @@ export default function UserPage() {
     <LayoutAuth>
       <div className="flex flex-col gap-5">
         <div>
-          <h1 className="text-2xl font-semibold">Elegí tu nombre</h1>
+          <h1 className="text-2xl font-semibold">Escribe tu nombre</h1>
           <h2>Contanos cómo querés que te llamemos</h2>
         </div>
         <input
