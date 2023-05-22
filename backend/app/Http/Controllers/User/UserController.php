@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User\UserResource;
 use App\Http\Requests\Auth\UserCodeRequest;
@@ -25,7 +26,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(UserRequest $request): JsonResponse
     {
         try {
             $user = auth()->user();

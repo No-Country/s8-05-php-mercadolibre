@@ -41,7 +41,7 @@ Route::apiResource('products', ProductController::class);
 Route::middleware('auth:sanctum')->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::post('/profile/confirm-email', 'confirmEmail')->name('profile.confirmEmail');
-        Route::middleware('verified')->group(function () {
+        Route::middleware('email.verified')->group(function () {
             Route::get('/profile', 'getProfile')->name('profile.user');
             Route::post('/profile', 'update')->name('profile.update');
         });
