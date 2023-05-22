@@ -34,4 +34,5 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/reset-password', 'resetPassword')->name('auth.resetPassword');
 });
 
-Route::apiResource('products', ProductController::class);
+Route::apiResource('products', ProductController::class)->except('update');
+Route::post('/products/{product}', [ProductController::class, 'update']);

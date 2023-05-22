@@ -28,8 +28,8 @@ class ProductRequest extends FormRequest
             'stock' => 'required|integer',
             'brand_id' => 'required|integer',
             'subcategory_id' => 'required|integer',
-            //'status' => 'required',
-
+            'status' => 'required',
+            'image' => 'required',
         ];
     }
 }
