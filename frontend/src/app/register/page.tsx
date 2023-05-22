@@ -54,6 +54,7 @@ export default function Register() {
           completed={isComplete.email}
           route={'/register/email'}
           currentStep={step === 1}
+          block={true}
         />
         <Card
           title={`${user() ? 'Editá' : 'Agregá'} tu nombre`}

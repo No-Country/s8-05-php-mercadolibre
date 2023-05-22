@@ -12,9 +12,18 @@ type CardProps = {
   completed: boolean;
   route: string;
   currentStep: boolean;
+  block?: boolean;
 };
 
-export default function Card({ title, subTitle, icon, completed, route, currentStep }: CardProps) {
+export default function Card({
+  title,
+  subTitle,
+  icon,
+  completed,
+  route,
+  currentStep,
+  block = false,
+}: CardProps) {
   return (
     <div
       className={`${
@@ -32,20 +41,20 @@ export default function Card({ title, subTitle, icon, completed, route, currentS
             </span>
           </div>
         </div>
-        {completed ? (
-          <Link href={route} className="w-[75px] py-1 px-3 rounded-full flex justify-center">
-            <MdOutlineModeEditOutline className="text-black text-xl" />
-          </Link>
-        ) : (
-          currentStep && (
-            <Link
-              href={route}
-              className="bg-grey w-20 text-center ml-3 py-1 px-3 rounded-full text-black text-[13px]"
-            >
-              Agregar
-            </Link>
-          )
-        )}
+        {completed
+          ? !block && (
+              <Link href={route} className="w-[75px] py-1 px-3 rounded-full flex justify-center">
+                <MdOutlineModeEditOutline className="text-black text-xl" />
+              </Link>
+            )
+          : currentStep && (
+              <Link
+                href={route}
+                className="bg-grey w-20 text-center ml-3 py-1 px-3 rounded-full text-black text-[13px]"
+              >
+                Agregar
+              </Link>
+            )}
       </div>
     </div>
   );
