@@ -6,6 +6,7 @@ import { getStep, setComplete, setData, setStep } from '@/redux/registerSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { apiClient } from '@/utils/apiClient';
 
 type phoneState = {
   first: string;
@@ -24,10 +25,16 @@ export default function PhonePage() {
   const { push } = useRouter();
 
   const handleSubmit = () => {
-    dispatch(setComplete('phone'));
-    step <= 3 && dispatch(setStep(4));
-    dispatch(setData({ phone: Number(`${phone.first}${phone.second}`) }));
-    push('/register');
+    apiClient
+      .post('/validate-phone', { phone: Number(`${phone.first}${phone.second}`) })
+      .then((data) => {
+        console.log(data);
+        dispatch(setComplete('phone'));
+        step <= 3 && dispatch(setStep(4));
+        dispatch(setData({ phone: Number(`${phone.first}${phone.second}`) }));
+        push('/register');
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleChange = (e: BaseSyntheticEvent) => {
