@@ -1,11 +1,16 @@
 import axios from 'axios';
 
-export const apiClient = axios.create({
-  baseURL: 'http://localhost:8000/api',
+const apiClient = axios.create({
+  baseURL: 'https://mercadocountry-app-eogs6.ondigitalocean.app',
+});
+
+apiClient.interceptors.request.use((config) => {
+  config.headers.Accept = 'application/json';
+  return config;
 });
 
 const apiClientPriv = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL: 'https://mercadocountry-app-eogs6.ondigitalocean.app',
 });
 
 apiClientPriv.interceptors.request.use((config) => {
@@ -14,7 +19,8 @@ apiClientPriv.interceptors.request.use((config) => {
   if (!token) return config;
 
   config.headers.Authorization = `Bearer ${token}`;
+  config.headers.Accept = 'application/json';
   return config;
 });
 
-export { apiClientPriv };
+export { apiClient, apiClientPriv };

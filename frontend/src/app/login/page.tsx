@@ -25,9 +25,7 @@ const Login = () => {
   const isPasswordValid = password.trim() !== '';
   const showError = !isEmailValid && isEmailTouched;
 
-  const handleEmailBlur = () => {
-    setIsEmailTouched(true);
-  };
+  const handleEmailBlur = () => setIsEmailTouched(true);
 
   return (
     <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
