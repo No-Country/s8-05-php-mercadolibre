@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +35,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/reset-password', 'resetPassword')->name('auth.resetPassword');
     Route::get('/token/{token}', 'token')->name('auth.token');
 });
+
+Route::apiResource('products', ProductController::class);
+Route::apiResource('categories', CategoryController::class);
+
