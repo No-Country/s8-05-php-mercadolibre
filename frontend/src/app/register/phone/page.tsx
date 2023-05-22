@@ -26,7 +26,7 @@ export default function PhonePage() {
   const handleSubmit = () => {
     dispatch(setComplete('phone'));
     step <= 3 && dispatch(setStep(4));
-    dispatch(setData({ phone: `+${phone.first}-${phone.second}` }));
+    dispatch(setData({ phone: Number(`${phone.first}${phone.second}`) }));
     push('/register');
   };
 

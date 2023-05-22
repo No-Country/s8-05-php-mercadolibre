@@ -2,7 +2,7 @@ export type registerDataState = {
   email: string | null;
   name: string | null;
   lastName: string | null;
-  phone: string | null;
+  phone: number | null;
   password: string | null;
 };
 
