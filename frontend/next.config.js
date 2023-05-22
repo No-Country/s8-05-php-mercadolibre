@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -15,6 +14,9 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    API_ROUTE: process.env.API_ROUTE,
+  }
 };
 
 module.exports = nextConfig;

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { API_ROUTE } from '../../config';
 
 const apiClient = axios.create({
-  baseURL: 'https://mercadocountry-app-eogs6.ondigitalocean.app',
+  baseURL: API_ROUTE,
 });
 
 apiClient.interceptors.request.use((config) => {
@@ -10,7 +11,7 @@ apiClient.interceptors.request.use((config) => {
 });
 
 const apiClientPriv = axios.create({
-  baseURL: 'https://mercadocountry-app-eogs6.ondigitalocean.app',
+  baseURL: API_ROUTE,
 });
 
 apiClientPriv.interceptors.request.use((config) => {
