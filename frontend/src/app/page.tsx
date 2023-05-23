@@ -5,16 +5,9 @@ import Layout from '@/Components/Layout';
 import CategorySlider from '@/Components/UI/CategorySlider';
 import { apiClient } from '@/utils/apiClient';
 import { useEffect, useState } from 'react';
+import { imgs } from '@/assets/carousel';
 
 export default function Home() {
-  const imgs = [
-    'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683838084716-home-sliderdesktop2.jpg',
-    'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683772259953-ms-desktop-extendimos-hotsale-cuotas.jpg',
-    'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683821025709-home-sliderdesktop-sinfijas-peqelectro.jpg',
-    'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683821125894-home-sliderdesktop1-full.jpg',
-    'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683832284499-msdesktop-samsung-hs.jpg',
-  ];
-
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
