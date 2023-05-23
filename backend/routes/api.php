@@ -41,9 +41,10 @@ Route::controller(LoginController::class)->group(function () {
     });
     Route::post('/forget-password', 'forgetPassword')->name('auth.forgetPassword');
     Route::post('/reset-password', 'resetPassword')->name('auth.resetPassword');
-    Route::get('/token/{token}', 'token')->name('auth.token');
 });
 
+Route::apiResource('products', ProductController::class)->except('update');
+Route::post('/products/{product}', [ProductController::class, 'update']);
 Route::apiResource('products', ProductController::class);
 Route::middleware('auth:sanctum')->group(function () {
     Route::controller(UserController::class)->group(function () {
