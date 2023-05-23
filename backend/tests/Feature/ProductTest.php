@@ -89,7 +89,7 @@ class ProductTest extends TestCase
         }
 
         $this->assertDatabaseCount('images', 3);
-        
+
         $this->assertDatabaseHas(
             'products',
             [
@@ -107,12 +107,16 @@ class ProductTest extends TestCase
 
         $product = Product::first();
 
-        $imgDelete = $product->images->first()->url;
+        $urls = Product::first()->images->pluck('url');
 
         $this->delete($this->route_uri . "/" . $product->id)->assertStatus(200)->assertJson(['msg' => "Se ha eliminado satisfactoriamente."]);;
 
-        Storage::disk('public')->assertMissing('/img/products/' . $imgDelete);
+        foreach ($urls as $url) {
+            Storage::disk('public')->assertMissing('/img/products/' . $url);
+        }
 
-        $this->assertDatabaseMissing('images', ['url' => $imgDelete]);
+        foreach ($urls as $url) {
+            $this->assertDatabaseMissing('images', ['url' => $url]);
+        }
     }
 }

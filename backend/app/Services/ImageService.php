@@ -39,38 +39,14 @@ class ImageService
      *
      * @param Model $model
      */
-    public function deleteStorage(array $imgDelete)
-    {   
-        dump($imgDelete);
-        foreach ($imgDelete as $url) {
+    public function delete(Product $product)
+    {    
+        $imageUrls = $product->images->pluck('url')->toArray();
+
+        foreach ($imageUrls as $url) {
             Storage::disk('public')->delete('/img/products/' . $url);
         }
+
+        $product->images()->delete();
     }
-
-  
-    /**
-     * Eliminar registro de imagen
-     *
-     * @param Model $model
-     * @return void
-     */
-    public function delete(Product $product): void
-    {
-        $imageUrls = array_values($product->images->pluck('url')->toArray());
-
-        $this->deleteStorage($imageUrls);
-
-        $product->images()->first()->delete();
-    }
-
-
-    public function update(mixed $file, Product $product): void
-    {
-        if ($file) {
-            $this->delete($product);
-
-            $this->create($file, $product);
-        }
-    }
-    
 }

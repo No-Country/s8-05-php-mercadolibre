@@ -67,8 +67,9 @@ class ProductController extends Controller
     {
         try {
             if ($request->hasFile("image")) {
+                $this->image->delete($product);
                 foreach ($request->file('image') as $image) {
-                    $this->image->update($image, $product);
+                    $this->image->create($image, $product);
                 }
             }
 
@@ -91,9 +92,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         try {
-            $product->images()->each(function ($product) {
-                $this->image->delete($product);
-            });
+            $this->image->delete($product);
 
             $product->delete();
 
