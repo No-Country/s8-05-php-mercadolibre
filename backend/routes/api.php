@@ -7,8 +7,6 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +43,8 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::apiResource('products', ProductController::class)->except('update');
 Route::post('/products/{product}', [ProductController::class, 'update']);
-Route::apiResource('products', ProductController::class);
+
+// EndPoint USERS
 Route::middleware('auth:sanctum')->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::post('/profile/confirm-email', 'confirmEmail')->name('profile.confirmEmail');
@@ -55,4 +54,5 @@ Route::middleware('auth:sanctum')->group(function () {
         });
     });
 });
+
 Route::apiResource('categories', CategoryController::class);
