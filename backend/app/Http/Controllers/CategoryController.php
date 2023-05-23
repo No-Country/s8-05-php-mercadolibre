@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\CategoryCollection;
+use App\Http\Resources\Categories\CategoryResource;
+use App\Http\Resources\Categories\CategoryCollection;
 
 class CategoryController extends Controller
 {
@@ -24,11 +25,11 @@ class CategoryController extends Controller
         }
     }
 
-    public function show(int $id)
+    public function show(string $slug)
     {
         try {
-            $category = Category::with('products', 'subcategory')
-                ->find($id);
+            $category = Category::with('subcategory')
+                ->firstWhere('slug', $slug);
 
             return new CategoryResource($category);
         } catch (\Exception $e) {
@@ -38,8 +39,13 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
+        $slugFormat = Str::lower(Str::slug($request->name));
+
         try {
-            $category = Category::create($request->validated());
+            $category = Category::create([
+                'name' => $request->name,
+                'slug' => $slugFormat
+            ]);
 
             return $this->response->success('creado', new CategoryResource($category));
         } catch (\Exception $e) {
@@ -47,12 +53,18 @@ class CategoryController extends Controller
         }
     }
 
-    public function update(CategoryRequest $request, int $id)
+    public function update(CategoryRequest $request, string $slug)
     {
-        try {
-            $category = Category::find($id);
+        $slugFormat = Str::lower(Str::slug($request->name));
 
-            $category->update($request->validated());
+        try {
+            $category = Category::select('id', 'name', 'slug')
+                ->firstWhere('slug', $slug);
+
+            $category->update([
+                'name' => $request->name,
+                'slug' => $slugFormat
+            ]);
 
             return $this->response->success('actualizado', new CategoryResource($category));
         } catch (\Exception $e) {
@@ -60,10 +72,10 @@ class CategoryController extends Controller
         }
     }
 
-    public function destroy(int $id)
+    public function destroy(string $slug)
     {
         try {
-            $category = Category::find($id);
+            $category = Category::firstWhere('slug', $slug);
 
             $category->delete();
 

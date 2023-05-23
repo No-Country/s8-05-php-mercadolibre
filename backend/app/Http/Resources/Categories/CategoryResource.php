@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Categories;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -22,6 +22,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'attributes' => [
                 'name' => $this->name,
+                'slug' => $this->slug,
             ],
             'relationships' => [
                 'subcategories' => SubcategoryCategoryResource::collection($this->whenLoaded('subcategory')),

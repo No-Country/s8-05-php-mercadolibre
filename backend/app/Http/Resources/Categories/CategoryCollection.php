@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Categories;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -19,5 +19,6 @@ class CategoryCollection extends ResourceCollection
             'links' => [
                 'self' => route('categories.index')
             ]
-        ];    }
+        ];
+    }
 }
