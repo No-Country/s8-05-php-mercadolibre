@@ -9,7 +9,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "i.blogs.es",
+        hostname: "via.placeholder.com",
         pathname: "/**",
       },
     ],

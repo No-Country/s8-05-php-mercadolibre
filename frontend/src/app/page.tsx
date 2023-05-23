@@ -1,7 +1,10 @@
+'use client';
+
 import CarouselComponent from '@/Components/UI/CarouselComponent';
 import Layout from '@/Components/Layout';
 import CategorySlider from '@/Components/UI/CategorySlider';
 import { apiClient } from '@/utils/apiClient';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const imgs = [
@@ -12,16 +15,32 @@ export default function Home() {
     'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683832284499-msdesktop-samsung-hs.jpg',
   ];
 
-  apiClient
-    .get('/products')
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error));
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    apiClient
+      .get('/categories')
+      .then((data) => setCategories(data.data.data))
+      .catch((error) => console.log(error.response.data));
+  }, []);
 
   return (
     <Layout>
       <CarouselComponent imgs={imgs} />
-      <CategorySlider route={'/'} />
-      <CategorySlider route={'/'} />
+      {categories.length > 0 ? (
+        <>
+          {categories.map((category: any) => (
+            <CategorySlider
+              route={`/category`}
+              key={category.id}
+              title={category.attributes.name}
+              products={category.relationships.products}
+            />
+          ))}
+        </>
+      ) : (
+        <h2 className="text-center my-10">Cargando</h2>
+      )}
     </Layout>
   );
 }

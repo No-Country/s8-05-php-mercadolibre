@@ -3,21 +3,25 @@ import Image from 'next/image';
 import { IoHeartOutline } from 'react-icons/io5';
 import { AiFillThunderbolt } from 'react-icons/ai';
 
-export default function Product() {
+type ProductType = {
+  data: {
+    brand: string;
+    images: string[];
+    price: number;
+  };
+};
+
+export default function Product({ data }: ProductType) {
   return (
     <div className="flex flex-col min-w-[250px] w-[250px] border border-black rounded-lg gap-2 mx-5">
       <div className="p-2">
         <div className="w-full flex justify-end">
           <IoHeartOutline className="text-2xl" />
         </div>
-        <span className="text-sm font-semibold">
-          Laptop HP 250 G9, Procesor Intel® Core™ i5-1235U
-        </span>
+        <span className="text-sm font-semibold block h-8">{data.brand}</span>
       </div>
       <Image
-        src={
-          'https://http2.mlstatic.com/storage/splinter-admin/o:f_webp,q_auto:best/1683832284499-msdesktop-samsung-hs.jpg'
-        }
+        src={data.images[0]}
         width={200}
         height={200}
         alt="laptop"
@@ -25,7 +29,7 @@ export default function Product() {
       />
       <div className="p-2">
         <span>
-          <span className="font-semibold">AR</span> $ 299,999.00
+          <span className="font-semibold">AR</span> $ {data.price}
         </span>
         <div className="flex justify-between items-end font-semibold">
           <span className="text-sm text-darkBlue">Llega gratis el lunes</span>
