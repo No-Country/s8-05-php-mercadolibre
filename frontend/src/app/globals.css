@@ -6,3 +6,26 @@ body {
   color: #000;
   background: #fff;
 }
+
+.hiddeScroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .hiddeScroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    display: block;
+  }
+  .hiddeScroll:-webkit-scrollbar-track {
+    background-color: #f2f2f2;
+  }
+  .hiddeScroll::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+    border: 2px solid #f2f2f2;
+  }
+  .hiddeScroll::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+}

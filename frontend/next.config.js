@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -10,11 +9,14 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "i.blogs.es",
+        hostname: "via.placeholder.com",
         pathname: "/**",
       },
     ],
   },
+  env: {
+    API_ROUTE: process.env.API_ROUTE,
+  }
 };
 
 module.exports = nextConfig;
