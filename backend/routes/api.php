@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
+// HOME
+Route::get('/home', [HomeController::class, 'index'])->name('api.home');
+
 // EndPoint REGISTER
 Route::controller(RegisterController::class)->group(function () {
     Route::post('/validate-email', 'validateEmail')->name('auth.validate-email');
@@ -26,6 +30,7 @@ Route::controller(RegisterController::class)->group(function () {
     Route::post('/register', 'registerUser')->name('auth.register');
 });
 
+// EndPoint LOGIN
 Route::controller(LoginController::class)->group(function () {
     Route::post('/login', 'login')->name('auth.login');
     Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -38,4 +43,3 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::apiResource('products', ProductController::class);
 Route::apiResource('categories', CategoryController::class);
-
