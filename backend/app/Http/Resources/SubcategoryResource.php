@@ -21,13 +21,6 @@ class SubcategoryResource extends JsonResource
                 'name' => $this->name,
                 'slug' => $this->slug,
             ],
-            'relationships' => [
-                'category' => [
-                    'id' => $this->category->id,
-                    'name' => $this->category->name,
-                    'slug' => $this->category->slug,
-                ]
-            ],
             'links' => [
                 'self' => route('subcategories.show', [$this->category->slug, $this->slug])
             ]

@@ -31,7 +31,6 @@ class SubcategoryController extends Controller
             $subcategory =
                 Subcategory::whereHas('category', fn ($q) => $q->where('slug', $categorySlug))
                 ->where('slug', $subcategorySlug)
-                ->with('category')
                 ->firstOrFail();
 
             return new SubcategoryResource($subcategory);

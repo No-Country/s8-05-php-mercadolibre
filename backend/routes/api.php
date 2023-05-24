@@ -53,7 +53,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
-Route::apiResource('categories', CategoryController::class);
+Route::apiResource('categories', CategoryController::class)->except('update', 'store', 'destroy');
 
 Route::controller(SubcategoryController::class)->group(function () {
     Route::get('/categories/subcategories', 'index')->name('subcategories.index');
