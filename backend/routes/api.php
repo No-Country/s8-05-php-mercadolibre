@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +54,8 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::apiResource('categories', CategoryController::class);
+
+Route::controller(SubcategoryController::class)->group(function () {
+    Route::get('/categories/subcategories', 'index')->name('subcategories.index');
+    Route::get('/categories/{categorySlug}/subcategories/{subcategorySlug}', 'show')->name('subcategories.show');
+});
