@@ -40,9 +40,13 @@ Route::controller(LoginController::class)->group(function () {
     });
     Route::post('/forget-password', 'forgetPassword')->name('auth.forgetPassword');
     Route::post('/reset-password', 'resetPassword')->name('auth.resetPassword');
-    Route::get('/token/{token}', 'token')->name('auth.token');
 });
 
+// Endpoint PRODUCTS
+Route::apiResource('products', ProductController::class)->except('update');
+Route::post('/products/{product}', [ProductController::class, 'update']);
+
+// EndPoint USERS
 Route::middleware('auth:sanctum')->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::post('/profile/confirm-email', 'confirmEmail')->name('profile.confirmEmail');
@@ -53,9 +57,12 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
+// EndPoint CATEGORIES
 Route::apiResource('categories', CategoryController::class)->except('update', 'store', 'destroy');
 
+// EndPoint SUBCATEGORIES
 Route::controller(SubcategoryController::class)->group(function () {
     Route::get('/categories/subcategories', 'index')->name('subcategories.index');
     Route::get('/categories/{categorySlug}/subcategories/{subcategorySlug}', 'show')->name('subcategories.show');
 });
+
