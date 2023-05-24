@@ -3,20 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subcategory;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SubcategoryRequest;
 use App\Http\Resources\SubcategoryResource;
 use App\Http\Resources\SubcategoryCollection;
-use App\Models\Category;
 
 class SubcategoryController extends Controller
 {
     public function index()
     {
         try {
-            $subcategories = Subcategory::select('id', 'name', 'category_id')
+            $subcategories = Subcategory::select('id', 'name', 'slug', 'category_id')
                 ->get();
 
             return new SubcategoryCollection($subcategories);
