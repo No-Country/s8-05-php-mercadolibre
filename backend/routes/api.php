@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/reset-password', 'resetPassword')->name('auth.resetPassword');
 });
 
+// Endpoint PRODUCTS
 Route::apiResource('products', ProductController::class)->except('update');
 Route::post('/products/{product}', [ProductController::class, 'update']);
 
@@ -55,4 +57,12 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
-Route::apiResource('categories', CategoryController::class);
+// EndPoint CATEGORIES
+Route::apiResource('categories', CategoryController::class)->except('update', 'store', 'destroy');
+
+// EndPoint SUBCATEGORIES
+Route::controller(SubcategoryController::class)->group(function () {
+    Route::get('/categories/subcategories', 'index')->name('subcategories.index');
+    Route::get('/categories/{categorySlug}/subcategories/{subcategorySlug}', 'show')->name('subcategories.show');
+});
+

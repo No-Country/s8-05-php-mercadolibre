@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\CategoryCollection;
+use App\Http\Resources\Categories\CategoryResource;
+use App\Http\Resources\Categories\CategoryCollection;
 
 class CategoryController extends Controller
 {
@@ -24,11 +25,11 @@ class CategoryController extends Controller
         }
     }
 
-    public function show(int $id)
+    public function show(string $slug)
     {
         try {
-            $category = Category::with('products', 'subcategory')
-                ->find($id);
+            $category = Category::with('subcategory')
+                ->firstWhere('slug', $slug);
 
             return new CategoryResource($category);
         } catch (\Exception $e) {
@@ -36,40 +37,51 @@ class CategoryController extends Controller
         }
     }
 
-    public function store(CategoryRequest $request)
-    {
-        try {
-            $category = Category::create($request->validated());
+    // public function store(CategoryRequest $request)
+    // {
+    //     $slugFormat = Str::lower(Str::slug($request->name));
 
-            return $this->response->success('creado', new CategoryResource($category));
-        } catch (\Exception $e) {
-            return $this->response->catch($e->getMessage());
-        }
-    }
+    //     try {
+    //         $category = Category::create([
+    //             'name' => $request->name,
+    //             'slug' => $slugFormat
+    //         ]);
 
-    public function update(CategoryRequest $request, int $id)
-    {
-        try {
-            $category = Category::find($id);
+    //         return $this->response->success('creado', new CategoryResource($category));
+    //     } catch (\Exception $e) {
+    //         return $this->response->catch($e->getMessage());
+    //     }
+    // }
 
-            $category->update($request->validated());
+    // public function update(CategoryRequest $request, string $slug)
+    // {
+    //     $slugFormat = Str::lower(Str::slug($request->name));
 
-            return $this->response->success('actualizado', new CategoryResource($category));
-        } catch (\Exception $e) {
-            return $this->response->catch($e->getMessage());
-        }
-    }
+    //     try {
+    //         $category = Category::select('id', 'name', 'slug')
+    //             ->firstWhere('slug', $slug);
 
-    public function destroy(int $id)
-    {
-        try {
-            $category = Category::find($id);
+    //         $category->update([
+    //             'name' => $request->name,
+    //             'slug' => $slugFormat
+    //         ]);
 
-            $category->delete();
+    //         return $this->response->success('actualizado', new CategoryResource($category));
+    //     } catch (\Exception $e) {
+    //         return $this->response->catch($e->getMessage());
+    //     }
+    // }
 
-            return $this->response->success('eliminado');
-        } catch (\Exception $e) {
-            return $this->response->catch($e->getMessage());
-        }
-    }
+    // public function destroy(string $slug)
+    // {
+    //     try {
+    //         $category = Category::firstWhere('slug', $slug);
+
+    //         $category->delete();
+
+    //         return $this->response->success('eliminado');
+    //     } catch (\Exception $e) {
+    //         return $this->response->catch($e->getMessage());
+    //     }
+    // }
 }

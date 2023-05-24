@@ -5,7 +5,7 @@ namespace App\Http\Resources\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SubcategoryCategoryResource extends JsonResource
+class CategorySubcategoryResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,8 @@ class SubcategoryCategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'name' => $this->name,
+            'slug' => $this->slug,
         ];
     }
 }
