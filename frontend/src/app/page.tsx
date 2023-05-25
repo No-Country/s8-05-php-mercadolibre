@@ -25,7 +25,7 @@ export default function Home() {
           {categories.map((category: any) =>
             category.relationships.products.length ? (
               <CategorySlider
-                route={`/categoria/${category.attributes.slug}`}
+                route={`/category/${category.attributes.slug}`}
                 key={category.id}
                 title={category.attributes.name}
                 products={category.relationships.products}
