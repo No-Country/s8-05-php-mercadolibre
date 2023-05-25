@@ -1,14 +1,22 @@
 import Image from 'next/image';
-import { Badge} from 'flowbite-react';
+import { Badge } from 'flowbite-react';
+import Link from 'next/link';
 
 type CardCategoryProps = {
   title: string;
   img: any;
   offer: boolean;
   descriptionOffer: string;
+  route: string;
 };
 
-export default function CardCategory({ title, img, offer, descriptionOffer }: CardCategoryProps) {
+export default function CardCategory({
+  title,
+  img,
+  offer,
+  descriptionOffer,
+  route,
+}: CardCategoryProps) {
   return (
     <div className="lg:w-1/4 w-1/2 p-2">
       <div className="p-4 border-2 border-gray-400 rounded-lg text-center">
@@ -26,12 +34,14 @@ export default function CardCategory({ title, img, offer, descriptionOffer }: Ca
           <Badge
             color="pink"
             size="xl"
-            className='justify-center my-2 py-4 rounded-3xl md:text-lg text-sm'
+            className="justify-center my-2 py-4 rounded-3xl md:text-lg text-sm"
           >
             {descriptionOffer} de Descuento
           </Badge>
         )}
-        <a href="subcategory" className="text-blue mt-6 hover:underline"  role="link">Ver productos</a>
+        <Link href={route} className="text-blue mt-6 hover:underline">
+          Ver productos
+        </Link>
       </div>
     </div>
   );

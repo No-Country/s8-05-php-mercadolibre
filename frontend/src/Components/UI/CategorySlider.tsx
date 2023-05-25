@@ -17,7 +17,7 @@ export default function CategorySlider({ route, title, products }: categoryProp)
         </Link>
       </div>
       <div className="flex flex-row overflow-x-auto hiddeScroll pb-2">
-        {products.length > 0 ? (
+        {products?.length > 0 ? (
           <>
             {products.map((product: any) => (
               <Product key={product.attributes.id} data={product.attributes} />
