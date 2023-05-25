@@ -2,12 +2,14 @@ import Image from 'next/image';
 
 import { IoHeartOutline } from 'react-icons/io5';
 import { AiFillThunderbolt } from 'react-icons/ai';
+import Link from 'next/link';
 
 type ProductType = {
   data: {
     brand: string;
     images: string[];
     price: number;
+    id: string;
   };
 };
 
@@ -20,13 +22,15 @@ export default function Product({ data }: ProductType) {
         </div>
         <span className="text-sm font-semibold block h-8">{data.brand}</span>
       </div>
-      <Image
-        src={data.images[0]}
-        width={200}
-        height={200}
-        alt="laptop"
-        className="h-[150px] w-full object-cover"
-      />
+      <Link href={`/product/${data.id}`}>
+        <Image
+          src={data.images[0]}
+          width={200}
+          height={200}
+          alt="laptop"
+          className="h-[150px] w-full object-cover"
+        />
+      </Link>
       <div className="p-2">
         <span>
           <span className="font-semibold">AR</span> $ {data.price}
