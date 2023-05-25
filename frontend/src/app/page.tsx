@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     apiClient
-      .get('/categories')
+      .get('/home')
       .then((data) => setCategories(data.data.data))
       .catch((error) => console.log(error.response.data));
   }, []);
@@ -22,14 +22,16 @@ export default function Home() {
       <CarouselComponent imgs={imgs} />
       {categories.length > 0 ? (
         <>
-          {categories.map((category: any) => (
-            <CategorySlider
-              route={`/category`}
-              key={category.id}
-              title={category.attributes.name}
-              products={category.relationships.products}
-            />
-          ))}
+          {categories.map((category: any) =>
+            category.relationships.products.length ? (
+              <CategorySlider
+                route={`/category/${category.attributes.slug}`}
+                key={category.id}
+                title={category.attributes.name}
+                products={category.relationships.products}
+              />
+            ) : null,
+          )}
         </>
       ) : (
         <h2 className="text-center my-10">Cargando</h2>
