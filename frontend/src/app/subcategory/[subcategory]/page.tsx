@@ -5,56 +5,52 @@ import Layout from '@/Components/Layout';
 import cardImg from '@/assets/card/tecnologia.png';
 import CardTitle from '@/Components/UI/CardTitle';
 import CardImg from '@/Components/UI/CardImg';
+import CardSubCategory from '@/Components/UI/CardSubCategory';
 import SliderLogos from '@/Components/UI/SliderLogos';
 
 import { useEffect, useState } from 'react';
 import { apiClient } from '@/utils/apiClient';
-import CardCategory from '@/Components/UI/CardCategory';
 
-export default function Category({ params }: { params: { category: string } }) {
-  const [category, setCategory] = useState<any>({});
-  const [allCategories, setAllCategories] = useState([]);
+export default function Category({ params }: { params: { subcategory: string } }) {
+  const [subcategory, setSubcategory] = useState<any>({});
+  const [allSubcategories, setAllSubcategories] = useState([]);
   const [loader, setLoader] = useState(true);
 
-  const categoryNotExist = () => allCategories.every((item) => item !== params.category);
+  const categoryNotExist = () => allSubcategories.every((item) => item !== params.subcategory);
 
   useEffect(() => {
     apiClient
       .get(`/categories`)
       .then((data) => data.data.data.map((item: any) => item.attributes.slug))
-      .then((res) => setAllCategories(res))
+      .then((res) => setAllSubcategories(res))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
     apiClient
-      .get(`/categories/${params.category}`)
-      .then((data) => setCategory(data.data.data))
+      .get(`/categories/${params.subcategory}`)
+      .then((data) => setSubcategory(data.data.data))
       .catch((err) => console.log(err))
       .finally(() => setLoader(false));
-  }, [params.category]);
+  }, [params.subcategory]);
 
-  return loader ? (
-    <span>Cargando</span>
-  ) : categoryNotExist() ? (
-    <span>La categoria {params.category} no existe</span>
-  ) : (
+  return (
     <Layout>
       <div className="flex flex-col gap-5 my-5">
-        <CardTitle title={category?.attributes?.name} />
+        <CardTitle title={'Celulares y smartphones'} />
+        <SliderLogos />
         <div className="flex flex-wrap mx-5">
-          {category.relationships.subcategories.map((item: any) => (
-            <CardCategory
-              key={item.id}
-              title={item.name}
+          {Array.from({ length: 4 }).map((_, index) => (
+            <CardSubCategory
+              key={index}
+              title={'Apple iPhone 14 Pro Max, LTPO Super Retina XDR OLED 6.7"'}
               img={cardImg}
-              offer={true}
-              descriptionOffer={'20%'}
-              route={`/subcategory/${item.slug}`}
+              leave={'Lleva hoy'}
+              store={'Apple Oficial'}
+              price={'131,999.00'}
             />
           ))}
         </div>
-        <SliderLogos />
         <CardImg
           title={'REACONDICIONADOS'}
           subTitle={'Productos testeados y con garantía'}
