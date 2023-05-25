@@ -22,6 +22,7 @@ class ProductResource extends JsonResource
                 'description' => $this->description,
                 'price' => $this->price,
                 'stock' => $this->stock,
+                'slug' => $this->slug,
             ],
             'relationships' => [
                 'images' => $this->images->pluck('url'),
@@ -33,7 +34,7 @@ class ProductResource extends JsonResource
                 ]
             ],
             'links' => [
-                'self' => route('products.show', $this->id)
+                'self' => route('products.show', $this->slug)
             ]
         ];
     }
