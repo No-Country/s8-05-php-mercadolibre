@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function SliderLogos() {
   return (
-    <div className="bg-skyBlue ml-5">
+    <div className="bg-skyBlue mx-5">
       <ul className="flex flex-row overflow-x-auto hiddeScroll pb-2 items-center">
         <li>
           <Image

@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\Categories\CategoryResource;
 use App\Http\Resources\Categories\CategoryCollection;
 
@@ -15,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            $categories = Category::select('id', 'name')
+            $categories = Category::select('id', 'name', 'slug')
                 ->with(['subcategory'])
                 ->get();
 

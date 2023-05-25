@@ -1,0 +1,23 @@
+{
+  "name": "s8-05-php-mercadolibre",
+  "version": "1.0.0",
+  "description": "<a name=\"readme-top\"></a>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd frontend && npm run dev",
+    "server": "cd backend && php artisan serve",
+    "seed": "cd backend && php artisan migrate:fresh --seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/No-Country/s8-05-php-mercadolibre.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/No-Country/s8-05-php-mercadolibre/issues"
+  },
+  "homepage": "https://github.com/No-Country/s8-05-php-mercadolibre#readme"
+}
