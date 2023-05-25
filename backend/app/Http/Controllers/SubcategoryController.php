@@ -70,7 +70,7 @@ class SubcategoryController extends Controller
 
             $products = Product::whereHas('subcategory', fn ($q) => $q->where('slug', $subcategorySlug))
                 ->where('status', Product::PUBLISH)
-                ->paginate(2);
+                ->paginate(20);
 
             return new ProductCollection($products);
         } catch (\Exception $e) {
