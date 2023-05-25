@@ -37,7 +37,11 @@ export default function Category({ params }: { params: { category: string } }) {
   return loader ? (
     <span>Cargando</span>
   ) : categoryNotExist() ? (
-    <span>La categoria {params.category} no existe</span>
+    <span>
+      La categoria {`'`}
+      {params.category}
+      {`'`} no existe
+    </span>
   ) : (
     <Layout>
       <div className="flex flex-col gap-5 my-5">

@@ -20,21 +20,30 @@ export default function Category({ params }: { params: { subcategory: string } }
 
   useEffect(() => {
     apiClient
-      .get(`/categories`)
+      .get(`/subcategories`)
       .then((data) => data.data.data.map((item: any) => item.attributes.slug))
       .then((res) => setAllSubcategories(res))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
+    //AJUSTAR RUTA DE API Y RENDERIZADO DINAIMCO
     apiClient
-      .get(`/categories/${params.subcategory}`)
+      .get(`/subcategories/${params.subcategory}`)
       .then((data) => setSubcategory(data.data.data))
       .catch((err) => console.log(err))
       .finally(() => setLoader(false));
   }, [params.subcategory]);
 
-  return (
+  return loader ? (
+    <span>Cargando</span>
+  ) : categoryNotExist() ? (
+    <span>
+      La subcategoria {`'`}
+      {params.subcategory}
+      {`'`} no existe
+    </span>
+  ) : (
     <Layout>
       <div className="flex flex-col gap-5 my-5">
         <CardTitle title={'Celulares y smartphones'} />
