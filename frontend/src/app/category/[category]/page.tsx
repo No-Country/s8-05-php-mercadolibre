@@ -54,7 +54,7 @@ export default function Category({ params }: { params: { category: string } }) {
               img={cardImg}
               offer={true}
               descriptionOffer={'20%'}
-              route={`/subcategory/${item.slug}`}
+              route={`/category/${params.category}/subcategory/${item.slug}`}
             />
           ))}
         </div>
