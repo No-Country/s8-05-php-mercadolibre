@@ -7,7 +7,6 @@ import SliderLogos from '@/Components/UI/SliderLogos';
 
 import { apiClient } from '@/utils/apiClient';
 import CardCategory from '@/Components/UI/CardCategory';
-import axios from 'axios';
 
 export const dynamicParams = false;
 
