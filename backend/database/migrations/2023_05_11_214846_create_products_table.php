@@ -21,12 +21,14 @@ return new class extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')
                 ->references('id')
-                ->on('brands');
+                ->on('brands')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('subcategory_id');
             $table->foreign('subcategory_id')
                 ->references('id')
-                ->on('subcategories');
-            $table->enum('status',[Product::PUBLICADO,Product::BORRADOR]);
+                ->on('subcategories')
+                ->onDelete('cascade');
+            $table->enum('status',[Product::PUBLISH, Product::UNPUBLISH]);
             $table->timestamps();
         });
     }
