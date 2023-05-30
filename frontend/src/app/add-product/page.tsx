@@ -1,6 +1,7 @@
 'use client';
 
 import Steps from '@/Components/AddProduct/Steps';
+import FormNewProduct from '@/Components/AddProduct/FormNewProduct';
 import Link from 'next/link';
 import { useState } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
@@ -29,15 +30,22 @@ export default function Page() {
       <main>
         {currentStep === 1 && (
           <>
-            <span>Step 1</span>
-            <button
-              onClick={() => {
-                handleAvailableStep(2);
-                handleCurrentStep(2);
-              }}
-            >
-              continuar
-            </button>
+          <div className="w-full flex flex-col items-center mt-3">
+            <div className="mb-4">
+              <FormNewProduct />
+            </div>
+            <div className="flex flex-col gap-2 md:w-1/2 w-full">
+              <button 
+                onClick={() => {
+                  handleAvailableStep(2);
+                  handleCurrentStep(2);
+                }}
+                className="rounded-full py-2 bg-darkBlue text-white font-semibold"
+              >
+                Siguiente
+              </button>
+            </div>
+          </div>   
           </>
         )}
         {currentStep === 2 && (
