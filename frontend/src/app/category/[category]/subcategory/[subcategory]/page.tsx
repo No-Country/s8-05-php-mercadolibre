@@ -11,11 +11,7 @@ import SliderLogos from '@/Components/UI/SliderLogos';
 import { useEffect, useState } from 'react';
 import { apiClient } from '@/utils/apiClient';
 
-export default function Category({
-  params,
-}: {
-  params: { subcategory: string; category: string };
-}) {
+export default function Page({ params }: { params: { subcategory: string; category: string } }) {
   const [subcategory, setSubcategory] = useState<any>({});
   const [allSubcategories, setAllSubcategories] = useState([]);
   const [loader, setLoader] = useState(true);

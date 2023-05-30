@@ -13,7 +13,7 @@ type phoneState = {
   second: string;
 };
 
-export default function PhonePage() {
+export default function Page() {
   const [phone, setPhone] = useState<phoneState>({
     first: '54',
     second: '',

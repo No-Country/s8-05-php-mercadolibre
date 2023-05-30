@@ -5,7 +5,7 @@ import { apiClient } from '@/utils/apiClient';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-export default function Product({ params }: { params: { product: string } }) {
+export default function Page({ params }: { params: { product: string } }) {
   const [product, setProduct] = useState<any>(null);
   const [loader, setLoader] = useState<boolean>(true);
 
