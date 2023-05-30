@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Product from '../Product';
+import Product from '../Product/Product';
 
 type categoryProp = {
   route: string;

@@ -5,7 +5,7 @@ import Layout from '@/Components/Layout';
 import cardImg from '@/assets/card/tecnologia.png';
 import CardTitle from '@/Components/UI/CardTitle';
 import CardImg from '@/Components/UI/CardImg';
-import CardSubCategory from '@/Components/UI/CardSubCategory';
+import SubCategory from '@/Components/Product/SubCategory';
 import SliderLogos from '@/Components/UI/SliderLogos';
 
 import { useEffect, useState } from 'react';
@@ -53,7 +53,7 @@ export default function Category({
         <SliderLogos />
         <div className="flex flex-wrap mx-5">
           {subcategory.data.map((item: any) => (
-            <CardSubCategory
+            <SubCategory
               key={item.id}
               id={item.id}
               title={item.attributes.name}

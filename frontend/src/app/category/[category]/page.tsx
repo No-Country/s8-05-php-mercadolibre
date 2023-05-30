@@ -9,9 +9,9 @@ import SliderLogos from '@/Components/UI/SliderLogos';
 
 import { useEffect, useState } from 'react';
 import { apiClient } from '@/utils/apiClient';
-import CardCategory from '@/Components/UI/CardCategory';
+import Category from '@/Components/Product/Category';
 
-export default function Category({ params }: { params: { category: string } }) {
+export default function Page({ params }: { params: { category: string } }) {
   const [category, setCategory] = useState<any>({});
   const [allCategories, setAllCategories] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -48,7 +48,7 @@ export default function Category({ params }: { params: { category: string } }) {
         <CardTitle title={category?.attributes?.name} />
         <div className="flex flex-wrap mx-5">
           {category.relationships.subcategories.map((item: any) => (
-            <CardCategory
+            <Category
               key={item.id}
               title={item.name}
               img={cardImg}
