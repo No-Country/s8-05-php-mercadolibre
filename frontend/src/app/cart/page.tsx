@@ -1,30 +1,22 @@
 'use client';
 
-import { BaseSyntheticEvent, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Badge, Avatar } from 'flowbite-react';
-import { apiClient } from '@/utils/apiClient';
-import Image from 'next/image';
-import { FiCheck } from 'react-icons/fi';
-
-import CardProductInterest from '@/Components/UI/CardProductInterest';
 import NavBack from '@/Components/UI/NavBack';
 import CardSimpleCart from '@/Components/UI/CardSimpleCart';
 
 export default function ViewCart() {
   return (
     <div>
-      <NavBack 
-        title={'Carrito de compras'}
-      />
+      <NavBack title={'Carrito de compras'} />
 
       <div className="flex flex-col items-center justify-center my-4">
         <CardSimpleCart
-          title= {'Apple iPhone 14 Pro, LTPO Super Retina XDR OLED 6.1" (Black)'}
-          price= {299099.00}
-          unity = {2}
-          add = {true}
-          img={'https://res.cloudinary.com/yeniferramirez11/image/upload/v1681214166/ideal-code/abandono-al-exito-informacion-carrito_uujvas.webp'}
+          title={'Apple iPhone 14 Pro, LTPO Super Retina XDR OLED 6.1" (Black)'}
+          price={299099.0}
+          unity={2}
+          add={true}
+          img={
+            'https://res.cloudinary.com/yeniferramirez11/image/upload/v1681214166/ideal-code/abandono-al-exito-informacion-carrito_uujvas.webp'
+          }
         />
       </div>
 
@@ -41,7 +33,6 @@ export default function ViewCart() {
         </p>
       </div>
 
-
       <div className="w-full lg:w-1/2 md:w-1/2 mt-4 mx-auto flex flex-col lg:flex-row">
         <button className="text-white bg-blue border-0 py-2 px-6 focus:outline-none rounded-3xl w-full lg:mr-2 lg:mb-0 mb-4">
           Finalizar Compra
@@ -50,7 +41,6 @@ export default function ViewCart() {
           Ir al carrito de compras
         </button>
       </div>
-
     </div>
   );
 }
