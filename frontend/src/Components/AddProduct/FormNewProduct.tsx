@@ -1,5 +1,9 @@
+'use client';
+
 import { Label, TextInput, Select, Textarea} from 'flowbite-react';
-import { useState } from 'react';
+
+import { apiClient } from '@/utils/apiClient';
+import { useEffect, useState } from 'react';
 
 /*type NavBackProps = {
   title: string;
@@ -11,6 +15,15 @@ export default function FormNewProduct(
 }: NavBackProps*/
 ) {
   const [count, setCount] = useState(1);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    apiClient
+      .get('/home')
+      .then((data) => setCategories(data.data.data))
+      .catch((error) => console.log(error.response.data));
+  }, []);
+
   return (
   <form>
     <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
@@ -34,23 +47,35 @@ export default function FormNewProduct(
             value="Categoría"
           />
         </div>
-        <Select
-          id="countries"
+        
+        {categories.length > 0 ? (
+          <>
+          <Select
+          id="category"
           required
         >
-          <option>
-            United States
-          </option>
-          <option>
-            Canada
-          </option>
-          <option>
-            France
-          </option>
-          <option>
-            Germany
-          </option>
-        </Select>
+            {categories.map((category: any) =>
+              category.relationships.products.length ? (
+                
+                  <option>
+                  { category.attributes.name }
+                  </option>
+                
+              ) : null,
+            )}
+            </Select>
+          </>
+        ) : (
+          <Select
+            id="category"
+            required
+          >
+            <option>
+              Vacio
+            </option>
+            </Select>
+        )}
+        
       </div>
 
       <div id="select">
@@ -61,20 +86,14 @@ export default function FormNewProduct(
           />
         </div>
         <Select
-          id="countries"
+          id="status"
           required
         >
           <option>
-            United States
+            Nuevo
           </option>
           <option>
-            Canada
-          </option>
-          <option>
-            France
-          </option>
-          <option>
-            Germany
+            Usado
           </option>
         </Select>
       </div>
