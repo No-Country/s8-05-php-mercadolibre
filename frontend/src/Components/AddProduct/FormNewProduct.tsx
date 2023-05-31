@@ -26,7 +26,7 @@ export default function FormNewProduct(
 
   return (
   <form>
-    <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-2 mt-4 sm:grid-cols-2">
       <div>
         <Label
           htmlFor="itutlo"
