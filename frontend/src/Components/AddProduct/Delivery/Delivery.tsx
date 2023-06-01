@@ -36,7 +36,7 @@ export default function Delivery({ handleAvailableStep, handleCurrentStep }: han
           handleInputChange={handleInputChange}
         />
       </div>
-      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm">
+      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
         <ContinueBtn
           handleAvailableStep={handleAvailableStep}
           handleCurrentStep={handleCurrentStep}

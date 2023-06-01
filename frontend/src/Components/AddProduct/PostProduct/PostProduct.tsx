@@ -17,7 +17,7 @@ export default function PostProduct({ handleAvailableStep, handleCurrentStep }: 
       <div className="mb-4">
         <DetailsProduct />
       </div>
-      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm">
+      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
         <ContinueBtn
           handleAvailableStep={handleAvailableStep}
           handleCurrentStep={handleCurrentStep}

@@ -28,7 +28,7 @@ export default function Photos({ handleAvailableStep, handleCurrentStep }: handl
         <div className="mb-4">
           <Gallery images={images} handleImage={handleImage} />
         </div>
-        <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm">
+        <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
           <ContinueBtn
             handleAvailableStep={handleAvailableStep}
             handleCurrentStep={handleCurrentStep}
