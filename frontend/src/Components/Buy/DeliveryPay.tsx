@@ -29,7 +29,7 @@ function ListItem({ icon, title, price, border }: listItemType) {
   );
 }
 
-export default function Delivery({ handleAvailableStep, handleCurrentStep }: handlersType) {
+export default function DeliveryPay({ handleAvailableStep, handleCurrentStep }: handlersType) {
   const handleSubmit = () => {};
   return (
     <>

@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import Steps from '@/Components/AddProduct/Steps';
 import Description from '@/Components/AddProduct/Description/Description';
-import Delivery from '@/Components/buy/Delivery';
 import NavBack from '@/Components/UI/NavBack';
 
 import { IoLocationSharp, IoCard } from 'react-icons/io5';
@@ -13,6 +12,7 @@ import { HiShoppingCart } from 'react-icons/hi';
 
 import { stepDataType } from '@/types/stepData';
 import Pay from '@/Components/Buy/Pay';
+import DeliveryPay from '@/Components/Buy/DeliveryPay';
 
 export default function Page() {
   const [step, setStep] = useState(1);
@@ -66,7 +66,7 @@ export default function Page() {
           />
         )}
         {currentStep === 2 && (
-          <Delivery
+          <DeliveryPay
             handleAvailableStep={handleAvailableStep}
             handleCurrentStep={handleCurrentStep}
           />
