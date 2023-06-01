@@ -4,8 +4,11 @@ import ContinueBtn from '@/Components/UI/ContinueBtn';
 import { handlersType } from '@/types/addProduct/handlers.types';
 import FormDelivery from './FormDelivery';
 import { BaseSyntheticEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setDelivery } from '@/redux/addProduct';
 
 export default function Delivery({ handleAvailableStep, handleCurrentStep }: handlersType) {
+  const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState('CABA-C1044');
 
@@ -19,6 +22,8 @@ export default function Delivery({ handleAvailableStep, handleCurrentStep }: han
   const handleInputChange = (event: BaseSyntheticEvent) => {
     setInputValue(event.target.value);
   };
+
+  const handleSubmit = () => dispatch(setDelivery(inputValue));
 
   return (
     <div className="w-full flex flex-col items-center mt-3">
@@ -36,6 +41,7 @@ export default function Delivery({ handleAvailableStep, handleCurrentStep }: han
           handleAvailableStep={handleAvailableStep}
           handleCurrentStep={handleCurrentStep}
           num={4}
+          handleSubmit={handleSubmit}
         />
       </div>
     </div>

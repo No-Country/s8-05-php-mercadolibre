@@ -3,13 +3,23 @@
 import ContinueBtn from '@/Components/UI/ContinueBtn';
 import Gallery from './Gallery';
 import { handlersType } from '@/types/addProduct/handlers.types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPhotos, setPhotos } from '@/redux/addProduct';
 
 export default function Photos({ handleAvailableStep, handleCurrentStep }: handlersType) {
+  const dispatch = useDispatch();
+  const data = useSelector(getPhotos);
   const [images, setImages] = useState<string[]>([]);
 
   const handleImage: (callback: (prevImages: string[]) => string[]) => void = (callback) =>
     setImages(callback);
+
+  useEffect(() => {
+    setImages(data);
+  }, [data]);
+
+  const handleSubmit = () => dispatch(setPhotos(images));
 
   return (
     <>
@@ -23,6 +33,7 @@ export default function Photos({ handleAvailableStep, handleCurrentStep }: handl
             handleAvailableStep={handleAvailableStep}
             handleCurrentStep={handleCurrentStep}
             num={3}
+            handleSubmit={handleSubmit}
           />
         </div>
       </div>
