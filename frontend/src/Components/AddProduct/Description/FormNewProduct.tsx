@@ -1,4 +1,4 @@
-import { descriptionType } from '@/types/addProduct/description.types';
+import { descriptionType } from '@/types/slice/addProduct.types';
 import { Label, TextInput, Select, Textarea } from 'flowbite-react';
 
 type FormNewProductType = {

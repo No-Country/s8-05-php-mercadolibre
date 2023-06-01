@@ -9,3 +9,9 @@ export type descriptionType = {
   price: number;
   description: string;
 };
+
+export type addProductType = {
+  description: descriptionType;
+  photos: string[];
+  delivery: string;
+};

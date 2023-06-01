@@ -1,5 +1,4 @@
-import { addProductType } from '@/types/addProduct/addProduct.types';
-import { descriptionType } from '@/types/addProduct/description.types';
+import { addProductType, descriptionType } from '@/types/slice/addProduct.types';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export const initialDescription = {
