@@ -30,10 +30,25 @@ export default function Page() {
     { title: 'Confirmacion', icon: <HiShoppingCart key={'HiShoppingCart'} /> },
   ];
 
+  const title = (s: number) => {
+    switch (s) {
+      case 1:
+        return 'Domicilio de entrega';
+      case 2:
+        return 'Metodo de envio';
+      case 3:
+        return 'Metodo de pago';
+      case 4:
+        return 'Confirmacion de compra';
+      default:
+        return 'Volver';
+    }
+  };
+
   return (
     <>
       <header>
-        <NavBack title="Domicilio de entrega" />
+        <NavBack title={title(currentStep)} />
         <nav>
           <Steps
             step={step}
