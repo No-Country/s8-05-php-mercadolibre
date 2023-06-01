@@ -12,6 +12,16 @@ const nextConfig = {
         hostname: "via.placeholder.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "dummyimage.com",
+        pathname: "/**",
+      },
     ],
   },
   env: {

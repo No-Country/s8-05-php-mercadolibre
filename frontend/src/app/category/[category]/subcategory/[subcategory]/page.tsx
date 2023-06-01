@@ -3,7 +3,7 @@ import Layout from '@/Components/Layout';
 import cardImg from '@/assets/card/tecnologia.png';
 import CardTitle from '@/Components/UI/CardTitle';
 import CardImg from '@/Components/UI/CardImg';
-import CardSubCategory from '@/Components/UI/CardSubCategory';
+import SubCategory from '@/Components/Product/SubCategory';
 import SliderLogos from '@/Components/UI/SliderLogos';
 
 import { apiClient } from '@/utils/apiClient';
@@ -29,7 +29,7 @@ async function getData(category: string, subcategory: string) {
   return data;
 }
 
-export default async function SubCategory({ params }: subcategoryProps) {
+export default async function Page({ params }: subcategoryProps) {
   const { data } = await getData(params.category, params.subcategory);
 
   return (
@@ -40,7 +40,7 @@ export default async function SubCategory({ params }: subcategoryProps) {
         <div className="flex flex-wrap mx-5">
           {data?.data?.length > 0 ? (
             data.data.map((item: any) => (
-              <CardSubCategory
+              <SubCategory
                 key={item.id}
                 id={item.id}
                 title={item.attributes.name}

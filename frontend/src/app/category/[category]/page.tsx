@@ -6,7 +6,7 @@ import CardImg from '@/Components/UI/CardImg';
 import SliderLogos from '@/Components/UI/SliderLogos';
 
 import { apiClient } from '@/utils/apiClient';
-import CardCategory from '@/Components/UI/CardCategory';
+import Category from '@/Components/Product/Category';
 
 export const dynamicParams = false;
 
@@ -20,7 +20,7 @@ async function getData(slug: string) {
   return data;
 }
 
-export default async function Category({ params }: { params: { category: string } }) {
+export default async function Page({ params }: { params: { category: string } }) {
   const { data } = await getData(params.category);
 
   return (
@@ -29,7 +29,7 @@ export default async function Category({ params }: { params: { category: string 
         <CardTitle title={data?.attributes?.name} />
         <div className="flex flex-wrap mx-5">
           {data?.relationships?.subcategories?.map((item: any) => (
-            <CardCategory
+            <Category
               key={item.id}
               title={item.name}
               img={cardImg}

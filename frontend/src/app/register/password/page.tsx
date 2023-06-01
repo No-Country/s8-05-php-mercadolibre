@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { apiClient } from '@/utils/apiClient';
 
-export default function PasswordPage() {
+export default function Page() {
   const [password, setPassword] = useState<string>('');
 
   const dispatch = useDispatch();
