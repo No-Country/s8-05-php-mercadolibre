@@ -1,12 +1,8 @@
-import { FaEdit } from 'react-icons/fa';
-import { HiCamera } from 'react-icons/hi';
-import { IoCheckmarkCircle } from 'react-icons/io5';
-import { BsBoxFill } from 'react-icons/bs';
-
 type stepsType = {
   step: number;
   currentStep: number;
   handleClick: (step: number) => void;
+  icons: any[];
 };
 
 type listItemType = {
@@ -42,14 +38,14 @@ function ListItem(props: listItemType) {
   );
 }
 
-export default function Steps({ step, currentStep, handleClick }: stepsType) {
+export default function Steps({ step, currentStep, handleClick, icons }: stepsType) {
   return (
     <ul className="flex w-full justify-between px-5 text-xs mt-10 relative">
       <ListItem
         currentStep={currentStep}
         handleClick={handleClick}
         n={1}
-        icon={<FaEdit />}
+        icon={icons[0]}
         text={'Descripcion'}
         available={step >= 1}
         alternative={true}
@@ -59,7 +55,7 @@ export default function Steps({ step, currentStep, handleClick }: stepsType) {
         currentStep={currentStep}
         handleClick={handleClick}
         n={2}
-        icon={<HiCamera />}
+        icon={icons[1]}
         text={'Fotos'}
         available={step >= 2}
       />
@@ -68,7 +64,7 @@ export default function Steps({ step, currentStep, handleClick }: stepsType) {
         currentStep={currentStep}
         handleClick={handleClick}
         n={3}
-        icon={<BsBoxFill />}
+        icon={icons[2]}
         text={'Envio'}
         available={step >= 3}
       />
@@ -77,7 +73,7 @@ export default function Steps({ step, currentStep, handleClick }: stepsType) {
         currentStep={currentStep}
         handleClick={handleClick}
         n={4}
-        icon={<IoCheckmarkCircle />}
+        icon={icons[3]}
         text={'Publicar'}
         available={step >= 4}
       />
