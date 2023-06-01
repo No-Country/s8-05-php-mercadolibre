@@ -1,5 +1,3 @@
-'use client';
-
 import Layout from '@/Components/Layout';
 
 import cardImg from '@/assets/card/tecnologia.png';
@@ -7,54 +5,37 @@ import CardTitle from '@/Components/UI/CardTitle';
 import CardImg from '@/Components/UI/CardImg';
 import SliderLogos from '@/Components/UI/SliderLogos';
 
-import { useEffect, useState } from 'react';
 import { apiClient } from '@/utils/apiClient';
-import CardCategory from '@/Components/UI/CardCategory';
+import Category from '@/Components/Product/Category';
 
-export default function Category({ params }: { params: { category: string } }) {
-  const [category, setCategory] = useState<any>({});
-  const [allCategories, setAllCategories] = useState([]);
-  const [loader, setLoader] = useState(true);
+export const dynamicParams = false;
 
-  const categoryNotExist = () => allCategories.every((item) => item !== params.category);
+export async function generateStaticParams() {
+  const { data }: any = await apiClient.get(`/categories`);
+  return data.data.map((item: any) => ({ category: item.attributes.slug }));
+}
 
-  useEffect(() => {
-    apiClient
-      .get(`/categories`)
-      .then((data) => data.data.data.map((item: any) => item.attributes.slug))
-      .then((res) => setAllCategories(res))
-      .catch((err) => console.log(err));
-  }, []);
+async function getData(slug: string) {
+  const { data }: any = await apiClient.get(`/categories/${slug}`);
+  return data;
+}
 
-  useEffect(() => {
-    apiClient
-      .get(`/categories/${params.category}`)
-      .then((data) => setCategory(data.data.data))
-      .catch((err) => console.log(err))
-      .finally(() => setLoader(false));
-  }, [params.category]);
+export default async function Page({ params }: { params: { category: string } }) {
+  const { data } = await getData(params.category);
 
-  return loader ? (
-    <span>Cargando</span>
-  ) : categoryNotExist() ? (
-    <span>
-      La categoria {`'`}
-      {params.category}
-      {`'`} no existe
-    </span>
-  ) : (
+  return (
     <Layout>
       <div className="flex flex-col gap-5 my-5">
-        <CardTitle title={category?.attributes?.name} />
+        <CardTitle title={data?.attributes?.name} />
         <div className="flex flex-wrap mx-5">
-          {category.relationships.subcategories.map((item: any) => (
-            <CardCategory
+          {data?.relationships?.subcategories?.map((item: any) => (
+            <Category
               key={item.id}
               title={item.name}
               img={cardImg}
               offer={true}
               descriptionOffer={'20%'}
-              route={`/subcategory/${item.slug}`}
+              route={`/category/${params.category}/subcategory/${item.slug}`}
             />
           ))}
         </div>

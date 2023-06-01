@@ -19,9 +19,9 @@ export default function NavbarComponent() {
         <div className="flex-grow">
           <Link href={'/'}>Mercado Country</Link>
         </div>
-        <div className="flex flex-row text-2xl gap-3 text-darkGrey">
+        <Link href={'/cart'} className="flex flex-row text-2xl gap-3 text-darkGrey">
           <HiShoppingCart />
-        </div>
+        </Link>
         {open && <Menu menuToggle={menuToggle} />}
       </nav>
       <div className="flex flex-row mx-5 rounded-lg border border-black overflow-hidden relative mb-5 box-border">

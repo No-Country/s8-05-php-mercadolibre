@@ -13,7 +13,7 @@ type userState = {
   lastName: string;
 };
 
-export default function UserPage() {
+export default function Page() {
   const [user, setUser] = useState<userState>({
     name: '',
     lastName: '',

@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { apiClient } from '@/utils/apiClient';
 
-export default function EmailPage() {
+export default function Page() {
   const [email, setEmail] = useState<string>('');
 
   const [codeStep, setCodeStep] = useState<boolean>(false);

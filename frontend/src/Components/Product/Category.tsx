@@ -1,8 +1,10 @@
+'use client';
+
 import Image from 'next/image';
 import { Badge } from 'flowbite-react';
 import Link from 'next/link';
 
-type CardCategoryProps = {
+type CategoryProps = {
   title: string;
   img: any;
   offer: boolean;
@@ -10,13 +12,7 @@ type CardCategoryProps = {
   route: string;
 };
 
-export default function CardCategory({
-  title,
-  img,
-  offer,
-  descriptionOffer,
-  route,
-}: CardCategoryProps) {
+export default function Category({ title, img, offer, descriptionOffer, route }: CategoryProps) {
   return (
     <div className="lg:w-1/4 w-1/2 p-2">
       <div className="p-4 border-2 border-gray-400 rounded-lg text-center">
