@@ -4,9 +4,7 @@ import { useState } from 'react';
 
 import Steps from '@/Components/AddProduct/Steps';
 import Description from '@/Components/AddProduct/Description/Description';
-import Photos from '@/Components/AddProduct/Photos/Photos';
-import Delivery from '@/Components/AddProduct/Delivery/Delivery';
-import PostProduct from '@/Components/AddProduct/PostProduct/PostProduct';
+import Delivery from '@/Components/buy/Delivery';
 import NavBack from '@/Components/UI/NavBack';
 
 import { IoLocationSharp, IoCard } from 'react-icons/io5';
@@ -34,7 +32,7 @@ export default function Page() {
   return (
     <>
       <header>
-        <NavBack title="Nuevo Producto" />
+        <NavBack title="Domicilio de entrega" />
         <nav>
           <Steps
             step={step}
@@ -52,20 +50,13 @@ export default function Page() {
           />
         )}
         {currentStep === 2 && (
-          <Photos handleAvailableStep={handleAvailableStep} handleCurrentStep={handleCurrentStep} />
-        )}
-        {currentStep === 3 && (
           <Delivery
             handleAvailableStep={handleAvailableStep}
             handleCurrentStep={handleCurrentStep}
           />
         )}
-        {currentStep === 4 && (
-          <PostProduct
-            handleAvailableStep={handleAvailableStep}
-            handleCurrentStep={handleCurrentStep}
-          />
-        )}
+        {currentStep === 3 && <></>}
+        {currentStep === 4 && <></>}
       </main>
     </>
   );
