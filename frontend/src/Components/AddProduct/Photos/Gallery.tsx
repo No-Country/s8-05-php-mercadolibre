@@ -1,18 +1,19 @@
-'use client';
-
-import React, { useState } from 'react';
+import { ChangeEvent } from 'react';
 import { Button } from 'flowbite-react';
 import Image from 'next/image';
 
-export default function Gallery() {
-  const [images, setImages] = useState<string[]>([]);
+type GalleryType = {
+  images: string[];
+  handleImage: (callback: (prevImages: string[]) => string[]) => void;
+};
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+export default function Gallery({ images, handleImage }: GalleryType) {
+  const handleFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const fileList = event.target.files;
     if (fileList) {
       const fileArray = Array.from(fileList);
       const imageUrls = fileArray.map((file) => URL.createObjectURL(file));
-      setImages((prevImages) => [...prevImages, ...imageUrls]);
+      handleImage((prevImages) => [...prevImages, ...imageUrls]);
     }
   };
 
@@ -47,7 +48,7 @@ export default function Gallery() {
               />
               <Button
                 onClick={() => {
-                  setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+                  handleImage((prevImages) => prevImages.filter((_, i) => i !== index));
                 }}
                 className="absolute top-2 right-2"
               >

@@ -1,26 +1,17 @@
-'use client';
-
 import { Label, Checkbox } from 'flowbite-react';
+import { ChangeEvent } from 'react';
 import { FiCheck, FiBox } from 'react-icons/fi';
-import React, { BaseSyntheticEvent, useState } from 'react';
 
-export default function FormNewProduct() {
-  const [isEditing, setIsEditing] = useState(false);
-  const [inputValue, setInputValue] = useState('CABA-C1044');
+type FormNewProductType = {
+  isEditing: boolean;
+  inputValue: string;
+  handleSave: () => void;
+  handleEdit: () => void;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
 
-  const handleEdit = () => {
-    setIsEditing(true);
-  };
-
-  const handleSave = () => {
-    setIsEditing(false);
-    // Aquí puedes realizar alguna acción con el valor del input, como enviarlo a una API o guardar en el estado de tu componente padre.
-  };
-
-  const handleInputChange = (event: BaseSyntheticEvent) => {
-    setInputValue(event.target.value);
-  };
-
+export default function FormNewProduct(props: FormNewProductType) {
+  const { isEditing, inputValue, handleSave, handleEdit, handleInputChange } = props;
   return (
     <div>
       <div className="flex gap-4 items-center">
