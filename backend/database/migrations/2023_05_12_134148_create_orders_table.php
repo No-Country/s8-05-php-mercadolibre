@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) { // datos contacot usuario (equivalente perfil)
             $table->id();
-            $table->string('contact');
-            $table->string('phone', 15);
+            // $table->string('contact');
+            // $table->string('phone', 15);
             $table->enum('status', ['PENDIENTE', 'RECIBIDO', 'ENVIADO', 'ENTREGADO', 'CANCELADO']);
             $table->enum('dispatch_type', ['DOMICILIO', 'RETIRO DEPOSITO', 'DEPOSITO SUCURSAL']);
             $table->json('dispatch_address');

@@ -35,8 +35,8 @@ class OrderFactory extends Factory
         $shippingCost = fake()->randomFloat(2, 100, 400);
 
         return [
-            'contact' => fake()->sentence(),
-            'phone' => fake()->e164PhoneNumber(),
+            //'contact' => fake()->sentence(),
+            //'phone' => fake()->e164PhoneNumber(),
             'status' => fake()->randomElement([
                 'PENDIENTE',
                 'RECIBIDO',
