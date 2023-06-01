@@ -12,6 +12,7 @@ import { TbTruckDelivery } from 'react-icons/tb';
 import { HiShoppingCart } from 'react-icons/hi';
 
 import { stepDataType } from '@/types/stepData';
+import Pay from '@/Components/Buy/Pay';
 
 export default function Page() {
   const [step, setStep] = useState(1);
@@ -55,7 +56,9 @@ export default function Page() {
             handleCurrentStep={handleCurrentStep}
           />
         )}
-        {currentStep === 3 && <></>}
+        {currentStep === 3 && (
+          <Pay handleAvailableStep={handleAvailableStep} handleCurrentStep={handleCurrentStep} />
+        )}
         {currentStep === 4 && <></>}
       </main>
     </>
