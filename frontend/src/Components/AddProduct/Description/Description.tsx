@@ -2,7 +2,7 @@
 
 import ContinueBtn from '@/Components/UI/ContinueBtn';
 import FormNewProduct from './FormNewProduct';
-import { handlersType } from '@/types/addProduct/handlers.types';
+import { handlersType } from '@/types/handlers.types';
 import { useEffect, useState } from 'react';
 import { descriptionType } from '@/types/addProduct/description.types';
 import { useDispatch, useSelector } from 'react-redux';

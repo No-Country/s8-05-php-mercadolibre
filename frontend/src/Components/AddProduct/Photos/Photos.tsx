@@ -2,7 +2,7 @@
 
 import ContinueBtn from '@/Components/UI/ContinueBtn';
 import Gallery from './Gallery';
-import { handlersType } from '@/types/addProduct/handlers.types';
+import { handlersType } from '@/types/handlers.types';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPhotos, setPhotos } from '@/redux/addProduct';

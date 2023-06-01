@@ -1,7 +1,7 @@
 'use client';
 
 import ContinueBtn from '@/Components/UI/ContinueBtn';
-import { handlersType } from '@/types/addProduct/handlers.types';
+import { handlersType } from '@/types/handlers.types';
 import FormDelivery from './FormDelivery';
 import { BaseSyntheticEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';

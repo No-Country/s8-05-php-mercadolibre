@@ -3,7 +3,7 @@ import { GrDropbox } from 'react-icons/gr';
 import { FaMotorcycle } from 'react-icons/fa';
 import { MdDirectionsRun } from 'react-icons/md';
 import ContinueBtn from '../UI/ContinueBtn';
-import { handlersType } from '@/types/addProduct/handlers.types';
+import { handlersType } from '@/types/handlers.types';
 
 type listItemType = {
   icon: any;

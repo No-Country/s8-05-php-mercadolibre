@@ -1,4 +1,5 @@
 import { addProductType } from '@/types/addProduct/addProduct.types';
+import { descriptionType } from '@/types/addProduct/description.types';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export const initialDescription = {
@@ -23,13 +24,13 @@ const { actions, reducer } = createSlice({
   name: 'addProduct',
   initialState,
   reducers: {
-    setDescription: (state: any, { payload }: PayloadAction<any>) => {
-      state.description = { ...state.description, ...payload };
+    setDescription: (state: any, { payload }: PayloadAction<descriptionType>) => {
+      state.description = payload;
     },
-    setPhotos: (state: any, { payload }: PayloadAction<any>) => {
+    setPhotos: (state: any, { payload }: PayloadAction<string[]>) => {
       state.photos = payload;
     },
-    setDelivery: (state: any, { payload }: PayloadAction<any>) => {
+    setDelivery: (state: any, { payload }: PayloadAction<string>) => {
       state.delivery = payload;
     },
   },

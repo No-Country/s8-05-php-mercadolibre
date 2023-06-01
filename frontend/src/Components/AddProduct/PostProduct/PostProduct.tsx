@@ -1,5 +1,5 @@
 import ContinueBtn from '@/Components/UI/ContinueBtn';
-import { handlersType } from '@/types/addProduct/handlers.types';
+import { handlersType } from '@/types/handlers.types';
 import DetailsProduct from './DetailsProduct';
 import { useSelector } from 'react-redux';
 import { getDelivery, getDescription, getPhotos } from '@/redux/addProduct';
