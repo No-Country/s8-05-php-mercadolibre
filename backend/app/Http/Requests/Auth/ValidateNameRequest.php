@@ -23,7 +23,7 @@ class ValidateNameRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:60',
-            'lastname' => 'required|string|min:3|max:60',
+            'lastName' => 'required|string|min:3|max:60',
         ];
     }
 }

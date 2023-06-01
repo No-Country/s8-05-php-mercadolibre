@@ -17,8 +17,7 @@ return new class extends Migration
             // $table->string('phone', 15);
             $table->enum('status', ['PENDIENTE', 'RECIBIDO', 'ENVIADO', 'ENTREGADO', 'CANCELADO']);
             $table->enum('dispatch_type', ['DOMICILIO', 'RETIRO DEPOSITO', 'DEPOSITO SUCURSAL']);
-            $table->json('dispatch_address');
-            $table->json('details_product');
+            $table->string('dispatch_address');
             $table->float('shipping_cost');
             $table->float('total');
             $table->unsignedBigInteger('user_id');

@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'lastname',
+        'phone',
         'email',
         'password',
         'code'
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
     }
 }
