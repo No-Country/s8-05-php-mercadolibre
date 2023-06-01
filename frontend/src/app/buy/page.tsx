@@ -9,10 +9,10 @@ import Delivery from '@/Components/AddProduct/Delivery/Delivery';
 import PostProduct from '@/Components/AddProduct/PostProduct/PostProduct';
 import NavBack from '@/Components/UI/NavBack';
 
-import { FaEdit } from 'react-icons/fa';
-import { HiCamera } from 'react-icons/hi';
-import { IoCheckmarkCircle } from 'react-icons/io5';
-import { BsBoxFill } from 'react-icons/bs';
+import { IoLocationSharp, IoCard } from 'react-icons/io5';
+import { TbTruckDelivery } from 'react-icons/tb';
+import { HiShoppingCart } from 'react-icons/hi';
+
 import { stepDataType } from '@/types/stepData';
 
 export default function Page() {
@@ -25,10 +25,10 @@ export default function Page() {
   };
 
   const stepData: stepDataType[] = [
-    { title: 'Descripción', icon: <FaEdit key={'FaEdit'} /> },
-    { title: 'Fotos', icon: <HiCamera key={'HiCamera'} /> },
-    { title: 'Envio', icon: <IoCheckmarkCircle key={'IoCheckmarkCircle'} /> },
-    { title: 'Publicar', icon: <BsBoxFill key={'BsBoxFill'} /> },
+    { title: 'Domicilio', icon: <IoLocationSharp key={'IoLocationSharp'} /> },
+    { title: 'Entrega', icon: <TbTruckDelivery key={'TbTruckDelivery'} /> },
+    { title: 'Pago', icon: <IoCard key={'IoCard'} /> },
+    { title: 'Confirmacion', icon: <HiShoppingCart key={'HiShoppingCart'} /> },
   ];
 
   return (
