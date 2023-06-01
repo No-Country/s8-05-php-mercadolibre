@@ -3,7 +3,7 @@
 import NavBack from '@/Components/UI/NavBack';
 import CardSimpleCart from '@/Components/UI/CardSimpleCart';
 
-export default function ViewCart() {
+export default function Page() {
   return (
     <div>
       <NavBack title={'Carrito de compras'} />

@@ -1,34 +1,31 @@
-'use client';
-
 import Layout from '@/Components/Layout';
 import { apiClient } from '@/utils/apiClient';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-export default function Page({ params }: { params: { product: string } }) {
-  const [product, setProduct] = useState<any>(null);
-  const [loader, setLoader] = useState<boolean>(true);
+export const dynamicParams = false;
 
-  useEffect(() => {
-    apiClient(`/products/${params.product}`)
-      .then((data) => setProduct(data.data.data))
-      .catch((err) => console.log(err))
-      .finally(() => setLoader(false));
-  }, []);
+export async function generateStaticParams() {
+  const { data }: any = await apiClient.get(`/categories`);
+  return data.data.map((item: any) => ({ category: item.attributes.slug }));
+}
 
-  return loader ? (
-    <span>Cargando</span>
-  ) : !product ? (
-    <span>Error: el producto que estas buscando no existe</span>
-  ) : (
+async function getData(slug: string) {
+  const { data }: any = await apiClient.get(`/products/${slug}`);
+  return data;
+}
+
+export default async function Page({ params }: { params: { product: string } }) {
+  const { data } = await getData(params.product);
+
+  return (
     <Layout>
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <Image
               className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src={product.relationships?.images[0]}
+              src={data.relationships?.images[0]}
               width={500}
               height={500}
               alt="ecommerce"
@@ -36,7 +33,7 @@ export default function Page({ params }: { params: { product: string } }) {
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <div className="flex mb-4">
                 <p className="text-xs title-font text-neutral-900 tracking-widest">
-                  product/{product.id}
+                  product/{data.id}
                 </p>
                 <span className="flex items-center ml-8 text-blue">
                   <AiFillStar />
@@ -48,16 +45,16 @@ export default function Page({ params }: { params: { product: string } }) {
                 </span>
               </div>
               <h1 className="text-blue text-3xl title-font font-medium mb-1">
-                {product.attributes?.name}
+                {data.attributes?.name}
               </h1>
               <div className="flex mt-4">
                 <span className="title-font font-medium text-3xl text-neutral-900">
-                  ${product.attributes.price}
+                  ${data.attributes.price}
                 </span>
               </div>
               <p className="leading-relaxed text-xl">
                 {' '}
-                en 3 cuotas de ${Math.floor((product.attributes.price * 1.15) / 3)} (15% de interes)
+                en 3 cuotas de ${Math.floor((data.attributes.price * 1.15) / 3)} (15% de interes)
               </p>
               <div className="flex  py-2">
                 <span className="text-gray-800">Delivery:</span>
@@ -68,7 +65,7 @@ export default function Page({ params }: { params: { product: string } }) {
               <div className="flex  py-2">
                 <span className="text-gray-800">Stock:</span>
                 <span className="ml-auto bg-gray-200 text-gray-700 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-xl">
-                  {product.attributes.stock} unidades
+                  {data.attributes.stock} unidades
                 </span>
               </div>
               <div className="flex mt-5 items-center pt-5 border-t-2 border-gray-100 mb-6">
@@ -108,11 +105,11 @@ export default function Page({ params }: { params: { product: string } }) {
               <p className="text-xl text-neutral-900 font-semibold py-3">
                 Caracteristicas del producto
               </p>
-              <p className="leading-relaxed">{product.attributes.description}</p>
+              <p className="leading-relaxed">{data.attributes.description}</p>
 
               <p className="leading-relaxed py-3">
                 SKU:
-                <span className="text-neutral-900"> {product.id}</span>
+                <span className="text-neutral-900"> {data.id}</span>
               </p>
               <p className="text-xl text-neutral-900 font-semibold pt-3">Brand</p>
             </div>
@@ -128,7 +125,7 @@ export default function Page({ params }: { params: { product: string } }) {
                   <a className="block relative h-48 rounded overflow-hidden">
                     <Image
                       className="object-cover object-center w-full h-full block"
-                      src={product.relationships?.images[0]}
+                      src={data.relationships?.images[0]}
                       width={500}
                       height={500}
                       alt="ecommerce"
