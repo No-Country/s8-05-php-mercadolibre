@@ -1,7 +1,7 @@
 'use client';
 
 import NavBack from '@/Components/UI/NavBack';
-import CardSimpleCart from '@/Components/UI/CardSimpleCart';
+import CardSimpleCart from '@/Components/Cart/CardSimpleCart';
 
 export default function Page() {
   return (

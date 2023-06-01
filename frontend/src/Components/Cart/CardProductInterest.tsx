@@ -4,7 +4,6 @@ import { IoHeartOutline } from 'react-icons/io5';
 import { AiFillThunderbolt } from 'react-icons/ai';
 import Link from 'next/link';
 
-
 type CardSimpleCartProps = {
   title: string;
   price: number;
@@ -12,11 +11,9 @@ type CardSimpleCartProps = {
   leave: string;
 };
 
-export default function CardSimpleCart({
-  title, price, img, leave
-}: CardSimpleCartProps) {
+export default function CardSimpleCart({ title, price, img, leave }: CardSimpleCartProps) {
   return (
-  <div className="flex flex-col min-w-[250px] w-[250px] border border-black rounded-lg gap-2 mx-5">
+    <div className="flex flex-col min-w-[250px] w-[250px] border border-black rounded-lg gap-2 mx-5">
       <div className="p-2">
         <div className="w-full flex justify-end">
           <IoHeartOutline className="text-2xl" />
@@ -29,6 +26,7 @@ export default function CardSimpleCart({
           height={200}
           alt="laptop"
           className="h-[150px] w-full object-cover"
+          src={''}
         />
       </Link>
       <div className="p-2">
