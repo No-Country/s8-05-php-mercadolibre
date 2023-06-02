@@ -6,27 +6,27 @@ import { handlersType } from '@/types/handlers.types';
 import { useEffect, useState } from 'react';
 import { initialLocationType } from '@/types/slice/buy.types';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDescription, initialDescription, setDescription } from '@/redux/addProduct';
 import Test from '@/Components/Buy/Information/ProductInfo';
+import { initialLocation } from '@/redux/buy';
 
 export default function Description({ handleAvailableStep, handleCurrentStep }: handlersType) {
   const dispatch = useDispatch();
-  const data = useSelector(getDescription);
-  const [states, setStates] = useState<initialLocationType>(initialDescription);
+  // const data = useSelector(getDescription);
+  const [states, setStates] = useState<initialLocationType>(initialLocation);
 
-  useEffect(() => {
-    setStates({
-      name: data.name,
-      code: data.code,
-      province: data.province,
-      city: data.city,
-      address: data.address,
-      houseNumber: data.houseNumber,
-      floor: data.floor,
-      phone: data.phone,
-      aditionalDescription: data.aditionalDescription,
-    });
-  }, [data]);
+  // useEffect(() => {
+  //   setStates({
+  //     name: data.name,
+  //     code: data.code,
+  //     province: data.province,
+  //     city: data.city,
+  //     address: data.address,
+  //     houseNumber: data.houseNumber,
+  //     floor: data.floor,
+  //     phone: data.phone,
+  //     aditionalDescription: data.aditionalDescription,
+  //   });
+  // }, [data]);
 
   const handleChange = ({ target }: { target: HTMLInputElement | HTMLTextAreaElement }) => {
     setStates({
@@ -35,7 +35,7 @@ export default function Description({ handleAvailableStep, handleCurrentStep }: 
     });
   };
 
-  const handleSubmit = () => dispatch(setDescription(states));
+  const handleSubmit = () => {};
 
   return (
     <div className="w-full flex flex-col items-center mt-3">
