@@ -35,8 +35,8 @@ class OrderFactory extends Factory
         $shippingCost = fake()->randomFloat(2, 100, 400);
 
         return [
-            'contact' => fake()->sentence(),
-            'phone' => fake()->e164PhoneNumber(),
+            //'contact' => fake()->sentence(),
+            //'phone' => fake()->e164PhoneNumber(),
             'status' => fake()->randomElement([
                 'PENDIENTE',
                 'RECIBIDO',
@@ -50,7 +50,7 @@ class OrderFactory extends Factory
                 'DEPOSITO SUCURSAL'
             ]),
             'dispatch_address' => json_encode($dispatchData),
-            'details_product' => json_encode($detailsProducts),
+            'details_products' => json_encode($detailsProducts),
             'shipping_cost' => $shippingCost,
             'total' => $detailsProducts['price'] + $shippingCost,
             'user_id' => User::all()->random()->id

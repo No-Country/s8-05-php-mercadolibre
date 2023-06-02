@@ -13,7 +13,7 @@ import { getComplete, getData, getStep } from '@/redux/registerSlice';
 import { useEffect, useState } from 'react';
 import { apiClient } from '@/utils/apiClient';
 
-export default function Register() {
+export default function Page() {
   const isComplete = useSelector(getComplete);
   const step = useSelector(getStep);
   const registerData = useSelector(getData);

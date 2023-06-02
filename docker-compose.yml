@@ -1,0 +1,73 @@
+version: '3.8'
+services:
+
+  mercadocountry_nginx:
+    image: nginx:alpine3.17
+    restart: always
+    depends_on:
+      - mercadocountry_db
+      - api.mercadocountry
+    container_name: mercadocountry_nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./backend/:/var/www
+      - ./docker/:/etc/nginx/conf.d
+    networks:
+      - mercadocountry-networks
+
+  mercadocountry_db:
+    image: mysql:8.0.33
+    restart: unless-stopped
+    container_name: mercadocountry_db
+    environment:
+      - MYSQL_USER=mercadocountrydb
+      - MYSQL_PASSWORD=mercadocountrydb
+      - MYSQL_DATABASE=mercadocountrydb
+      - MYSQL_ROOT_PASSWORD=mercadocountrydb
+    ports:
+      - 3307:3306
+    volumes:
+      - mercadocountry_db:/var/lib/mysql
+    networks:
+      mercadocountry-networks:
+        aliases:
+          - mercadocountrydb
+
+  api.mercadocountry:
+    build:
+      context: ./backend
+      dockerfile: lv.Dockerfile
+    container_name: api.mercadocountry
+    working_dir: /var/www
+    ports:
+      - 9000:9000
+    networks:
+      - mercadocountry-networks
+    volumes:
+      - ./backend/:/var/www
+  
+  # Container FRONTEND
+  # react.mercadocountry:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: jsx.Dockerfile
+  #   container_name: react.mercadocountry
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./frontend/:/usr/src
+  #   networks:
+  #     - mercadocountry-networks
+
+volumes:
+  mercadocountry_db:
+
+
+networks:
+  mercadocountry-networks:
+    name: mercadocountry_net
+    driver: bridge
+    ipam:
+      driver: default

@@ -6,7 +6,7 @@ import { Badge, Avatar } from 'flowbite-react';
 import { apiClient } from '@/utils/apiClient';
 import LayoutAuth from '@/Components/LayoutAuth';
 
-export default function Login() {
+export default function Page() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
