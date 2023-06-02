@@ -9,6 +9,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\StateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,5 +76,12 @@ Route::controller(CartController::class)->group(function () {
         Route::get('/view-cart', 'viewCart');
         Route::put('/update-cart', 'updateCartItem');
         Route::delete('/remove-cart/{id}', 'removeCartItem');
+    });
+});
+
+Route::controller(StateController::class)->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/states', 'index')->name('states.index');
+        // Route::get('/states/{id}', 'show')->name('states.show');
     });
 });
