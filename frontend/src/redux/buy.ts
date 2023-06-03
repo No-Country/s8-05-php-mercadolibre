@@ -19,12 +19,15 @@ export const initialPay: initialPayType = {
   cvv: 0,
   name: '',
   dni: '',
+  type: '',
+  company: '',
 };
 
 const initialState: initialStateType = {
   location: initialLocation,
   delivery: '',
   pay: initialPay,
+  cards: [],
 };
 
 const { actions, reducer } = createSlice({
@@ -40,13 +43,17 @@ const { actions, reducer } = createSlice({
     setPay: (state: any, { payload }: PayloadAction<any>) => {
       state.pay = { ...state.pay, ...payload };
     },
+    setCard: (state: any, { payload }: PayloadAction<any>) => {
+      state.cards = [...state.cards, payload];
+    },
   },
 });
 
-export const { setLocation, setDelivery, setPay } = actions;
+export const { setLocation, setDelivery, setPay, setCard } = actions;
 
 export const getLocation = (state: any) => state.buy.location;
 export const getDelivery = (state: any) => state.buy.delivery;
 export const getPay = (state: any) => state.buy.pay;
+export const getCards = (state: any) => state.buy.cards;
 
 export default reducer;

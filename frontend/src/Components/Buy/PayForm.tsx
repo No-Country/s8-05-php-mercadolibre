@@ -1,26 +1,57 @@
 import { initialPayType } from '@/types/slice/buy.types';
 import { Label, TextInput } from 'flowbite-react';
-import { SyntheticEvent } from 'react';
 import NavBack from '../UI/NavBack';
+import { SyntheticEvent, useEffect, useState } from 'react';
+import { initialPay, setCard } from '@/redux/buy';
+import { useDispatch } from 'react-redux';
 
 type payFormType = {
-  handleChange: (e: SyntheticEvent) => void;
-  states: initialPayType;
   callback: () => void;
   cardType: string;
 };
 
-export default function PayForm({ handleChange, states, callback, cardType }: payFormType) {
+export default function PayForm({ callback, cardType }: payFormType) {
+  const dispatch = useDispatch();
+  const [states, setStates] = useState<initialPayType>(initialPay);
+
+  const handleChange = (e: SyntheticEvent) => {
+    const target = e.target as HTMLInputElement;
+    const { name, value } = target;
+    setStates({ ...states, [name]: value });
+  };
+
+  const handleCardNumber = (e: SyntheticEvent) => {
+    const target = e.target as HTMLInputElement;
+    const { value } = target;
+    if (value[0] === '4') {
+      states.company = 'Visa';
+    } else if (value[0] === '5') {
+      states.company = 'MasterCard';
+    } else {
+      states.company = 'Companía';
+    }
+
+    handleChange(e);
+  };
+
   const handleSubmit = () => {
+    dispatch(setCard(states));
     callback();
   };
+
+  useEffect(() => {
+    setStates({ ...states, type: cardType });
+  }, [cardType]);
 
   return (
     <div className="absolute top-0 bg-white z-50">
       <NavBack title="Añadir tarjeta" callback={callback} />
+
       <div className="bg-payCard m-5 h-44 rounded-lg text-white flex flex-col justify-between p-5">
         <div className="flex flex-col items-start">
-          <span className="text-2xl font-bold">VISA</span>
+          <span className="text-2xl font-bold min-h-[30px]">
+            {states.company === '' ? 'Companía' : states.company}
+          </span>
           <span>{cardType}</span>
         </div>
         <div className="flex flex-col items-end">
@@ -29,6 +60,7 @@ export default function PayForm({ handleChange, states, callback, cardType }: pa
           <span>{states.expiration !== '' ? states.expiration : 'mm/aa'}</span>
         </div>
       </div>
+
       <div className="m-5 flex flex-col gap-2">
         <div>
           <Label htmlFor="cardNumber" value="Numero de tarjeta" />
@@ -40,7 +72,7 @@ export default function PayForm({ handleChange, states, callback, cardType }: pa
             type="number"
             value={states.cardNumber}
             name={'cardNumber'}
-            onChange={handleChange}
+            onChange={handleCardNumber}
           />
         </div>
         <div className="flex flex-row gap-5">

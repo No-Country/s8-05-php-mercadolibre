@@ -1,29 +1,25 @@
-import ContinueBtn from '../UI/ContinueBtn';
 import { handlersType } from '@/types/handlers.types';
-import { initialPay } from '@/redux/buy';
-import { initialPayType } from '@/types/slice/buy.types';
-import { SyntheticEvent, useState } from 'react';
+import { getCards, setCard, setPay } from '@/redux/buy';
+import { useState } from 'react';
 import PayForm from './PayForm';
 import { ListItem } from './DeliveryPay';
 
 import { BsCreditCard2BackFill, BsCreditCard2FrontFill, BsCashCoin } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Pay({ handleAvailableStep, handleCurrentStep }: handlersType) {
-  const [states, setStates] = useState<initialPayType>(initialPay);
+  const dispatch = useDispatch();
+  const cards = useSelector(getCards);
   const [open, setOpen] = useState(false);
   const [cardType, setCardType] = useState('');
 
   const handleOpen = () => setOpen(!open);
 
-  const handleChange = (e: SyntheticEvent) => {
-    const target = e.target as HTMLInputElement;
-    const { name, value } = target;
-    setStates({ ...states, [name]: value });
-  };
-
-  const handleContinue = () => {
+  const handleContinue = (id?: number) => {
     handleAvailableStep(4);
     handleCurrentStep(4);
+    const card = id ? cards.find((card: any) => card.cardNumber === id) : { type: 'Efectivo' };
+    dispatch(setPay(card));
   };
 
   return (
@@ -32,6 +28,19 @@ export default function Pay({ handleAvailableStep, handleCurrentStep }: handlers
         <div>
           <h3 className="ml-10 my-2">Mis tarjetas</h3>
           <ul className="mx-auto w-[300px] border-black border box-content rounded-lg">
+            {cards.length > 0 ? (
+              cards.map((card: any) => (
+                <ListItem
+                  key={card.cardNumber}
+                  icon={card.company}
+                  title={`${card.type} **** ${card.cardNumber.slice(-4)}`}
+                  callback={() => handleContinue(card.cardNumber)}
+                  border={true}
+                />
+              ))
+            ) : (
+              <></>
+            )}
             <ListItem
               icon={<BsCreditCard2BackFill />}
               title="Añadir tarjeta de débito"
@@ -39,6 +48,7 @@ export default function Pay({ handleAvailableStep, handleCurrentStep }: handlers
                 handleOpen();
                 setCardType('Debito');
               }}
+              border={true}
             />
             <ListItem
               icon={<BsCreditCard2FrontFill />}
@@ -58,14 +68,7 @@ export default function Pay({ handleAvailableStep, handleCurrentStep }: handlers
           </ul>
         </div>
       </div>
-      {open && (
-        <PayForm
-          handleChange={handleChange}
-          states={states}
-          callback={handleOpen}
-          cardType={cardType}
-        />
-      )}
+      {open && <PayForm callback={handleOpen} cardType={cardType} />}
     </>
   );
 }

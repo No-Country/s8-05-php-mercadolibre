@@ -16,11 +16,13 @@ type listItemType = {
 export function ListItem({ icon, title, price, border, callback }: listItemType) {
   return (
     <li
-      className={`flex flex-row justify-between w-[300px] p-5 ${border && 'border-b border-black'}`}
+      className={`flex flex-row justify-between w-[300px] p-4 ${border && 'border-b border-black'}`}
       onClick={callback}
     >
       <div className="flex flex-row gap-2 items-center">
-        <div className="text-2xl">{icon}</div>
+        <div className="text-2xl h-[30px] max-h-[30px] w-[45px] max-w-[45px] overflow-hidden">
+          {icon}
+        </div>
         <span>{title}</span>
       </div>
       <div className="flex flex-row gap-2 items-center">
