@@ -856,30 +856,24 @@
                 // },
                 purchase_units: [{
                     amount: {
-                        value: 100,
+                        value: 400,
                     }
                 }],
             });
         },
-
-        // onApprove: function(data, actions) {
-        //         return actions.order.capture().then(function(orderData) {
-
-
-        //         });
-        //     },
-
         onApprove: function(data, actions) {
             return fetch('/api/paypal/process/' + data.orderID)
                 .then(res => res.json())
-                .then(function(orderData) {
-                    var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+                .then(function(response) {
 
-                    // Successful capture! For demo purposes:
-                    return alert('complete');
-                })
-                .catch(function(error) {
-                    console.log("There was a problem with the approval fetch: ", error);
+                    // Show a failure message
+                    if (!response.success) {
+                        const failureMessage = 'Sorry, your transaction could not be processed.';
+                        alert(failureMessage);
+                        return;
+                    }
+
+                    location.href = '/'
                 });
         },
         onError: function(err) {

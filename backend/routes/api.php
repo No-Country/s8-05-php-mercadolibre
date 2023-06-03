@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
@@ -76,4 +77,8 @@ Route::controller(CartController::class)->group(function () {
         Route::put('/update-cart', 'updateCartItem');
         Route::delete('/remove-cart/{id}', 'removeCartItem');
     });
+});
+
+Route::controller(OrderController::class)->group(function () {
+    Route::get('/paypal/process/{orderID}', 'process');
 });
