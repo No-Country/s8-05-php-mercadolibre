@@ -1,16 +1,27 @@
 import { initialPayType } from '@/types/slice/buy.types';
 import { Label, TextInput } from 'flowbite-react';
 import { SyntheticEvent } from 'react';
+import NavBack from '../UI/NavBack';
 
-type payFormType = { handleChange: (e: SyntheticEvent) => void; states: initialPayType };
+type payFormType = {
+  handleChange: (e: SyntheticEvent) => void;
+  states: initialPayType;
+  callback: () => void;
+  cardType: string;
+};
 
-export default function PayForm({ handleChange, states }: payFormType) {
+export default function PayForm({ handleChange, states, callback, cardType }: payFormType) {
+  const handleSubmit = () => {
+    callback();
+  };
+
   return (
-    <>
+    <div className="absolute top-0 bg-white z-50">
+      <NavBack title="Añadir tarjeta" callback={callback} />
       <div className="bg-payCard m-5 h-44 rounded-lg text-white flex flex-col justify-between p-5">
         <div className="flex flex-col items-start">
           <span className="text-2xl font-bold">VISA</span>
-          <span>Debito</span>
+          <span>{cardType}</span>
         </div>
         <div className="flex flex-col items-end">
           <p>{states.name !== '' ? states.name : 'Nombre y apellido'}</p>
@@ -73,6 +84,7 @@ export default function PayForm({ handleChange, states }: payFormType) {
             onChange={handleChange}
           />
         </div>
+        <span className="text-xs opacity-80">Tal cual aparece en su tarjeta</span>
         <div>
           <Label htmlFor="dni" value="dni" />
 
@@ -88,10 +100,13 @@ export default function PayForm({ handleChange, states }: payFormType) {
         </div>
       </div>
       <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
-        <button className="rounded-full py-2 mx-4 bg-darkBlue text-white font-semibold">
+        <button
+          className="rounded-full py-2 mx-4 bg-darkBlue text-white font-semibold"
+          onClick={handleSubmit}
+        >
           Siguiente
         </button>
       </div>
-    </>
+    </div>
   );
 }
