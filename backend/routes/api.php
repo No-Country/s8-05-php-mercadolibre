@@ -44,8 +44,9 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 // Endpoint PRODUCTS
-Route::apiResource('products', ProductController::class)->except('update');
+Route::apiResource('products', ProductController::class)->except('update', 'show');
 Route::post('/products/{product}', [ProductController::class, 'update']);
+Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
 
 // EndPoint USERS
 Route::middleware('auth:sanctum')->group(function () {
