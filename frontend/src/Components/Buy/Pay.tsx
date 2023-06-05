@@ -7,6 +7,8 @@ import { ListItem } from './DeliveryPay';
 import { BsCreditCard2BackFill, BsCreditCard2FrontFill, BsCashCoin } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+
 export default function Pay({ handleAvailableStep, handleCurrentStep }: handlersType) {
   const dispatch = useDispatch();
   const cards = useSelector(getCards);
@@ -69,6 +71,53 @@ export default function Pay({ handleAvailableStep, handleCurrentStep }: handlers
         </div>
       </div>
       {open && <PayForm callback={handleOpen} cardType={cardType} />}
+
+      <PayPalScriptProvider options={{ 'client-id': 'test' }}>
+        <PayPalButtons
+          style={{
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'rect',
+            label: 'paypal',
+          }}
+          createOrder={(data: any, actions: any) => {
+            return actions.order.create({
+              application_context: {
+                shipping_preference: 'NO_SHIPPING',
+              },
+              // payer: {
+              //     email_address: '',
+              //     name: {
+              //         given_name: '',
+              //         surname: ''
+              //     },
+              //     address: {
+              //         country_code: ""
+              //     }
+              // },
+              purchase_units: [
+                {
+                  amount: {
+                    value: 400,
+                  },
+                },
+              ],
+            });
+          }}
+          onApprove={(data: any, actions: any) => {
+            return fetch('/api/paypal/process/' + data.orderID)
+              .then((res) => res.json())
+              .then(function (response) {
+                if (!response.success) {
+                  const failureMessage = 'Sorry, your transaction could not be processed.';
+                  alert(failureMessage);
+                  return;
+                }
+                location.href = '/';
+              });
+          }}
+        />
+      </PayPalScriptProvider>
     </>
   );
 }
