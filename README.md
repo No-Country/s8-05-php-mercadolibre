@@ -165,12 +165,12 @@ Puedes mirar nuestras [open issues](https://github.com/No-Country/s8-05-php-merc
 * [![linkedin-shield-felipe]][linkedin-felipe-url] [![Portfolio]][portfolio-felipe] [![Github]][github-felipe]   <br>
 * [![linkedin-shield-yennifer]][linkedin-yennifer-url] [![Github]][github-yennifer]  <br>
 
-### Equipo de Design
+#### Equipo de Design UX & UI
 * [![linkedin-shield-ailin]][linkedin-ailin-url] [![Behance]][behance-ailin] [![Github]][github-ailin]  <br>
 * [![linkedin-shield-daniela]][linkedin-daniela-url] [![Behance]][behance-daniela] [![Github]][github-daniela]  <br>
 * [![linkedin-shield-elizabeth]][linkedin-elizabeth-url] [![Behance]][behance-elizabeth] [![Github]][github-elizabeth]  <br>
 
-### Product Manager
+#### Product Manager
 * [![linkedin-shield-natalia]][linkedin-natalia-url] [![Github]][github-natalia]  <br>
 
 <!-- ACKNOWLEDGMENTS -->
