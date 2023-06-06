@@ -10,6 +10,7 @@ type ProductType = {
     images: string[];
     price: number;
     id: string;
+    slug: string;
   };
 };
 
@@ -22,7 +23,7 @@ export default function Product({ data }: ProductType) {
         </div>
         <span className="text-sm font-semibold block h-8">{data.brand}</span>
       </div>
-      <Link href={`/product/${data.id}`}>
+      <Link href={`/product/${data.slug}`}>
         <Image
           src={data.images[0]}
           width={200}
