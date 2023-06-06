@@ -84,10 +84,11 @@ Para comenzar a utilizar éste proyecto en tu máquina local debes seguir las si
 ### Requisitos
 
 1) NPM -> [Download](https://nodejs.org/es)
-2) Composer -> [Download](https://getcomposer.org/download/)
-3) MySQL -> [Download](https://mysql.com/downloads/)
-4) GIT -> [Download](https://git-scm.com/downloads)
-5) Docker (opcional) -> [Download](https://www.docker.com/)
+2) PHP -> [Download](https://www.php.net/downloads.php)
+3) Composer -> [Download](https://getcomposer.org/download/)
+4) MySQL -> [Download](https://mysql.com/downloads/)
+5) GIT -> [Download](https://git-scm.com/downloads)
+6) Docker (opcional) -> [Download](https://www.docker.com/)
 
 ### Instalacion
 
