@@ -11,19 +11,28 @@ export default function CartProduct({ data }: any) {
   const handleCountRest = () => {
     if (count > 1) {
       setCount(count - 1);
-      apiClientPriv.put(`/update-cart`, { product_id: data.id, quantity: count });
+      apiClientPriv
+        .put(`/update-cart`, { product_id: data.id, quantity: count })
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
     }
   };
 
   const handleCountSum = () => {
     if (count < 10) {
       setCount(count + 1);
-      apiClientPriv.put(`/update-cart`, { product_id: data.id, quantity: count });
+      apiClientPriv
+        .put(`/update-cart`, { product_id: data.id, quantity: count })
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
     }
   };
 
   const handleDelete = () => {
-    apiClientPriv.delete(`/remove-cart/${data.id}`);
+    apiClientPriv
+      .delete(`/remove-cart/${data.id}`)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   };
 
   return (
