@@ -1,45 +1,54 @@
 'use client';
 
-import { apiClient } from '@/utils/apiClient';
+import { apiClientPriv } from '@/utils/apiClient';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
-export default function CartProduct() {
-  const [count, setCount] = useState(1);
+export default function CartProduct({ data }: any) {
+  const [count, setCount] = useState(data.quantity);
 
-  const handleCountRest = (id: string) => {
+  const handleCountRest = () => {
     if (count > 1) {
       setCount(count - 1);
-      apiClient.put(`/update-cart`, { product_id: id, quantity: count });
+      apiClientPriv.put(`/update-cart`, { product_id: data.id, quantity: count });
     }
   };
 
-  const handleCountSum = (id: string) => {
+  const handleCountSum = () => {
     if (count < 10) {
       setCount(count + 1);
-      apiClient.put(`/update-cart`, { product_id: id, quantity: count });
+      apiClientPriv.put(`/update-cart`, { product_id: data.id, quantity: count });
     }
   };
 
-  const handleDelete = (id: string) => {
-    apiClient.delete(`/remove-cart/${id}`);
+  const handleDelete = () => {
+    apiClientPriv.delete(`/remove-cart/${data.id}`);
   };
 
   return (
     <div className="flex flex-col mx-5 shadow-lg">
       <div className="flex flex-row border-b border-black gap-2">
-        <Image src={''} alt="" width={50} height={50} className="bg-black w-[200px] h-[100px]" />
+        <Link href={`/product/${data.slug}`}>
+          <Image
+            src={data.images[0]}
+            alt=""
+            width={50}
+            height={50}
+            className="bg-black w-[200px] h-[100px]"
+          />
+        </Link>
         <div className="flex flex-col w-full gap-2 justify-between pr-2">
-          <p className="text-lg text-darkBlue">Nombre del producto</p>
+          <p className="text-lg text-darkBlue">{data.name}</p>
           <div className="flex flex-row gap-2 w-24 justify-between px-2 border border-black rounded-full">
-            <button onClick={() => handleCountRest('1')}> - </button>
+            <button onClick={handleCountRest}> - </button>
             <span>{count} u.</span>
-            <button onClick={() => handleCountSum('1')}> + </button>
+            <button onClick={handleCountSum}> + </button>
           </div>
-          <span className="self-end text-sm font-semibold">AR $ 1000</span>
+          <span className="self-end text-sm font-semibold">AR $ {data.price}</span>
         </div>
       </div>
-      <span className="text-darkBlue text-lg ml-5 py-1" onClick={() => handleDelete('1')}>
+      <span className="text-darkBlue text-lg ml-5 py-1" onClick={handleDelete}>
         Eliminar
       </span>
     </div>

@@ -3,18 +3,19 @@
 import Buttons from '@/Components/Cart/Buttons';
 import CartProduct from '@/Components/Product/CartProduct';
 import NavBack from '@/Components/UI/NavBack';
-import { apiClient } from '@/utils/apiClient';
+import { apiClientPriv } from '@/utils/apiClient';
 import Link from 'next/link';
-
-// async function getData() {
-//   const { data } = await apiClient.get('/view-cart');
-//   return data;
-// }
+import { useEffect, useState } from 'react';
 
 export default function Page() {
-  // const { data } = await getData();
-  // console.log(data);
-  const data = [1, 1];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    apiClientPriv
+      .get('/view-cart')
+      .then(({ data }: any) => setData(data.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
@@ -22,8 +23,16 @@ export default function Page() {
       {data.length ? (
         <>
           <div className="flex flex-col gap-5 my-5 min-h-[50vh]">
-            {data.map((item, index) => (
-              <CartProduct key={index} />
+            {data.map((item: any, index: number) => (
+              <CartProduct
+                key={item.id}
+                data={{
+                  ...item.attributes,
+                  ...item.relationships.products.attributes,
+                  ...item.relationships.products.relationships,
+                  id: item.id,
+                }}
+              />
             ))}
             <button>Vaciar carrito</button>
           </div>

@@ -1,8 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 
 import { IoHeartOutline } from 'react-icons/io5';
 import { AiFillThunderbolt } from 'react-icons/ai';
 import Link from 'next/link';
+import { apiClientPriv } from '@/utils/apiClient';
 
 type ProductType = {
   data: {
@@ -15,6 +18,16 @@ type ProductType = {
 };
 
 export default function Product({ data }: ProductType) {
+  const handleCart = () => {
+    apiClientPriv
+      .post('add-cart', {
+        product_id: data.id,
+        quantity: 1,
+      })
+      .then((data) => alert(data.data.message))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="flex flex-col min-w-[250px] w-[250px] border border-black rounded-lg gap-2 mx-5">
       <div className="p-2">
@@ -47,7 +60,10 @@ export default function Product({ data }: ProductType) {
           <button className="rounded-full py-2 bg-darkBlue text-white font-semibold">
             Comprar ahora
           </button>
-          <button className="rounded-full py-2 text-darkBlue border-darkBlue border-2 font-semibold">
+          <button
+            onClick={handleCart}
+            className="rounded-full py-2 text-darkBlue border-darkBlue border-2 font-semibold"
+          >
             Añadir al carrito
           </button>
         </div>
