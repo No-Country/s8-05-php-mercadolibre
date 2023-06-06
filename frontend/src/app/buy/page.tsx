@@ -13,6 +13,7 @@ import { stepDataType } from '@/types/stepData';
 import Pay from '@/Components/Buy/Pay';
 import DeliveryPay from '@/Components/Buy/DeliveryPay';
 import NewDomicile from '@/Components/Buy/NewDomicile/NewDomicile';
+import Confirmation from '@/Components/Buy/Confirmation';
 
 export default function Page() {
   const [step, setStep] = useState(1);
@@ -74,7 +75,9 @@ export default function Page() {
         {currentStep === 3 && (
           <Pay handleAvailableStep={handleAvailableStep} handleCurrentStep={handleCurrentStep} />
         )}
-        {currentStep === 4 && <></>}
+        {currentStep === 4 && (
+          <Confirmation handleAvailableStep={handleAvailableStep} handleCurrentStep={handleCurrentStep} />
+        )}
       </main>
     </>
   );
