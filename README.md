@@ -99,47 +99,47 @@ _Todos los comandos que se veran a continuación deberán ser ejecutados en el r
     git clone https://github.com/No-Country/s8-05-php-mercadolibre.git
    ```
 2. Instalar las dependencias de NPM
-   ```sh
-    $ cd frontend/
-   ```
-   ```sh
-    $ npm install
-   ```
+    ```sh
+      $ cd frontend/
+    ```
+    ```sh
+      $ npm install
+    ```
 3. Inicializa tu servidor local del frontend
-   ```sh
-    $ npm run dev
-   ```
+    ```sh
+      $ npm run dev
+    ```
 
 _Bien, hasta el momento hemos logrado levantar nuestra aplicación frontend, pero... ¿El servidor de backend?_
 
 1. Instalar las dependencias de Composer
-   ```bash
-    $ cd backend/
-   ```
-   ```bash
-    $ composer install
-   ```
+    ```bash
+      $ cd backend/
+    ```
+    ```bash
+      $ composer install
+    ```
 2. Configuramos las variables de entorno y generamos nuestra API_KEY
-  ```bash
-    $ cp .env.example .env && php artisan key:generate
-   ```
+    ```bash
+      $ cp .env.example .env && php artisan key:generate
+    ```
 3. Comprueba que las credenciales de MySQL coincidan con las siguientes variables de entorno **(.env)**
-  ```yaml
+    ```yml
       DB_CONNECTION=mysql
       DB_HOST=your_host_database
       DB_PORT=3306
       DB_DATABASE=mercadocountry
       DB_USERNAME=your_user
       DB_PASSWORD=your_password
-  ```
+    ```
 4. Corremos nuestra migraciones de base de datos y generamos datos falsos
-  ```bash
-    $ php artisan migrate --seed
-   ```
+    ```bash
+      $ php artisan migrate --seed
+    ```
 5. Inicializamos nuestro servidor de Backend
-  ```bash
-    $ php artisan serve
-   ```
+    ```bash
+      $ php artisan serve
+    ```
 
 <!-- USAGE EXAMPLES -->
 ## Uso
@@ -163,7 +163,7 @@ Puedes mirar nuestras [open issues](https://github.com/No-Country/s8-05-php-merc
 
 #### Equipo de Frontend
 * [![linkedin-shield-felipe]][linkedin-felipe-url] [![Portfolio]][portfolio-felipe] [![Github]][github-felipe]   <br>
-* [![linkedin-shield-yennifer]][linkedin-yennifer-url] [![Portfolio]][portfolio-yennifer] [![Github]][github-yennifer]  <br>
+* [![linkedin-shield-yennifer]][linkedin-yennifer-url] [![Github]][github-yennifer]  <br>
 
 ### Equipo de Design
 * [![linkedin-shield-ailin]][linkedin-ailin-url] [![Behance]][behance-ailin] [![Github]][github-ailin]  <br>
