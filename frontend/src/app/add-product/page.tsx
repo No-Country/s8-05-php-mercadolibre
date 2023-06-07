@@ -60,12 +60,7 @@ export default function Page() {
             handleCurrentStep={handleCurrentStep}
           />
         )}
-        {currentStep === 4 && (
-          <PostProduct
-            handleAvailableStep={handleAvailableStep}
-            handleCurrentStep={handleCurrentStep}
-          />
-        )}
+        {currentStep === 4 && <PostProduct />}
       </main>
     </>
   );

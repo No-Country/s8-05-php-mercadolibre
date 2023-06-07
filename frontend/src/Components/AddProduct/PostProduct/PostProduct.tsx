@@ -1,32 +1,33 @@
-import { handlersType } from '@/types/handlers.types';
 import DetailsProduct from './DetailsProduct';
 import { useSelector } from 'react-redux';
 import { getDelivery, getDescription, getPhotos } from '@/redux/addProduct';
 import { useRouter } from 'next/navigation';
 import { apiClientPriv } from '@/utils/apiClient';
 
-export default function PostProduct({ handleAvailableStep, handleCurrentStep }: handlersType) {
+export default function PostProduct() {
   const description = useSelector(getDescription);
   const photos = useSelector(getPhotos);
   const delivery = useSelector(getDelivery);
 
   const { push } = useRouter();
 
+  const data = {
+    description: description.description,
+    name: description.title,
+    price: description.price,
+    stock: description.stock,
+    measures: {
+      length: description.length,
+      width: description.width,
+      height: description.height,
+    },
+    status: description.status,
+    delivery: delivery.delivery,
+    local: delivery.local,
+    photos,
+  };
+
   const handleSubmit = () => {
-    const data = {
-      description: description.description,
-      price: description.price,
-      stock: description.stock,
-      measures: {
-        length: description.length,
-        width: description.width,
-        height: description.height,
-      },
-      stauts: description.status,
-      delivery: delivery.delivery,
-      local: delivery.local,
-      photos,
-    };
     apiClientPriv
       .post('/products', data)
       .then(() => push('/'))
