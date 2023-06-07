@@ -1,7 +1,7 @@
 import { addProductType, descriptionType } from '@/types/slice/addProduct.types';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-export const initialDescription = {
+export const initialDescription: descriptionType = {
   title: '',
   category: '',
   state: '',
