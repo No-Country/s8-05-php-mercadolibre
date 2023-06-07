@@ -16,7 +16,14 @@ class BrandFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->unique()->company();
+        $name = fake()->unique()->randomElement([
+            'Abarth', 'Alfa Romeo', 'Aston Martin', 
+            'Audi', 'Bentley', 'BMW', 'Cadillac', 'Caterham', 
+            'Chevrolet', 'Citroen', 'Dacia', 'Ferrari', 
+            'Fiat', 'Ford', 'Honda', 'Infiniti', 'Isuzu', 'Iveco', 'Jaguar', 
+            'Jeep', 'Kia', 'KTM', 'Lada', 'Lamborghini', 'Lancia', 
+            'Land Rover', 'Lexus', 'Lotus'
+        ]);
         return [
             'name' => $name,
             'slug' => Str::slug($name)

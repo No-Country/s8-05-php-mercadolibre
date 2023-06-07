@@ -1,13 +1,19 @@
 'use client';
 
-import Steps from '@/Components/AddProduct/Steps';
-import Link from 'next/link';
 import { useState } from 'react';
-import { BsArrowLeft } from 'react-icons/bs';
+
+import Steps from '@/Components/AddProduct/Steps';
 import Description from '@/Components/AddProduct/Description/Description';
 import Photos from '@/Components/AddProduct/Photos/Photos';
 import Delivery from '@/Components/AddProduct/Delivery/Delivery';
 import PostProduct from '@/Components/AddProduct/PostProduct/PostProduct';
+import NavBack from '@/Components/UI/NavBack';
+
+import { FaEdit } from 'react-icons/fa';
+import { HiCamera } from 'react-icons/hi';
+import { IoCheckmarkCircle } from 'react-icons/io5';
+import { BsBoxFill } from 'react-icons/bs';
+import { stepDataType } from '@/types/stepData';
 
 export default function Page() {
   const [step, setStep] = useState(1);
@@ -18,14 +24,24 @@ export default function Page() {
     if (n >= step) setStep(n);
   };
 
+  const stepData: stepDataType[] = [
+    { title: 'Descripción', icon: <FaEdit key={'FaEdit'} /> },
+    { title: 'Fotos', icon: <HiCamera key={'HiCamera'} /> },
+    { title: 'Envio', icon: <IoCheckmarkCircle key={'IoCheckmarkCircle'} /> },
+    { title: 'Publicar', icon: <BsBoxFill key={'BsBoxFill'} /> },
+  ];
+
   return (
     <>
       <header>
-        <Link href={'/'} className="flex gap-3 items-center m-5 w-max font-semibold text-xl">
-          <BsArrowLeft /> <h1>Nuevo Producto</h1>
-        </Link>
+        <NavBack title="Nuevo Producto" />
         <nav>
-          <Steps step={step} currentStep={currentStep} handleClick={handleCurrentStep} />
+          <Steps
+            step={step}
+            currentStep={currentStep}
+            handleClick={handleCurrentStep}
+            stepData={stepData}
+          />
         </nav>
       </header>
       <main>
@@ -44,12 +60,7 @@ export default function Page() {
             handleCurrentStep={handleCurrentStep}
           />
         )}
-        {currentStep === 4 && (
-          <PostProduct
-            handleAvailableStep={handleAvailableStep}
-            handleCurrentStep={handleCurrentStep}
-          />
-        )}
+        {currentStep === 4 && <PostProduct />}
       </main>
     </>
   );

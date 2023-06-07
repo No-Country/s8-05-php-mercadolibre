@@ -1,12 +1,10 @@
-import { FaEdit } from 'react-icons/fa';
-import { HiCamera } from 'react-icons/hi';
-import { IoCheckmarkCircle } from 'react-icons/io5';
-import { BsBoxFill } from 'react-icons/bs';
+import { stepDataType } from '@/types/stepData';
 
 type stepsType = {
   step: number;
   currentStep: number;
   handleClick: (step: number) => void;
+  stepData: stepDataType[];
 };
 
 type listItemType = {
@@ -16,11 +14,10 @@ type listItemType = {
   icon: any;
   text: string;
   available: boolean;
-  alternative?: boolean;
 };
 
 function ListItem(props: listItemType) {
-  const { currentStep, handleClick, n, icon, text, available, alternative } = props;
+  const { currentStep, handleClick, n, icon, text, available } = props;
 
   const handleClickItem = () => {
     available && handleClick(n);
@@ -30,9 +27,7 @@ function ListItem(props: listItemType) {
     <li className="flex flex-col items-center font-semibold" onClick={handleClickItem}>
       <div className={`${currentStep === n ? 'bg-darkBlue' : 'bg-skyBlue'} p-3 rounded-full mb-2`}>
         <div
-          className={`${currentStep === n ? 'text-white' : 'text-darkBlue'} ${
-            alternative && 'relative left-[1.5px]'
-          } text-xl box-content`}
+          className={`${currentStep === n ? 'text-white' : 'text-darkBlue'} text-xl box-content`}
         >
           {icon}
         </div>
@@ -42,25 +37,24 @@ function ListItem(props: listItemType) {
   );
 }
 
-export default function Steps({ step, currentStep, handleClick }: stepsType) {
+export default function Steps({ step, currentStep, handleClick, stepData }: stepsType) {
   return (
     <ul className="flex w-full justify-between px-5 text-xs mt-10 relative">
       <ListItem
         currentStep={currentStep}
         handleClick={handleClick}
         n={1}
-        icon={<FaEdit />}
-        text={'Descripcion'}
+        icon={stepData[0].icon}
+        text={stepData[0].title}
         available={step >= 1}
-        alternative={true}
       />
 
       <ListItem
         currentStep={currentStep}
         handleClick={handleClick}
         n={2}
-        icon={<HiCamera />}
-        text={'Fotos'}
+        icon={stepData[1].icon}
+        text={stepData[1].title}
         available={step >= 2}
       />
 
@@ -68,8 +62,8 @@ export default function Steps({ step, currentStep, handleClick }: stepsType) {
         currentStep={currentStep}
         handleClick={handleClick}
         n={3}
-        icon={<BsBoxFill />}
-        text={'Envio'}
+        icon={stepData[2].icon}
+        text={stepData[2].title}
         available={step >= 3}
       />
 
@@ -77,8 +71,8 @@ export default function Steps({ step, currentStep, handleClick }: stepsType) {
         currentStep={currentStep}
         handleClick={handleClick}
         n={4}
-        icon={<IoCheckmarkCircle />}
-        text={'Publicar'}
+        icon={stepData[3].icon}
+        text={stepData[3].title}
         available={step >= 4}
       />
 

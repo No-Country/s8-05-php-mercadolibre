@@ -23,8 +23,8 @@ export default function Page() {
     } else {
       apiClient
         .post('/login', { email, password })
-        .then((data) => {
-          console.log(data);
+        .then(({ data }: any) => {
+          localStorage.setItem('token', data.access_token);
           router.push('/');
         })
         .catch(() => setError('Credenciales incorrectas. Por favor, intenta nuevamente.'));

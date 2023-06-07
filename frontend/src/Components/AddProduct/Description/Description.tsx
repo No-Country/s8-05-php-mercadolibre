@@ -2,9 +2,9 @@
 
 import ContinueBtn from '@/Components/UI/ContinueBtn';
 import FormNewProduct from './FormNewProduct';
-import { handlersType } from '@/types/addProduct/handlers.types';
+import { handlersType } from '@/types/handlers.types';
 import { useEffect, useState } from 'react';
-import { descriptionType } from '@/types/addProduct/description.types';
+import { descriptionType } from '@/types/slice/addProduct.types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDescription, initialDescription, setDescription } from '@/redux/addProduct';
 
@@ -41,7 +41,7 @@ export default function Description({ handleAvailableStep, handleCurrentStep }: 
       <div className="mb-4">
         <FormNewProduct states={states} handleChange={handleChange} />
       </div>
-      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm">
+      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
         <ContinueBtn
           handleAvailableStep={handleAvailableStep}
           handleCurrentStep={handleCurrentStep}

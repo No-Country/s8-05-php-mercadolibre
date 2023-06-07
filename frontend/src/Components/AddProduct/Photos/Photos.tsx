@@ -2,7 +2,7 @@
 
 import ContinueBtn from '@/Components/UI/ContinueBtn';
 import Gallery from './Gallery';
-import { handlersType } from '@/types/addProduct/handlers.types';
+import { handlersType } from '@/types/handlers.types';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPhotos, setPhotos } from '@/redux/addProduct';
@@ -28,7 +28,7 @@ export default function Photos({ handleAvailableStep, handleCurrentStep }: handl
         <div className="mb-4">
           <Gallery images={images} handleImage={handleImage} />
         </div>
-        <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm">
+        <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
           <ContinueBtn
             handleAvailableStep={handleAvailableStep}
             handleCurrentStep={handleCurrentStep}

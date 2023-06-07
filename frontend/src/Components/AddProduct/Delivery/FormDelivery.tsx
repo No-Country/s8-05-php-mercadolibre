@@ -1,17 +1,19 @@
 import { Label, Checkbox } from 'flowbite-react';
-import { ChangeEvent } from 'react';
-import { FiCheck, FiBox } from 'react-icons/fi';
+import { FiBox } from 'react-icons/fi';
 
-type FormNewProductType = {
-  isEditing: boolean;
-  inputValue: string;
-  handleSave: () => void;
-  handleEdit: () => void;
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
+export default function FormNewProduct(props: any) {
+  const {
+    isEditing,
+    inputValue,
+    handleSave,
+    handleEdit,
+    handleInputChange,
+    localCheck,
+    deliveryCheck,
+    setLocalCheck,
+    setDeliveryCheck,
+  } = props;
 
-export default function FormNewProduct(props: FormNewProductType) {
-  const { isEditing, inputValue, handleSave, handleEdit, handleInputChange } = props;
   return (
     <div>
       <div className="flex gap-4 items-center">
@@ -38,7 +40,11 @@ export default function FormNewProduct(props: FormNewProductType) {
           <p className="text-neutral-600 text-lg">Selecciona los métodos de envío</p>
           <div className="flex items-center justify-between bg-neutral-100 p-4">
             <div className="flex items-center gap-2">
-              <Checkbox id="store" />
+              <Checkbox
+                id="store"
+                checked={deliveryCheck}
+                onClick={() => setDeliveryCheck(!deliveryCheck)}
+              />
               <Label htmlFor="store">Retiro en tienda</Label>
             </div>
             <div>
@@ -47,8 +53,12 @@ export default function FormNewProduct(props: FormNewProductType) {
           </div>
           <div className="flex items-center justify-between bg-neutral-100 p-4">
             <div className="flex items-center gap-2">
-              <Checkbox id="store" />
-              <Label htmlFor="store">Retiro en tienda</Label>
+              <Checkbox
+                id="store"
+                checked={localCheck}
+                onClick={() => setLocalCheck(!localCheck)}
+              />
+              <Label htmlFor="store">Entrega</Label>
             </div>
             <div>
               <p className="text-xs font-semibold">

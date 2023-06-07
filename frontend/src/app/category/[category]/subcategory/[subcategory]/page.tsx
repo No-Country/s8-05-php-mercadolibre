@@ -17,7 +17,7 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const { data }: any = await apiClient.get(`/subcategories`);
   return data.data.map((item: any) => ({
-    category: 'muebles',
+    category: item.relationships.category.slug,
     subcategory: item.attributes.slug,
   }));
 }

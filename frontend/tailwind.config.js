@@ -18,7 +18,8 @@ module.exports = {
         'green': '#00751B'
       },
       backgroundImage: {
-        card: 'linear-gradient(89.59deg, #319DFF 2.75%, #686EFF 98.9%)'
+        card: 'linear-gradient(89.59deg, #319DFF 2.75%, #686EFF 98.9%)',
+        payCard: 'linear-gradient(115.4deg, #863AC1 8.18%, rgba(59, 80, 193, 0.9) 99.08%)'
       }
     },
   },
