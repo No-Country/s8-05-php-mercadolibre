@@ -9,13 +9,18 @@ import { useEffect, useState } from 'react';
 
 export default function Page() {
   const [data, setData] = useState([]);
+  const [reload, setReload] = useState(false);
+
+  const handleReload = () => {
+    setReload(!reload);
+  };
 
   useEffect(() => {
     apiClientPriv
       .get('/view-cart')
       .then(({ data }: any) => setData(data.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [reload]);
 
   return (
     <>
@@ -30,8 +35,9 @@ export default function Page() {
                   ...item.attributes,
                   ...item.relationships.products.attributes,
                   ...item.relationships.products.relationships,
-                  id: item.id,
+                  id: item.relationships.products.id,
                 }}
+                handleReload={handleReload}
               />
             ))}
             <button>Vaciar carrito</button>

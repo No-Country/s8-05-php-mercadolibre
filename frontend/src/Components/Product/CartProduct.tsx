@@ -5,14 +5,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function CartProduct({ data }: any) {
+export default function CartProduct({ data, handleReload }: any) {
   const [count, setCount] = useState(data.quantity);
 
   const handleCountRest = () => {
     if (count > 1) {
       setCount(count - 1);
       apiClientPriv
-        .put(`/update-cart`, { product_id: data.id, quantity: count })
+        .put(`/update-cart`, { product_id: data.id, quantity: count - 1 })
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
     }
@@ -22,7 +22,7 @@ export default function CartProduct({ data }: any) {
     if (count < 10) {
       setCount(count + 1);
       apiClientPriv
-        .put(`/update-cart`, { product_id: data.id, quantity: count })
+        .put(`/update-cart`, { product_id: data.id, quantity: count + 1 })
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
     }
@@ -31,7 +31,7 @@ export default function CartProduct({ data }: any) {
   const handleDelete = () => {
     apiClientPriv
       .delete(`/remove-cart/${data.id}`)
-      .then((data) => console.log(data))
+      .then((data) => handleReload())
       .catch((err) => console.log(err));
   };
 
@@ -54,7 +54,7 @@ export default function CartProduct({ data }: any) {
             <span>{count} u.</span>
             <button onClick={handleCountSum}> + </button>
           </div>
-          <span className="self-end text-sm font-semibold">AR $ {data.price}</span>
+          <span className="self-end text-sm font-semibold">AR $ {data.total_price_product}</span>
         </div>
       </div>
       <span className="text-darkBlue text-lg ml-5 py-1" onClick={handleDelete}>
