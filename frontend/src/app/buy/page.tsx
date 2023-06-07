@@ -77,8 +77,8 @@ export default function Page() {
         )}
         {currentStep === 4 && (
           <Confirmation
-            handleAvailableStep={handleAvailableStep}
             handleCurrentStep={handleCurrentStep}
+            handleAvailableStep={handleAvailableStep}
           />
         )}
       </main>

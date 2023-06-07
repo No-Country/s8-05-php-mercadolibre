@@ -8,6 +8,7 @@ import { BsCreditCard2BackFill, BsCreditCard2FrontFill, BsCashCoin } from 'react
 import { useDispatch, useSelector } from 'react-redux';
 
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { selectCompany } from '@/utils/selectCompany';
 
 export default function Pay({ handleAvailableStep, handleCurrentStep }: handlersType) {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function Pay({ handleAvailableStep, handleCurrentStep }: handlers
               cards.map((card: any) => (
                 <ListItem
                   key={card.cardNumber}
-                  icon={card.company}
+                  icon={selectCompany(card.company)}
                   title={`${card.type} **** ${card.cardNumber.slice(-4)}`}
                   callback={() => handleContinue(card.cardNumber)}
                   border={true}

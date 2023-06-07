@@ -2,7 +2,6 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GrDropbox } from 'react-icons/gr';
 import { FaMotorcycle } from 'react-icons/fa';
 import { MdDirectionsRun } from 'react-icons/md';
-import ContinueBtn from '../UI/ContinueBtn';
 import { handlersType } from '@/types/handlers.types';
 
 type listItemType = {
@@ -20,7 +19,7 @@ export function ListItem({ icon, title, price, border, callback }: listItemType)
       onClick={callback}
     >
       <div className="flex flex-row gap-2 items-center">
-        <div className="text-2xl h-[30px] max-h-[30px] w-[45px] max-w-[45px] overflow-hidden">
+        <div className="text-2xl h-[30px] w-[45px] flex items-center justify-center pr-2">
           {icon}
         </div>
         <span>{title}</span>
