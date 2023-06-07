@@ -5,15 +5,17 @@ import Image from 'next/image';
 type GalleryType = {
   images: string[];
   handleImage: (callback: (prevImages: string[]) => string[]) => void;
+  handleFiles: (images: File[]) => void;
 };
 
-export default function Gallery({ images, handleImage }: GalleryType) {
+export default function Gallery({ images, handleImage, handleFiles }: GalleryType) {
   const handleFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const fileList = event.target.files;
     if (fileList) {
       const fileArray = Array.from(fileList);
       const imageUrls = fileArray.map((file) => URL.createObjectURL(file));
       handleImage((prevImages) => [...prevImages, ...imageUrls]);
+      handleFiles(fileArray);
     }
   };
 

@@ -11,25 +11,27 @@ export default function PostProduct() {
 
   const { push } = useRouter();
 
-  const data = {
-    description: description.description,
-    name: description.title,
-    price: description.price,
-    stock: description.stock,
-    measures: {
-      length: description.length,
-      width: description.width,
-      height: description.height,
-    },
-    status: description.state,
-    delivery: delivery.delivery,
-    local: delivery.local,
-    image: photos,
+  const form: any = new FormData();
+
+  const measures = {
+    length: description.length,
+    width: description.width,
+    height: description.height,
   };
+
+  form.append('name', description.title);
+  form.append('description', description.description);
+  form.append('price', Number(description.price));
+  form.append('stock', Number(description.stock));
+  form.append('measures', JSON.stringify(measures));
+  form.append('status', description.state);
+  form.append('delivery', delivery.delivery);
+  form.append('local', delivery.local);
+  form.append('image', photos);
 
   const handleSubmit = () => {
     apiClientPriv
-      .post('/products', data)
+      .post('/products', form)
       .then(() => push('/'))
       .catch((err) => console.log(err));
   };

@@ -50,7 +50,6 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $productSlug = Str::lower(Str::slug($request->name));
-
         try {
             $product = Product::create([
                 'name' => $request->name,
