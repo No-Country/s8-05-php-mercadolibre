@@ -1,11 +1,10 @@
-import { getDelivery } from '@/redux/addProduct';
-import { getLocation } from '@/redux/buy';
+import { getDeliveryBuy, getLocation } from '@/redux/buy';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { useSelector } from 'react-redux';
 
 export default function DeliveryInfo({ callback }: { callback: () => void }) {
   const data = useSelector(getLocation);
-  const delivery = useSelector(getDelivery);
+  const delivery = useSelector(getDeliveryBuy);
 
   return (
     <>

@@ -52,7 +52,7 @@ const { actions, reducer } = createSlice({
 export const { setLocation, setDelivery, setPay, setCard } = actions;
 
 export const getLocation = (state: any) => state.buy.location;
-export const getDelivery = (state: any) => state.buy.delivery;
+export const getDeliveryBuy = (state: any) => state.buy.delivery;
 export const getPay = (state: any) => state.buy.pay;
 export const getCards = (state: any) => state.buy.cards;
 
