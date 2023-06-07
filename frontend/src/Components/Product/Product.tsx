@@ -58,7 +58,7 @@ export default function Product({ data }: ProductType) {
         </div>
         <div className="flex flex-col gap-2 my-2 w-full">
           <Link
-            href={'/buy'}
+            href={`/buy/${data.slug}`}
             className="text-center rounded-full py-2 bg-darkBlue text-white font-semibold"
           >
             Comprar ahora

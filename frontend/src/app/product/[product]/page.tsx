@@ -1,5 +1,5 @@
 import Layout from '@/Components/Layout';
-import { apiClient, apiClientPriv } from '@/utils/apiClient';
+import { apiClient } from '@/utils/apiClient';
 import Image from 'next/image';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 

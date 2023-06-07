@@ -15,7 +15,7 @@ import DeliveryPay from '@/Components/Buy/DeliveryPay';
 import NewDomicile from '@/Components/Buy/NewDomicile/NewDomicile';
 import Confirmation from '@/Components/Buy/Confirmation';
 
-export default function Page() {
+export default function View({ product }: any) {
   const [step, setStep] = useState(1);
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -79,6 +79,7 @@ export default function Page() {
           <Confirmation
             handleCurrentStep={handleCurrentStep}
             handleAvailableStep={handleAvailableStep}
+            product={product}
           />
         )}
       </main>

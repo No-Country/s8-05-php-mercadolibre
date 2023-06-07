@@ -25,7 +25,7 @@ export const initialPay: initialPayType = {
 
 const initialState: initialStateType = {
   location: initialLocation,
-  delivery: '',
+  delivery: 0,
   pay: initialPay,
   cards: [],
 };
@@ -37,7 +37,7 @@ const { actions, reducer } = createSlice({
     setLocation: (state: any, { payload }: PayloadAction<any>) => {
       state.location = payload;
     },
-    setDelivery: (state: any, { payload }: PayloadAction<string>) => {
+    setDelivery: (state: any, { payload }: PayloadAction<number>) => {
       state.delivery = payload;
     },
     setPay: (state: any, { payload }: PayloadAction<any>) => {
