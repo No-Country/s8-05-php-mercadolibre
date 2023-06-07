@@ -54,11 +54,11 @@ class OrderController extends Controller
         return response()->json(['success' => false]);
     }
 
-    
+
 
     public function process($orderId): JsonResponse
     {
-        $user = User::find(5); 
+        $user = auth()->user();
         $accessToken = $this->getAccessToken();
         $requestUrl = "/v2/checkout/orders/$orderId/capture";
 
@@ -144,5 +144,13 @@ class OrderController extends Controller
 
         // Dar una respuesta de error si el estado no es COMPLETED
         $this->responseFalse();
+    }
+
+    public function removeCartProduct()
+    {
+        $user = auth()->user();
+
+        // Eliminar los productos del carrito
+        $user->carts()->delete();
     }
 }
