@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 export default function Page() {
   const [data, setData] = useState([]);
   const [reload, setReload] = useState(false);
+  const [total, setTotal] = useState(0);
 
   const handleReload = () => {
     setReload(!reload);
@@ -18,14 +19,17 @@ export default function Page() {
   useEffect(() => {
     apiClientPriv
       .get('/view-cart')
-      .then(({ data }: any) => setData(data.data))
+      .then(({ data }: any) => {
+        setData(data.cart_products.data);
+        setTotal(data.total_cart_price);
+      })
       .catch((err) => console.log(err));
   }, [reload]);
 
   return (
     <>
       <NavBack title={'Carrito de compras'} />
-      {data.length ? (
+      {data?.length ? (
         <>
           <div className="flex flex-col gap-5 my-5 min-h-[50vh]">
             {data.map((item: any, index: number) => (
@@ -42,7 +46,7 @@ export default function Page() {
             ))}
             <button>Vaciar carrito</button>
           </div>
-          <Buttons />
+          <Buttons total={total} />
         </>
       ) : (
         <div className="flex flex-col m-5 gap-5 mt-[30vh]">
