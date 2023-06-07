@@ -14,10 +14,10 @@ export default function FormNewProduct({ states, handleChange }: FormNewProductT
     <form>
       <div className="grid grid-cols-1 gap-2 mt-4 sm:grid-cols-2">
         <div>
-          <Label htmlFor="itutlo" value="Título" />
+          <Label htmlFor="email" value="Título" />
 
           <TextInput
-            id="email1"
+            id="email"
             placeholder="Iphone"
             required
             type="text"
@@ -49,6 +49,7 @@ export default function FormNewProduct({ states, handleChange }: FormNewProductT
             <Label htmlFor="stock" value="Stock" />
           </div>
           <TextInput
+            id="stock"
             type="number"
             value={states.stock}
             name={'stock'}

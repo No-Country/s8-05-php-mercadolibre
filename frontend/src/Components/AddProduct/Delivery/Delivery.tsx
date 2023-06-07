@@ -1,7 +1,7 @@
 'use client';
 
 import ContinueBtn from '@/Components/UI/ContinueBtn';
-import { handlersType } from '@/types/addProduct/handlers.types';
+import { handlersType } from '@/types/handlers.types';
 import FormDelivery from './FormDelivery';
 import { BaseSyntheticEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -36,7 +36,7 @@ export default function Delivery({ handleAvailableStep, handleCurrentStep }: han
           handleInputChange={handleInputChange}
         />
       </div>
-      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm">
+      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
         <ContinueBtn
           handleAvailableStep={handleAvailableStep}
           handleCurrentStep={handleCurrentStep}
