@@ -17,6 +17,14 @@ class CartController extends Controller
         return auth()->user();
     }
 
+    private function totalCartPrice($user)
+    {
+        return Cart::where('user_id', $user->id)
+            ->join('products', 'carts.product_id', '=', 'products.id')
+            ->selectRaw('SUM(carts.quantity * products.price) as total_price')
+            ->value('total_price');
+    }
+
     public function addToCart(Request $request)
     {
         try {
@@ -41,8 +49,10 @@ class CartController extends Controller
                 ]);
             }
 
+
+
             return response()->json([
-                'message' => 'Producto añadido al carrito correctamente'
+                'message' => 'Producto añadido al carrito correctamente',
             ]);
         } catch (\Exception $e) {
             return $this->response->catch($e->getMessage());
@@ -56,7 +66,15 @@ class CartController extends Controller
 
             $cartItems = Cart::where('user_id', $user->id)->get();
 
-            return new CartCollection($cartItems);
+            // Calcular el precio total de todos los productos en el carrito del usuario
+            $totalCartPrice = $this->totalCartPrice($user);
+
+            return response()->json([
+                "total_cart_price" => $totalCartPrice,
+                "cart_products" => new CartCollection($cartItems)
+            ]);
+
+           
         } catch (\Exception $e) {
             return $this->response->catch($e->getMessage());
         }
@@ -82,10 +100,7 @@ class CartController extends Controller
             $totalPriceProduct = $unitPrice * $newQuantity;
 
             // Calcular el precio total de todos los productos en el carrito del usuario
-            $totalCartPrice = Cart::where('user_id', $user->id)
-                ->join('products', 'carts.product_id', '=', 'products.id')
-                ->selectRaw('SUM(carts.quantity * products.price) as total_price')
-                ->value('total_price');
+            $totalCartPrice = $this->totalCartPrice($user);
 
             return response()->json([
                 'total_product_price' => $totalPriceProduct,
