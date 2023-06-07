@@ -7,14 +7,21 @@ import { TiHome } from 'react-icons/ti';
 import { FiSearch } from 'react-icons/fi';
 import { BsHandbagFill } from 'react-icons/bs';
 import { MdLocalOffer } from 'react-icons/md';
+import { useRouter } from 'next/navigation';
 
 export default function Menu({ menuToggle }: { menuToggle: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { refresh } = useRouter();
 
   const handleClick = (e: BaseSyntheticEvent) => {
     if (e.target === containerRef.current) {
       menuToggle();
     }
+  };
+
+  const handleCloseSesion = () => {
+    localStorage.removeItem('token');
+    refresh();
   };
 
   useEffect(() => {
@@ -68,7 +75,12 @@ export default function Menu({ menuToggle }: { menuToggle: () => void }) {
               <FaStore /> Vender
             </li>
           </ul>
-          <button className="w-full bg-black text-white py-3">Cerrar sesion</button>
+          <button
+            className="w-full text-darkBlue py-3 text-left font-semibold text-lg"
+            onClick={handleCloseSesion}
+          >
+            Cerrar sesion
+          </button>
         </div>
       </div>
     </div>

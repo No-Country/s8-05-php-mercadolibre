@@ -36,7 +36,7 @@ export default function NavbarComponent() {
           <FiSearch className="absolute top-0 bottom-0 text-xl right-2 m-auto" />
         </div>
         <div className="w-5/12">
-          <CategoriesList />
+          <CategoriesList links={true} />
         </div>
       </div>
     </header>
