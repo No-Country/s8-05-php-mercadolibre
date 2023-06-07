@@ -12,8 +12,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    const PUBLISH = 'PUBLISH';
-    const UNPUBLISH = 'UNPUBLISH';
+    const NEW = 'NUEVO';
+    const USED = 'USADO';
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
