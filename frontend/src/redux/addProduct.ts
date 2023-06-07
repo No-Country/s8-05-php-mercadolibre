@@ -1,7 +1,7 @@
-import { addProductType } from '@/types/addProduct/addProduct.types';
+import { addProductType, descriptionType } from '@/types/slice/addProduct.types';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-export const initialDescription = {
+export const initialDescription: descriptionType = {
   title: '',
   category: '',
   state: '',
@@ -16,17 +16,20 @@ export const initialDescription = {
 const initialState: addProductType = {
   description: initialDescription,
   photos: [],
-  delivery: 'CABA-C1044',
+  delivery: {
+    delivery: false,
+    local: false,
+  },
 };
 
 const { actions, reducer } = createSlice({
   name: 'addProduct',
   initialState,
   reducers: {
-    setDescription: (state: any, { payload }: PayloadAction<any>) => {
-      state.description = { ...state.description, ...payload };
+    setDescription: (state: any, { payload }: PayloadAction<descriptionType>) => {
+      state.description = payload;
     },
-    setPhotos: (state: any, { payload }: PayloadAction<any>) => {
+    setPhotos: (state: any, { payload }: PayloadAction<string[]>) => {
       state.photos = payload;
     },
     setDelivery: (state: any, { payload }: PayloadAction<any>) => {

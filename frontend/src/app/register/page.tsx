@@ -26,7 +26,7 @@ export default function Page() {
     } else {
       setEnabled(false);
     }
-  }, []);
+  }, [isComplete]);
 
   const handleSubmit = () => {
     apiClient
