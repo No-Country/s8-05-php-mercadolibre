@@ -20,8 +20,6 @@ export default function Page() {
     apiClient
       .post('/validate-password', { password })
       .then((data) => {
-        console.log(data);
-
         dispatch(setComplete('password'));
         step <= 4 && dispatch(setStep(5));
         dispatch(setData({ password }));

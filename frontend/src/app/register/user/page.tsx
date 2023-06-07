@@ -28,7 +28,6 @@ export default function Page() {
     apiClient
       .post('/validate-names', user)
       .then((data) => {
-        console.log(data);
         dispatch(setComplete('user'));
         step <= 2 && dispatch(setStep(3));
         dispatch(setData({ name: user.name, lastName: user.lastName }));

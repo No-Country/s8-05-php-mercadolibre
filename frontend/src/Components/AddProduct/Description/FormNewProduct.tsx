@@ -12,7 +12,6 @@ type FormNewProductType = {
 };
 
 export default function FormNewProduct({ states, handleChange }: FormNewProductType) {
-  console.log(states);
   return (
     <form>
       <div className="grid grid-cols-1 gap-2 mt-4 sm:grid-cols-2">

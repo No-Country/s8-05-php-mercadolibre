@@ -25,7 +25,6 @@ export default function Page() {
       apiClient
         .post('/validate-email', { email })
         .then((data) => {
-          console.log(data);
           setCodeStep(true);
         })
         .catch((err) => console.log(err));

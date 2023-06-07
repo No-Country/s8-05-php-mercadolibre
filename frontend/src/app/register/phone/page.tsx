@@ -28,7 +28,6 @@ export default function Page() {
     apiClient
       .post('/validate-phone', { phone: Number(`${phone.first}${phone.second}`) })
       .then((data) => {
-        console.log(data);
         dispatch(setComplete('phone'));
         step <= 3 && dispatch(setStep(4));
         dispatch(setData({ phone: Number(`${phone.first}${phone.second}`) }));
