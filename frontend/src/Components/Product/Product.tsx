@@ -57,9 +57,12 @@ export default function Product({ data }: ProductType) {
           </div>
         </div>
         <div className="flex flex-col gap-2 my-2 w-full">
-          <button className="rounded-full py-2 bg-darkBlue text-white font-semibold">
+          <Link
+            href={'/buy'}
+            className="text-center rounded-full py-2 bg-darkBlue text-white font-semibold"
+          >
             Comprar ahora
-          </button>
+          </Link>
           <button
             onClick={handleCart}
             className="rounded-full py-2 text-darkBlue border-darkBlue border-2 font-semibold"

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Buttons() {
   return (
     <div className="flex flex-col mx-5 gap-4">
@@ -5,10 +7,15 @@ export default function Buttons() {
         <span>Total de compra:</span>
         <span>AR $ 450.000</span>
       </div>
-      <button className="bg-darkBlue text-white rounded-full py-3">Finalizar compra</button>
-      <button className="bg-white text-darkBlue rounded-full py-3 border-darkBlue border">
+      <Link href={'/buy'} className="bg-darkBlue text-white rounded-full py-3 text-center">
+        Finalizar compra
+      </Link>
+      <Link
+        href={'/'}
+        className="bg-white text-darkBlue rounded-full py-3 border-darkBlue border text-center"
+      >
         Seguir comprando
-      </button>
+      </Link>
     </div>
   );
 }
