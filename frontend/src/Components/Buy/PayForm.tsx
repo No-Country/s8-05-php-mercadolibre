@@ -4,6 +4,7 @@ import NavBack from '../UI/NavBack';
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { initialPay, setCard } from '@/redux/buy';
 import { useDispatch } from 'react-redux';
+import Animation from '../Animation';
 
 type payFormType = {
   callback: () => void;
@@ -13,6 +14,7 @@ type payFormType = {
 export default function PayForm({ callback, cardType }: payFormType) {
   const dispatch = useDispatch();
   const [states, setStates] = useState<initialPayType>(initialPay);
+  const [animation, setAnimation] = useState(false);
 
   const handleChange = (e: SyntheticEvent) => {
     const target = e.target as HTMLInputElement;
@@ -35,8 +37,12 @@ export default function PayForm({ callback, cardType }: payFormType) {
   };
 
   const handleSubmit = () => {
-    dispatch(setCard(states));
-    callback();
+    setAnimation(true);
+
+    setTimeout(() => {
+      dispatch(setCard(states));
+      callback();
+    }, 4000);
   };
 
   useEffect(() => {
@@ -139,6 +145,7 @@ export default function PayForm({ callback, cardType }: payFormType) {
           Siguiente
         </button>
       </div>
+      {animation && <Animation text={'Tu tarjeta fue añadida'} />}
     </div>
   );
 }

@@ -9,20 +9,25 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { selectCompany } from '@/utils/selectCompany';
+import Animation from '../Animation';
 
 export default function Pay({ handleAvailableStep, handleCurrentStep }: handlersType) {
   const dispatch = useDispatch();
   const cards = useSelector(getCards);
   const [open, setOpen] = useState(false);
   const [cardType, setCardType] = useState('');
+  const [animation, setAnimation] = useState(false);
 
   const handleOpen = () => setOpen(!open);
 
   const handleContinue = (id?: number) => {
-    handleAvailableStep(4);
-    handleCurrentStep(4);
-    const card = id ? cards.find((card: any) => card.cardNumber === id) : { type: 'Efectivo' };
-    dispatch(setPay(card));
+    setAnimation(true);
+    setTimeout(() => {
+      handleAvailableStep(4);
+      handleCurrentStep(4);
+      const card = id ? cards.find((card: any) => card.cardNumber === id) : { type: 'Efectivo' };
+      dispatch(setPay(card));
+    }, 4000);
   };
 
   return (
@@ -72,6 +77,7 @@ export default function Pay({ handleAvailableStep, handleCurrentStep }: handlers
         </div>
       </div>
       {open && <PayForm callback={handleOpen} cardType={cardType} />}
+      {animation && <Animation text={'Tu metodo de envio fue añadido'} />}
 
       <PayPalScriptProvider options={{ 'client-id': 'test' }}>
         <PayPalButtons

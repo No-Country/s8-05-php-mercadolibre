@@ -5,8 +5,21 @@ import Delivery from '@/Components/Buy/Information/DeliveryInfo';
 import Pay from '@/Components/Buy/Information/PayInfo';
 import Billing from '@/Components/Buy/Information/BillingInfo';
 import { handlersType } from '@/types/handlers.types';
+import { useState } from 'react';
+import Animation from '../Animation';
+import { useRouter } from 'next/navigation';
 
 export default function Confirmation({ handleCurrentStep }: handlersType) {
+  const { push } = useRouter();
+  const [animation, setAnimation] = useState(false);
+
+  const handleBuy = () => {
+    setAnimation(true);
+    setTimeout(() => {
+      push('/');
+    }, 4000);
+  };
+
   return (
     <div>
       <div className="w-full flex flex-col items-center mt-3">
@@ -53,12 +66,16 @@ export default function Confirmation({ handleCurrentStep }: handlersType) {
             </div>
           </div>
           <div className="flex justify-center lg:justify-end mt-10">
-            <button className="text-darkBlue bg-white border-0 py-2 px-8 focus:outline-none rounded-3xl text-sm">
+            <button
+              className="text-darkBlue bg-white border-0 py-2 px-8 focus:outline-none rounded-3xl text-sm"
+              onClick={handleBuy}
+            >
               Confirmar compra
             </button>
           </div>
         </div>
       </div>
+      {animation && <Animation text={'Compra realizada exitosamente!'} />}
     </div>
   );
 }

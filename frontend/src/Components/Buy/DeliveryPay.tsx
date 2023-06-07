@@ -1,8 +1,12 @@
+'use client';
+
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GrDropbox } from 'react-icons/gr';
 import { FaMotorcycle } from 'react-icons/fa';
 import { MdDirectionsRun } from 'react-icons/md';
 import { handlersType } from '@/types/handlers.types';
+import { useState } from 'react';
+import Animation from '../Animation';
 
 type listItemType = {
   icon: any;
@@ -33,33 +37,41 @@ export function ListItem({ icon, title, price, border, callback }: listItemType)
 }
 
 export default function DeliveryPay({ handleAvailableStep, handleCurrentStep }: handlersType) {
+  const [animation, setAnimation] = useState(false);
+
   const handleSubmit = () => {
-    handleAvailableStep(3);
-    handleCurrentStep(3);
+    setAnimation(true);
+    setTimeout(() => {
+      handleAvailableStep(3);
+      handleCurrentStep(3);
+    }, 4000);
   };
 
   return (
-    <ul className="mx-auto w-[300px] mt-10 border-black border box-content rounded-lg">
-      <ListItem
-        icon={<GrDropbox />}
-        title="Envío por correo"
-        price={800}
-        border={true}
-        callback={handleSubmit}
-      />
-      <ListItem
-        icon={<FaMotorcycle />}
-        title="Envío por moto"
-        price={500}
-        border={true}
-        callback={handleSubmit}
-      />
-      <ListItem
-        icon={<MdDirectionsRun />}
-        title="Retiro en persona"
-        price={0}
-        callback={handleSubmit}
-      />
-    </ul>
+    <>
+      <ul className="mx-auto w-[300px] mt-10 border-black border box-content rounded-lg">
+        <ListItem
+          icon={<GrDropbox />}
+          title="Envío por correo"
+          price={800}
+          border={true}
+          callback={handleSubmit}
+        />
+        <ListItem
+          icon={<FaMotorcycle />}
+          title="Envío por moto"
+          price={500}
+          border={true}
+          callback={handleSubmit}
+        />
+        <ListItem
+          icon={<MdDirectionsRun />}
+          title="Retiro en persona"
+          price={0}
+          callback={handleSubmit}
+        />
+      </ul>
+      {animation && <Animation text={'Tu metodo de pago fue añadido'} />}
+    </>
   );
 }
