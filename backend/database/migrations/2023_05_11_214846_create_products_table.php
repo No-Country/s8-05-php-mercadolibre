@@ -29,7 +29,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('subcategories')
                 ->onDelete('cascade');
-            $table->enum('status',[Product::PUBLISH, Product::UNPUBLISH]);
+            $table->enum('status',[Product::NEW, Product::USED])->default(Product::NEW);
             $table->timestamps();
         });
     }
