@@ -47,7 +47,7 @@ export default function PayForm({ callback, cardType }: payFormType) {
 
   useEffect(() => {
     setStates({ ...states, type: cardType });
-  }, [cardType]);
+  }, [cardType, states]);
 
   return (
     <div className="absolute top-0 bg-white z-[200]">

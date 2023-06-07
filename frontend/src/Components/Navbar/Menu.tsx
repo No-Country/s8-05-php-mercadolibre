@@ -15,7 +15,7 @@ export default function Menu({
   search,
 }: {
   menuToggle: () => void;
-  search: HTMLInputElement;
+  search: HTMLInputElement | null;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +34,7 @@ export default function Menu({
 
   const handleSearch = () => {
     menuToggle();
-    search.focus();
+    search && search.focus();
   };
 
   useEffect(() => {
