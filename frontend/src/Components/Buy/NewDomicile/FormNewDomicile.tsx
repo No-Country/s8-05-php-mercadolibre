@@ -1,5 +1,5 @@
 import { initialLocationType } from '@/types/slice/buy.types';
-import { Label, TextInput, Select, Textarea } from 'flowbite-react';
+import { Label, TextInput, Textarea } from 'flowbite-react';
 
 type FormNewProductType = {
   states: initialLocationType;
@@ -7,9 +7,8 @@ type FormNewProductType = {
 };
 
 export default function FormNewProduct({ states, handleChange }: FormNewProductType) {
-  const categories: [] = [];
   return (
-    <form>
+    <form className="aboslute top-0">
       <div className="grid grid-cols-1 gap-2 mt-4 sm:grid-cols-2">
         <div>
           <Label htmlFor="name" value="Nombre y apellido" />

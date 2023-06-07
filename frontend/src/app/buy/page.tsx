@@ -76,7 +76,10 @@ export default function Page() {
           <Pay handleAvailableStep={handleAvailableStep} handleCurrentStep={handleCurrentStep} />
         )}
         {currentStep === 4 && (
-          <Confirmation handleAvailableStep={handleAvailableStep} handleCurrentStep={handleCurrentStep} />
+          <Confirmation
+            handleAvailableStep={handleAvailableStep}
+            handleCurrentStep={handleCurrentStep}
+          />
         )}
       </main>
     </>

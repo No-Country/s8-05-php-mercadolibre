@@ -44,7 +44,7 @@ export default function PayForm({ callback, cardType }: payFormType) {
   }, [cardType]);
 
   return (
-    <div className="absolute top-0 bg-white z-50">
+    <div className="absolute top-0 bg-white z-[200]">
       <NavBack title="Añadir tarjeta" callback={callback} />
 
       <div className="bg-payCard m-5 h-44 rounded-lg text-white flex flex-col justify-between p-5">
