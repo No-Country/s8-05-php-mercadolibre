@@ -1,8 +1,9 @@
-import DetailsProduct from './DetailsProduct';
 import { useSelector } from 'react-redux';
 import { getDelivery, getDescription, getPhotos } from '@/redux/addProduct';
 import { useRouter } from 'next/navigation';
 import { apiClientPriv } from '@/utils/apiClient';
+import Detail from '@/Components/Product/Detail';
+import { create } from 'domain';
 
 export default function PostProduct() {
   const description = useSelector(getDescription);
@@ -41,10 +42,19 @@ export default function PostProduct() {
       .catch((err) => console.log(err));
   };
 
+  const product = {
+    image: URL.createObjectURL(photos[0]),
+    id: 1,
+    name: description.title,
+    price: description.price,
+    stock: description.stock,
+    description: description.description,
+  };
+
   return (
     <div className="w-full flex flex-col items-center mt-3">
       <div className="mb-4">
-        <DetailsProduct />
+        <Detail data={product} />
       </div>
       <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
         <button
