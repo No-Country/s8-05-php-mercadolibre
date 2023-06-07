@@ -134,7 +134,10 @@ _Bien, hasta el momento hemos logrado levantar nuestra aplicación frontend, per
     ```
 4. Corremos nuestra migraciones de base de datos y generamos datos falsos
     ```bash
-      $ php artisan migrate --seed
+      $ php artisan migrate
+    ```
+    ```bash
+      $ php artisan db:seed
     ```
 5. Inicializamos nuestro servidor de Backend
     ```bash
@@ -193,7 +196,7 @@ Queremos darles las gracias a [No-Country](https://nocountry.tech/) por darnos e
 
 [linkedin-shield-luisfelipe]: https://img.shields.io/badge/-Luis_Felipe-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
 [linkedin-luisfelipe-url]: https://www.linkedin.com/in/luis-felipe-fern%C3%A1ndez-betancur-474639267/
-[portfolio-luisfelipe]: https://dev-alansan.netlify.app/
+[portfolio-luisfelipe]: https://luisfelipe1953.github.io/FELIPORTA/
 [github-luisfelipe]: https://github.com/luisfelipe1953
 
 [linkedin-shield-lorenzo]: https://img.shields.io/badge/-Lorenzo_Rueda-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
