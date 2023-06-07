@@ -3,12 +3,13 @@
 import { HiOutlineMenuAlt2, HiShoppingCart } from 'react-icons/hi';
 import { FiSearch } from 'react-icons/fi';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Menu from './Menu';
 import Link from 'next/link';
 import CategoriesList from '../UI/CategoriesList';
 
 export default function NavbarComponent() {
+  const searchRef = useRef<HTMLInputElement>(null);
   const [open, setOpen] = useState(false);
 
   const menuToggle = () => setOpen(!open);
@@ -23,7 +24,7 @@ export default function NavbarComponent() {
         <Link href={'/cart'} className="flex flex-row text-2xl gap-3 text-darkGrey">
           <HiShoppingCart />
         </Link>
-        {open && <Menu menuToggle={menuToggle} />}
+        {open && <Menu menuToggle={menuToggle} search={searchRef.current} />}
       </nav>
       <div className="flex flex-row mx-5 rounded-lg border border-black overflow-hidden relative mb-5 box-border">
         <div className="relative w-7/12">
@@ -32,6 +33,7 @@ export default function NavbarComponent() {
             type="search"
             className="border-none w-full pr-8"
             placeholder="Buscar"
+            ref={searchRef}
           />
           <FiSearch className="absolute top-0 bottom-0 text-xl right-2 m-auto" />
         </div>

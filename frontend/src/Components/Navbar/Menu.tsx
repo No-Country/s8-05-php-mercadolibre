@@ -10,7 +10,13 @@ import { MdLocalOffer } from 'react-icons/md';
 import Link from 'next/link';
 import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 
-export default function Menu({ menuToggle }: { menuToggle: () => void }) {
+export default function Menu({
+  menuToggle,
+  search,
+}: {
+  menuToggle: () => void;
+  search: HTMLInputElement;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [isAuth, setIsAuth] = useState(false);
@@ -24,6 +30,11 @@ export default function Menu({ menuToggle }: { menuToggle: () => void }) {
   const handleCloseSesion = () => {
     localStorage.removeItem('token');
     setIsAuth(false);
+  };
+
+  const handleSearch = () => {
+    menuToggle();
+    search.focus();
   };
 
   useEffect(() => {
@@ -92,10 +103,12 @@ export default function Menu({ menuToggle }: { menuToggle: () => void }) {
             </div>
             <div className="flex flex-col w-full h-full justify-between p-5">
               <ul className="flex flex-col gap-5 text-darkGrey">
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <TiHome /> Inicio
+                <li>
+                  <Link href={'/'} className="flex flex-row gap-4 items-center text-2xl">
+                    <TiHome /> Inicio
+                  </Link>
                 </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
+                <li className="flex flex-row gap-4 items-center text-2xl" onClick={handleSearch}>
                   <FiSearch /> Buscar
                 </li>
                 <li className="flex flex-row gap-4 items-center text-2xl">
