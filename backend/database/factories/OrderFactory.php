@@ -26,12 +26,6 @@ class OrderFactory extends Factory
             'address' => fake()->address,
         ];
 
-        $detailsProducts = [
-            'name' => fake()->word(),
-            'description' => fake()->sentence(),
-            'price' => fake()->randomFloat(2, 100, 100000), //(decimal,lower,upper)
-        ];
-
         $shippingCost = fake()->randomFloat(2, 100, 400);
 
         return [
@@ -49,10 +43,9 @@ class OrderFactory extends Factory
                 'RETIRO DEPOSITO',
                 'DEPOSITO SUCURSAL'
             ]),
-            'dispatch_address' => json_encode($dispatchData),
-            'details_products' => json_encode($detailsProducts),
+            // 'dispatch_address' => json_encode($dispatchData),
             'shipping_cost' => $shippingCost,
-            'total' => $detailsProducts['price'] + $shippingCost,
+            'total' => fake()->randomNumber(2),
             'user_id' => User::all()->random()->id
         ];
     }
