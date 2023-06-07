@@ -27,7 +27,11 @@ export default function Description({ handleAvailableStep, handleCurrentStep }: 
     });
   }, [data]);
 
-  const handleChange = ({ target }: { target: HTMLInputElement | HTMLTextAreaElement }) => {
+  const handleChange = ({
+    target,
+  }: {
+    target: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+  }) => {
     setStates({
       ...states,
       [target.name]: target.value,

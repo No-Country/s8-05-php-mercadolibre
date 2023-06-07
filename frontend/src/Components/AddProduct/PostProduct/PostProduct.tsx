@@ -21,10 +21,10 @@ export default function PostProduct() {
       width: description.width,
       height: description.height,
     },
-    status: description.status,
+    status: description.state,
     delivery: delivery.delivery,
     local: delivery.local,
-    photos,
+    image: photos,
   };
 
   const handleSubmit = () => {

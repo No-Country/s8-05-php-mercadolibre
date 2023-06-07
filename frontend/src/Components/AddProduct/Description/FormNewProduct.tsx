@@ -4,10 +4,15 @@ import { Label, TextInput, Select, Textarea } from 'flowbite-react';
 
 type FormNewProductType = {
   states: descriptionType;
-  handleChange: ({ target }: { target: HTMLInputElement | HTMLTextAreaElement }) => void;
+  handleChange: ({
+    target,
+  }: {
+    target: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+  }) => void;
 };
 
 export default function FormNewProduct({ states, handleChange }: FormNewProductType) {
+  console.log(states);
   return (
     <form>
       <div className="grid grid-cols-1 gap-2 mt-4 sm:grid-cols-2">
@@ -36,9 +41,15 @@ export default function FormNewProduct({ states, handleChange }: FormNewProductT
           <div>
             <Label htmlFor="status" value="Estado" />
           </div>
-          <Select id="status" required defaultValue={states.state} name={'state'}>
-            <option>Nuevo</option>
-            <option>Usado</option>
+          <Select
+            id="status"
+            required
+            onChange={handleChange}
+            defaultValue={states.state}
+            name={'state'}
+          >
+            <option>NUEVO</option>
+            <option>USADO</option>
           </Select>
         </div>
 
