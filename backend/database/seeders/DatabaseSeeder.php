@@ -31,7 +31,6 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             StateSeeder::class,
             CitySeeder::class,
-            // OrderSeeder::class,
             CartSeeder::class
         ]);
     }
