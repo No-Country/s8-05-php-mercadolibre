@@ -16,7 +16,10 @@ export const initialDescription = {
 const initialState: addProductType = {
   description: initialDescription,
   photos: [],
-  delivery: 'CABA-C1044',
+  delivery: {
+    delivery: false,
+    local: false,
+  },
 };
 
 const { actions, reducer } = createSlice({
@@ -29,7 +32,7 @@ const { actions, reducer } = createSlice({
     setPhotos: (state: any, { payload }: PayloadAction<string[]>) => {
       state.photos = payload;
     },
-    setDelivery: (state: any, { payload }: PayloadAction<string>) => {
+    setDelivery: (state: any, { payload }: PayloadAction<any>) => {
       state.delivery = payload;
     },
   },

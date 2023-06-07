@@ -13,5 +13,8 @@ export type descriptionType = {
 export type addProductType = {
   description: descriptionType;
   photos: string[];
-  delivery: string;
+  delivery: {
+    delivery: boolean;
+    local: boolean;
+  };
 };
