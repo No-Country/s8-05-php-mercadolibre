@@ -1,5 +1,5 @@
 import Layout from '@/Components/Layout';
-import { apiClient } from '@/utils/apiClient';
+import { apiClient, apiClientPriv } from '@/utils/apiClient';
 import Image from 'next/image';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
@@ -17,6 +17,16 @@ async function getData(slug: string) {
 
 export default async function Page({ params }: { params: { product: string } }) {
   const { data } = await getData(params.product);
+
+  // const handleCart = () => {
+  //   apiClientPriv
+  //     .post('add-cart', {
+  //       product_id: data.id,
+  //       quantity: 1,
+  //     })
+  //     .then((data) => alert(data.data.message))
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <Layout>
@@ -90,7 +100,10 @@ export default async function Page({ params }: { params: { product: string } }) 
                 <button className="flex text-white bg-blue border-0 py-2 px-6 focus:outline-none rounded-3xl">
                   Comprar Ahora
                 </button>
-                <button className="flex ml-auto text-blue bg-white border border-blue py-2 px-6 focus:outline-none rounded-3xl">
+                <button
+                  // onClick={handleCart}
+                  className="flex ml-auto text-blue bg-white border border-blue py-2 px-6 focus:outline-none rounded-3xl"
+                >
                   Agregar al carrito
                 </button>
               </div>

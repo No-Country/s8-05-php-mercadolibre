@@ -1,4 +1,5 @@
-import { descriptionType } from '@/types/slice/addProduct.types';
+import CategoriesList from '@/Components/UI/CategoriesList';
+import { descriptionType } from '@/types/addProduct/description.types';
 import { Label, TextInput, Select, Textarea } from 'flowbite-react';
 
 type FormNewProductType = {
@@ -8,6 +9,7 @@ type FormNewProductType = {
 
 export default function FormNewProduct({ states, handleChange }: FormNewProductType) {
   const categories: [] = [];
+
   return (
     <form>
       <div className="grid grid-cols-1 gap-2 mt-4 sm:grid-cols-2">
@@ -29,19 +31,7 @@ export default function FormNewProduct({ states, handleChange }: FormNewProductT
           <div>
             <Label htmlFor="category" value="Categoría" />
           </div>
-          <Select id="category" required defaultValue={states.category} name={'category'}>
-            {categories.length > 0 ? (
-              <>
-                {categories.map((category: any, index: number) =>
-                  category.relationships.products.length ? (
-                    <option key={index}>{category.attributes.name}</option>
-                  ) : null,
-                )}
-              </>
-            ) : (
-              <option>Vacio</option>
-            )}
-          </Select>
+          <CategoriesList onChange={handleChange} defaultValue={states.category} />
         </div>
 
         <div id="select">

@@ -6,6 +6,7 @@ import { FiSearch } from 'react-icons/fi';
 import { useState } from 'react';
 import Menu from './Menu';
 import Link from 'next/link';
+import CategoriesList from '../UI/CategoriesList';
 
 export default function NavbarComponent() {
   const [open, setOpen] = useState(false);
@@ -34,14 +35,9 @@ export default function NavbarComponent() {
           />
           <FiSearch className="absolute top-0 bottom-0 text-xl right-2 m-auto" />
         </div>
-        <select className="border-none w-5/12 text-sm">
-          <option value="1">Categoría</option>
-          <option value="2">Categoría 2</option>
-          <option value="3">Categoría 3</option>
-          <option value="3">Categoría 4</option>
-          <option value="3">Categoría 5</option>
-          <option value="3">Categoría 6</option>
-        </select>
+        <div className="w-5/12">
+          <CategoriesList />
+        </div>
       </div>
     </header>
   );
