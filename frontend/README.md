@@ -48,7 +48,6 @@ _Desarrolladores FrontEnd_
 
 - **Felipe Suarez** - [Felipe-Suarez](https://github.com/Felipe-Suarez)
 - **Yenifer Ramírez** - [yeniferrosana](https://github.com/yeniferrosana)
-- **Diego Yako** - [diegoyako](https://github.com/diegoyako)
 
 ## Licencia 📄
 
