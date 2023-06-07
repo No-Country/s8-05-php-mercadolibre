@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function index()
     {
         try {
-            $products = Product::select('id', 'name', 'description', 'price', 'stock', 'brand_id', 'subcategory_id')
+            $products = Product::select('id', 'name', 'description', 'price', 'stock', 'brand_id', 'measures', 'subcategory_id')
                 ->where('status', Product::PUBLISH)
                 ->limit(10)
                 ->get()
@@ -78,8 +78,11 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'price' =>  $request->price,
                 'stock' =>  $request->stock,
+                'measures' =>  $request->measures,
                 'brand_id' =>  $request->brand_id,
                 'subcategory_id' =>  $request->subcategory_id,
+                'domicilio' =>  $request->subcategory_id,
+                'sucursal' =>  $request->subcategory_id,
                 'status' =>  $request->status,
             ]);
 

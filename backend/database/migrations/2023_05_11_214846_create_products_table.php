@@ -30,6 +30,8 @@ return new class extends Migration
                 ->on('subcategories')
                 ->onDelete('cascade');
             $table->enum('status',[Product::PUBLISH, Product::UNPUBLISH]);
+            $table->boolean('domicilio')->default(false);
+            $table->boolean('sucursal')->default(false);
             $table->timestamps();
         });
     }

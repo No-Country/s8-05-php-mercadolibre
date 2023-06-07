@@ -22,7 +22,7 @@ class CartResource extends JsonResource
                 'total_price_product' => $this->quantity * $this->products->price
             ],
             'relationships' => [
-                'products' => ProductResource::make($this->products)  
+                'products' => ProductResource::make($this->whenLoaded('products'))  
             ],
             'links' => [
                 // 'self' => route('products.show', $this->id)

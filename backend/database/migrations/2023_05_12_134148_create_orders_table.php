@@ -24,10 +24,8 @@ return new class extends Migration
                 Order::CANCELADO
             ])->default(Order::PENDIENTE);
 
-            $table->enum('dispatch_type', [
-                Order::DOMICILIO,
-                Order::SUCURSAL
-            ]);
+            $table->boolean('domicilio')->default(false);
+            $table->boolean('sucursal')->default(false);
 
             $table->text('idPayment');
             $table->text('dispatch_address')->nullable();
