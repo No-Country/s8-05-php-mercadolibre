@@ -28,11 +28,16 @@ export default function PostProduct() {
   form.append('delivery', delivery.delivery);
   form.append('local', delivery.local);
   form.append('image', photos);
+  form.append('brand_id', 1);
+  form.append('subcategory_id', 1);
 
   const handleSubmit = () => {
     apiClientPriv
       .post('/products', form)
-      .then(() => push('/'))
+      .then(() => {
+        alert('Producto agregado con éxito');
+        push('/');
+      })
       .catch((err) => console.log(err));
   };
 
