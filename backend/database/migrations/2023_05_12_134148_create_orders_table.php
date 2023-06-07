@@ -29,8 +29,8 @@ return new class extends Migration
                 Order::SUCURSAL
             ]);
 
+            $table->text('idPayment');
             $table->text('dispatch_address')->nullable();
-            $table->text('details_products');
             $table->float('shipping_cost');
             $table->float('total');
 

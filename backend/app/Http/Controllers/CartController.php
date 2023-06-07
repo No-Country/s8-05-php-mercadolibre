@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\CartCollection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CartController extends Controller
 {
@@ -65,10 +68,10 @@ class CartController extends Controller
             $user = $this->getUser();
             $cartItem = Cart::where('user_id', $user->id)
                 ->where('product_id', $request->input('product_id'))
-                ->first();
+                ->firstOrFail();
 
             $newQuantity = $request->input('quantity');
- 
+
             // Actualizar la cantidad del producto en el carrito
             $cartItem->quantity = $newQuantity;
             $cartItem->save();
@@ -88,28 +91,27 @@ class CartController extends Controller
                 'total_product_price' => $totalPriceProduct,
                 'total_cart_price' => $totalCartPrice,
             ], 200);
-        } catch (\Exception $e) {
-            return $this->response->catch($e->getMessage());
+        } catch (ModelNotFoundException $e) {
+            return $this->response->ModelError($e->getMessage(), 'producto');
         }
     }
 
     public function removeCartItem($id)
     {
-        $user = $this->getUser();
+        try {
+            $user = $this->getUser();
 
-        $cartItem = Cart::where('user_id', $user->id)
+            $cartItem = Cart::where('user_id', $user->id)
                 ->where('product_id', $id)
-                ->first();
+                ->firstOrFail();
 
-        $cartItem->delete();
+            $cartItem->delete();
 
-        return response()->json([
-            'message' => 'Producto eliminado correctamente del carrito'
-        ]);
-    }
-
-    public function pay()
-    {
-     
+            return response()->json([
+                'message' => 'Producto eliminado correctamente del carrito'
+            ]);
+        } catch (ModelNotFoundException $e) {
+            return $this->response->ModelError($e->getMessage(), 'producto');
+        }
     }
 }
