@@ -52,7 +52,7 @@ export default function PostProduct() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center mt-3">
+    <div className="w-full flex flex-col items-center mt-3 md:px-auto px-8">
       <div className="mb-4">
         <Detail data={product} />
       </div>

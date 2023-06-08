@@ -32,7 +32,7 @@ export default function Pay({ handleAvailableStep, handleCurrentStep }: handlers
 
   return (
     <>
-      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5">
+      <div className="flex flex-col gap-2 md:w-1/2 w-full max-w-sm my-5 mx-auto">
         <div>
           <h3 className="ml-10 my-2">Mis tarjetas</h3>
           <ul className="mx-auto w-[300px] border-black border box-content rounded-lg">

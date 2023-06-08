@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: { product: string } }) 
   return (
     <Layout>
       <div className="text-gray-600 body-font overflow-hidden">
-        <div className="lg:w-4/5 mx-auto flex flex-wrap">
+        <div className="lg:w-4/5 md:mx-auto mx-8">
           <Detail data={product} />
           <DetailBtns id={data.id} slug={data.attributes.slug} />
           <div className="flex g:w-1/2 w-full py-3">
@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: { product: string } }) 
             </button>
           </div>
           <div className="flex">
-            <p className="text-xl text-neutral-900 font-semibold py-3 mt-5 items-center pt-5 border-b-2 border-blue">
+            <p className="text-xl text-neutral-900 font-semibold py-3 mt-5 items-center pt-5 border-b-2 border-darkBlue">
               Tambien te puede interesar
               <span className="text-neutral-600">(4)</span>
             </p>
@@ -68,7 +68,7 @@ export default async function Page({ params }: { params: { product: string } }) 
                     Articulo a la venta{' '}
                   </h2>
                   <p className="mt-1">AR $199,999.00</p>
-                  <button className="flex text-white bg-blue border-0 py-2 px-6 focus:outline-none rounded-3xl mx-auto mt-2">
+                  <button className="flex text-white bg-darkBlue border-0 py-2 px-6 focus:outline-none rounded-3xl mx-auto mt-2">
                     Comprar Ahora
                   </button>
                 </div>
