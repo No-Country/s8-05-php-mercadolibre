@@ -57,7 +57,7 @@ export default function CartProduct({ data, handleReload }: any) {
           <span className="self-end text-sm font-semibold">AR $ {data.total_price_product}</span>
         </div>
       </div>
-      <span className="text-darkBlue text-lg ml-5 py-1" onClick={handleDelete}>
+      <span className="text-darkBlue text-lg ml-5 py-1 w-max" onClick={handleDelete}>
         Eliminar
       </span>
     </div>

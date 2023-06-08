@@ -16,6 +16,13 @@ export default function Page() {
     setReload(!reload);
   };
 
+  const handleDeleteCart = () => {
+    apiClientPriv
+      .post('/remove-products-cart')
+      .then((data) => handleReload())
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     apiClientPriv
       .get('/view-cart')
@@ -44,7 +51,9 @@ export default function Page() {
                 handleReload={handleReload}
               />
             ))}
-            <button>Vaciar carrito</button>
+            <button onClick={handleDeleteCart} className="w-max m-auto">
+              Vaciar carrito
+            </button>
           </div>
           <Buttons total={total} />
         </>
