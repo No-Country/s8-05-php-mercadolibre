@@ -15,7 +15,15 @@ class Product extends Model
     const NEW = 'NUEVO';
     const USED = 'USADO';
 
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'name',
+        'description',
+        'stock',
+        'price',
+        'measures',
+        'status',
+        'slug'
+    ];
 
     /**
      * Producto pertenece a un Brand
