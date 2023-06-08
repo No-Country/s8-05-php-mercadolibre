@@ -12,21 +12,18 @@ async function getData(slug: string) {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  if (params.slug === 'cart') {
-    const data: any = {};
-    return <View product={{ product: data.data, fastBuy: false }} />;
-  } else {
-    const data = await getData(params.slug);
+  const data = await getData(params.slug);
 
-    return data ? (
-      <View product={{ product: data.data, fastBuy: true }} />
-    ) : (
-      <div className="w-10/12 h-screen justify-center items-center flex flex-col gap-5 mx-auto">
-        <span className="text-3xl">ERROR - El producto no existe</span>
-        <div className="flex gap-5">
-          <Link href={'/'}>Ir a comprar</Link>
-        </div>
+  const isCart = params.slug === 'cart';
+
+  return data || isCart ? (
+    <View product={{ product: data?.data, fastBuy: !isCart }} />
+  ) : (
+    <div className="w-10/12 h-screen justify-center items-center flex flex-col gap-5 mx-auto">
+      <span className="text-3xl">ERROR</span>
+      <div className="flex gap-5">
+        <Link href={'/'}>Ir a comprar</Link>
       </div>
-    );
-  }
+    </div>
+  );
 }

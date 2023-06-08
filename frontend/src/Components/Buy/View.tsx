@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Steps from '@/Components/AddProduct/Steps';
 import NavBack from '@/Components/UI/NavBack';
@@ -14,10 +14,21 @@ import Pay from '@/Components/Buy/Pay';
 import DeliveryPay from '@/Components/Buy/DeliveryPay';
 import NewDomicile from '@/Components/Buy/NewDomicile/NewDomicile';
 import Confirmation from '@/Components/Buy/Confirmation';
+import { apiClientPriv } from '@/utils/apiClient';
 
 export default function View({ product }: any) {
   const [step, setStep] = useState(1);
   const [currentStep, setCurrentStep] = useState(1);
+  const [cart, setCart] = useState({});
+
+  useEffect(() => {
+    if (!product.fastBuy) {
+      apiClientPriv
+        .get('view-cart')
+        .then((data) => setCart(data.data))
+        .catch((err) => console.log(err));
+    }
+  }, [product.fastBuy]);
 
   const handleCurrentStep = (step: number) => setCurrentStep(step);
   const handleAvailableStep = (n: number) => {
@@ -79,7 +90,7 @@ export default function View({ product }: any) {
           <Confirmation
             handleCurrentStep={handleCurrentStep}
             handleAvailableStep={handleAvailableStep}
-            product={product}
+            product={product.fastBuy ? product : cart}
           />
         )}
       </main>

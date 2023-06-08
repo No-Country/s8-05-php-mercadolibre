@@ -1,8 +1,9 @@
 'use client';
 
 import { apiClientPriv } from '@/utils/apiClient';
+import Link from 'next/link';
 
-export default function DetailBtns({ id }: any) {
+export default function DetailBtns({ id, slug }: any) {
   const handleCart = () => {
     apiClientPriv
       .post('add-cart', {
@@ -15,9 +16,12 @@ export default function DetailBtns({ id }: any) {
 
   return (
     <div className="flex g:w-1/2 w-full">
-      <button className="flex text-white bg-blue border-0 py-2 px-6 focus:outline-none rounded-3xl">
+      <Link
+        href={`/buy/${slug}`}
+        className="flex text-white bg-blue border-0 py-2 px-6 focus:outline-none rounded-3xl"
+      >
         Comprar Ahora
-      </button>
+      </Link>
       <button
         onClick={handleCart}
         className="flex ml-auto text-blue bg-white border border-blue py-2 px-6 focus:outline-none rounded-3xl"

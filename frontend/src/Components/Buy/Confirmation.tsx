@@ -32,7 +32,7 @@ export default function Confirmation({ handleCurrentStep, product }: any) {
   };
 
   const calcPrice = () => {
-    return product.fastBuy && product.product.attributes.price;
+    return product.fastBuy ? product.product.attributes.price : product.total_cart_price;
   };
 
   const calcSubTotal = () => {
@@ -44,7 +44,7 @@ export default function Confirmation({ handleCurrentStep, product }: any) {
       <div className="w-full flex flex-col items-center mt-3">
         <div className="flex flex-wrap">
           <div className="xl:w-1/4 lg:w-1/2 md:w-full px-2 py-2 border-l md:border-b border-gray-200 border-opacity-60">
-            <Product product={product} />
+            <Product product={product.fastBuy ? product : product.cart_products.data} />
           </div>
           <div className="xl:w-1/4 lg:w-1/2 md:w-full px-2 py-2 border-l md:border-b border-gray-200 border-opacity-60">
             <Delivery callback={() => handleCurrentStep(2)} />

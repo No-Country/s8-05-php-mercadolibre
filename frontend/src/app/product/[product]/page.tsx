@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: { product: string } }) 
       <div className="text-gray-600 body-font overflow-hidden">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <Detail data={product} />
-          <DetailBtns id={data.id} />
+          <DetailBtns id={data.id} slug={data.attributes.slug} />
           <div className="flex g:w-1/2 w-full py-3">
             <button className="flex text-neutral-600 bg-white border border-neutral-600 py-1 px-3 focus:outline-none rounded-3xl text-sm">
               Compartir

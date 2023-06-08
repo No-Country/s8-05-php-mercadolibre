@@ -7,7 +7,7 @@ export default function Buttons({ total }: { total: number }) {
         <span>Total de compra:</span>
         <span>AR $ {Math.round(total)}</span>
       </div>
-      <Link href={'/buy'} className="bg-darkBlue text-white rounded-full py-3 text-center">
+      <Link href={'/buy/cart'} className="bg-darkBlue text-white rounded-full py-3 text-center">
         Finalizar compra
       </Link>
       <Link
