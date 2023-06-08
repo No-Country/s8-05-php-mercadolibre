@@ -64,7 +64,9 @@ export default function Logged({ handleCloseSesion, handleSearch }: any) {
             <HiUserCircle /> Mi cuenta
           </li>
           <li className="flex flex-row gap-4 items-center text-2xl">
-            <FaStore /> Vender
+            <Link href={'/add-product'}>
+              <FaStore /> Vender
+            </Link>
           </li>
         </ul>
         <button
