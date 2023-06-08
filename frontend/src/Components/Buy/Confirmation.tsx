@@ -9,6 +9,7 @@ import Animation from '../Animation';
 import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { getDeliveryBuy } from '@/redux/buy';
+import { apiClientPriv } from '@/utils/apiClient';
 
 export default function Confirmation({ handleCurrentStep, product }: any) {
   const { push } = useRouter();
@@ -17,6 +18,14 @@ export default function Confirmation({ handleCurrentStep, product }: any) {
 
   const handleBuy = () => {
     setAnimation(true);
+
+    if (!product.fastBuy) {
+      apiClientPriv
+        .post('/remove-products-cart')
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    }
+
     setTimeout(() => {
       push('/');
     }, 4000);
