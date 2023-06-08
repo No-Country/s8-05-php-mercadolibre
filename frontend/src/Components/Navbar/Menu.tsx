@@ -55,13 +55,15 @@ export default function Menu({
       onClick={handleClick}
       ref={containerRef}
     >
-      <div className="bg-white w-10/12 h-full flex flex-col gap-6 shadow-lg">
+      <div className="bg-white md:w-1/4 lg:1/2 w-full h-full flex flex-col gap-6 shadow-lg">
         {!isAuth ? (
           <div className="flex flex-col p-5 gap-8">
             <div className="flex flex-row gap-5">
               <HiOutlineMenuAlt2 className="text-2xl" onClick={menuToggle} />
               <div className="flex-grow">
-                <Link href={'/'}>Mercado Country</Link>
+                <Link href={'/'} className="font-black">
+                  Mercado <span className="text-darkBlue">C</span>ountry
+                </Link>
               </div>
             </div>
             <div className="flex flex-row gap-2 justify-between">
@@ -104,37 +106,41 @@ export default function Menu({
             <div className="flex flex-col w-full h-full justify-between p-5">
               <ul className="flex flex-col gap-5 text-darkGrey">
                 <li>
-                  <Link href={'/'} className="flex flex-row gap-4 items-center text-2xl">
-                    <TiHome /> Inicio
+                  <Link href={'/'} className="flex flex-row gap-4 items-center text-3xl">
+                    <TiHome /> <span className='text-lg'>Inicio</span>
                   </Link>
                 </li>
-                <li className="flex flex-row gap-4 items-center text-2xl" onClick={handleSearch}>
-                  <FiSearch /> Buscar
+                <li className="flex flex-row gap-4 items-center text-3xl" onClick={handleSearch}>
+                  <FiSearch /> <span className='text-lg'>Buscar</span>
                 </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <IoHeartSharp /> Favoritos
+                <li className="flex flex-row gap-4 items-center text-3xl">
+                  <IoHeartSharp /> <span className='text-lg'>Favoritos</span>
                 </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <IoNotifications /> Notificaciones
+                <li className="flex flex-row gap-4 items-center text-3xl">
+                  <IoNotifications /> <span className='text-lg'>Notificaciones</span>
                 </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <BsHandbagFill /> Mis compras
+                <li>
+                  <Link href={'/cart'} className="flex flex-row gap-4 items-center text-3xl">
+                    <BsHandbagFill /> <span className='text-lg'>Mis compras</span>
+                  </Link>
                 </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <MdLocalOffer /> Ofertas
+                <li className="flex flex-row gap-4 items-center text-3xl">
+                  <MdLocalOffer />  <span className='text-lg'>Ofertas</span>
                 </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <HiUserCircle /> Mi cuenta
+                <li className="flex flex-row gap-4 items-center text-3xl">
+                  <HiUserCircle />  <span className='text-lg'>Mi cuenta</span>
                 </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <FaStore /> Vender
+                <li>
+                  <Link href={'/add-product'} className="flex flex-row gap-4 items-center text-3xl">
+                    <FaStore />  <span className='text-lg'>Vender</span>
+                  </Link>
                 </li>
               </ul>
               <button
-                className="w-max text-darkBlue py-3 text-left font-semibold text-lg"
+                className="w-max text-darkBlue py-3 text-left font-medium text-lg hover:underline"
                 onClick={handleCloseSesion}
               >
-                Cerrar sesion
+                CERRAR SESIÓN
               </button>
             </div>
           </>

@@ -1,4 +1,5 @@
 import CarouselComponent from '@/Components/UI/CarouselComponent';
+import TabsPay from '@/Components/UI/TabsPay';
 import Layout from '@/Components/Layout';
 import CategorySlider from '@/Components/UI/CategorySlider';
 import { apiClient } from '@/utils/apiClient';
@@ -15,6 +16,7 @@ export default async function Home() {
   return (
     <Layout>
       <CarouselComponent imgs={imgs} />
+      <TabsPay />
       {data.length > 0 ? (
         data.map((category: any) =>
           category.relationships.products.length ? (
