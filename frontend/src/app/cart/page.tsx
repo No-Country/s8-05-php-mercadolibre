@@ -41,9 +41,8 @@ export default function Page() {
           <div className="flex flex-wrap">
             {data.map((item: any, index: number) => (
                
-               <div className="lg:w-1/3 sm:w-1/2 w-full">
+               <div key={item.id} className="lg:w-1/3 sm:w-1/2 w-full">
                 <CartProduct
-                  key={item.id}
                   data={{
                     ...item.attributes,
                     ...item.relationships.products.attributes,
