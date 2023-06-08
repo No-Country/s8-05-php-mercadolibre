@@ -19,7 +19,6 @@ export default function CategoriesList({ onChange, defaultValue, links }: any) {
         }));
         setCategories(categoriesData);
       })
-      .then((data) => console.log(data))
       .catch((err) => console.log(err));
   }, []);
 

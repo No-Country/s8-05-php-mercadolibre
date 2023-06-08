@@ -12,19 +12,17 @@ async function getData() {
 export default async function Home() {
   const { data } = await getData();
 
-  console.log(data);
-
   return (
     <Layout>
       <CarouselComponent imgs={imgs} />
-      {data.length > 0 ? (
-        data.map((category: any) =>
-          category.relationships.products.length ? (
+      {data?.length > 0 ? (
+        data?.map((category: any) =>
+          category?.relationships?.products?.length ? (
             <CategorySlider
-              route={`/category/${category.attributes.slug}`}
-              key={category.id}
-              title={category.attributes.name}
-              products={category.relationships.products}
+              route={`/category/${category?.attributes?.slug}`}
+              key={category?.id}
+              title={category?.attributes?.name}
+              products={category?.relationships?.products}
             />
           ) : null,
         )
