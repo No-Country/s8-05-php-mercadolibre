@@ -1,14 +1,10 @@
 import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
 
-import { FaUserAlt, FaStore } from 'react-icons/fa';
-import { HiUserCircle } from 'react-icons/hi2';
-import { IoHeartSharp, IoNotifications } from 'react-icons/io5';
-import { TiHome } from 'react-icons/ti';
-import { FiSearch } from 'react-icons/fi';
-import { BsHandbagFill } from 'react-icons/bs';
-import { MdLocalOffer } from 'react-icons/md';
+import { FaUserAlt } from 'react-icons/fa';
+
 import Link from 'next/link';
 import { HiOutlineMenuAlt2 } from 'react-icons/hi';
+import Logged from './Logged';
 
 export default function Menu({
   menuToggle,
@@ -89,55 +85,7 @@ export default function Menu({
             </div>
           </div>
         ) : (
-          <>
-            <div className="flex flex-row justify-between items-center bg-darkBlue p-5">
-              <div className="flex flex-row items-center gap-5">
-                <div className="bg-grey rounded-full p-3">
-                  <FaUserAlt className="text-[30px] text-darkGrey" />
-                </div>
-                <div className="flex flex-row text-lg gap-2 text-white">
-                  <span>Name</span>
-                  <span>LastName</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col w-full h-full justify-between p-5">
-              <ul className="flex flex-col gap-5 text-darkGrey">
-                <li>
-                  <Link href={'/'} className="flex flex-row gap-4 items-center text-2xl">
-                    <TiHome /> Inicio
-                  </Link>
-                </li>
-                <li className="flex flex-row gap-4 items-center text-2xl" onClick={handleSearch}>
-                  <FiSearch /> Buscar
-                </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <IoHeartSharp /> Favoritos
-                </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <IoNotifications /> Notificaciones
-                </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <BsHandbagFill /> Mis compras
-                </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <MdLocalOffer /> Ofertas
-                </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <HiUserCircle /> Mi cuenta
-                </li>
-                <li className="flex flex-row gap-4 items-center text-2xl">
-                  <FaStore /> Vender
-                </li>
-              </ul>
-              <button
-                className="w-max text-darkBlue py-3 text-left font-semibold text-lg"
-                onClick={handleCloseSesion}
-              >
-                Cerrar sesion
-              </button>
-            </div>
-          </>
+          <Logged handleCloseSesion={handleCloseSesion} handleSearch={handleSearch} />
         )}
       </div>
     </div>
