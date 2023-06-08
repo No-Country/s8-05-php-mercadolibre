@@ -1,14 +1,10 @@
 import { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
 
-import { FaUserAlt, FaStore } from 'react-icons/fa';
-import { HiUserCircle } from 'react-icons/hi2';
-import { IoHeartSharp, IoNotifications } from 'react-icons/io5';
-import { TiHome } from 'react-icons/ti';
-import { FiSearch } from 'react-icons/fi';
-import { BsHandbagFill } from 'react-icons/bs';
-import { MdLocalOffer } from 'react-icons/md';
+import { FaUserAlt } from 'react-icons/fa';
+
 import Link from 'next/link';
 import { HiOutlineMenuAlt2 } from 'react-icons/hi';
+import Logged from './Logged';
 
 export default function Menu({
   menuToggle,
@@ -91,59 +87,7 @@ export default function Menu({
             </div>
           </div>
         ) : (
-          <>
-            <div className="flex flex-row justify-between items-center bg-darkBlue p-5">
-              <div className="flex flex-row items-center gap-5">
-                <div className="bg-grey rounded-full p-3">
-                  <FaUserAlt className="text-[30px] text-darkGrey" />
-                </div>
-                <div className="flex flex-row text-lg gap-2 text-white">
-                  <span>Name</span>
-                  <span>LastName</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col w-full h-full justify-between p-5">
-              <ul className="flex flex-col gap-5 text-darkGrey">
-                <li>
-                  <Link href={'/'} className="flex flex-row gap-4 items-center text-3xl">
-                    <TiHome /> <span className='text-lg'>Inicio</span>
-                  </Link>
-                </li>
-                <li className="flex flex-row gap-4 items-center text-3xl" onClick={handleSearch}>
-                  <FiSearch /> <span className='text-lg'>Buscar</span>
-                </li>
-                <li className="flex flex-row gap-4 items-center text-3xl">
-                  <IoHeartSharp /> <span className='text-lg'>Favoritos</span>
-                </li>
-                <li className="flex flex-row gap-4 items-center text-3xl">
-                  <IoNotifications /> <span className='text-lg'>Notificaciones</span>
-                </li>
-                <li>
-                  <Link href={'/cart'} className="flex flex-row gap-4 items-center text-3xl">
-                    <BsHandbagFill /> <span className='text-lg'>Mis compras</span>
-                  </Link>
-                </li>
-                <li className="flex flex-row gap-4 items-center text-3xl">
-                  <MdLocalOffer />  <span className='text-lg'>Ofertas</span>
-                </li>
-                <li className="flex flex-row gap-4 items-center text-3xl">
-                  <HiUserCircle />  <span className='text-lg'>Mi cuenta</span>
-                </li>
-                <li>
-                  <Link href={'/add-product'} className="flex flex-row gap-4 items-center text-3xl">
-                    <FaStore />  <span className='text-lg'>Vender</span>
-                  </Link>
-                </li>
-              </ul>
-              <button
-                className="w-max text-darkBlue py-3 text-left font-medium text-lg hover:underline"
-                onClick={handleCloseSesion}
-              >
-                CERRAR SESIÓN
-              </button>
-            </div>
-          </>
+          <Logged handleCloseSesion={handleCloseSesion} handleSearch={handleSearch} />
         )}
       </div>
     </div>

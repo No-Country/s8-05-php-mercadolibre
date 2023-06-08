@@ -3,23 +3,21 @@ import Detail from '@/Components/Product/Detail';
 import DetailBtns from '@/Components/UI/DetailBtns';
 import { apiClient } from '@/utils/apiClient';
 import Image from 'next/image';
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const { data }: any = await apiClient.get(`/categories`);
-  return data.data.map((item: any) => ({ category: item.attributes.slug }));
-}
+import Link from 'next/link';
 
 async function getData(slug: string) {
-  const { data }: any = await apiClient.get(`/products/${slug}`);
-  return data;
+  try {
+    const { data }: any = await apiClient.get(`/products/${slug}`);
+    return data;
+  } catch (error) {
+    return { data: undefined };
+  }
 }
 
 export default async function Page({ params }: { params: { product: string } }) {
   const { data } = await getData(params.product);
 
-  const product = {
+  const product = data && {
     image: data.relationships?.images[0],
     id: data.id,
     name: data.attributes?.name,
@@ -28,7 +26,7 @@ export default async function Page({ params }: { params: { product: string } }) 
     description: data.attributes.description,
   };
 
-  return (
+  return data ? (
     <Layout>
       <div className="text-gray-600 body-font overflow-hidden">
         <div className="lg:w-4/5 md:mx-auto mx-8">
@@ -78,5 +76,12 @@ export default async function Page({ params }: { params: { product: string } }) 
         </div>
       </div>
     </Layout>
+  ) : (
+    <div className="w-10/12 h-screen justify-center items-center flex flex-col gap-5 mx-auto">
+      <span className="text-3xl">ERROR: el producto {`' ${params.product} '`}</span>
+      <div className="flex gap-5">
+        <Link href={'/'}>Ir a comprar</Link>
+      </div>
+    </div>
   );
 }
