@@ -16,7 +16,7 @@ export default async function Home() {
   return (
     <Layout>
       <CarouselComponent imgs={imgs} />
-      <TabsPay />
+      <TabsPay/>
       {data.length > 0 ? (
         data.map((category: any) =>
           category.relationships.products.length ? (

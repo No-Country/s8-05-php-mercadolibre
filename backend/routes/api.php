@@ -70,6 +70,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // EndPoint PaymentProcess
     Route::controller(OrderController::class)->group(function () {
         Route::get('/paypal/process/{orderID}', 'process');
+        Route::post('/remove-products-cart', 'removeCartProduct');
     });
 });
 

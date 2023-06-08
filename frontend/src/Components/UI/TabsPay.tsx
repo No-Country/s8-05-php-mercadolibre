@@ -2,7 +2,7 @@ import { AiFillCreditCard, AiOutlineCreditCard, AiFillBuild } from "react-icons/
 
 export default function TabsPay() {
   return (
-<section className="text-gray-600 body-font">
+<section className="text-gray-600 body-font hidden md:block">
   <div className="container px-5 md:py-6 lg:py-6 py-4  mx-[5%]">
     <div className="flex flex-wrap -m-4 text-center">
       <div className="flex items-center sm:w-1/3 w-full justify-center">

@@ -25,7 +25,7 @@ class ProductController extends Controller
     {
         try {
             $products = Product::select('id', 'name', 'slug', 'description', 'price', 'stock', 'brand_id', 'subcategory_id')
-                ->where('status', Product::PUBLISH)
+                ->where('status', Product::NEW)
                 ->limit(10)
                 ->get()
                 ->shuffle();
@@ -50,7 +50,6 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $productSlug = Str::lower(Str::slug($request->name));
-
         try {
             $product = Product::create([
                 'name' => $request->name,

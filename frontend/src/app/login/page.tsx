@@ -74,7 +74,7 @@ export default function Page() {
         <div className="mt-6">
           <button
             onClick={handleLogin}
-            className="w-full px-6 py-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue focus:ring-opacity-50 rounded-3xl"
+            className="w-full px-6 py-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-darkBlue hover:border-2 focus:outline-none focus:ring focus:ring-blue focus:ring-opacity-50 rounded-3xl"
           >
             {nextStep ? 'Ingresar' : 'Siguiente'}
           </button>

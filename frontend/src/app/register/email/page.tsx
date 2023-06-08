@@ -25,7 +25,6 @@ export default function Page() {
       apiClient
         .post('/validate-email', { email })
         .then((data) => {
-          console.log(data);
           setCodeStep(true);
         })
         .catch((err) => console.log(err));
@@ -64,14 +63,14 @@ export default function Page() {
         <input
           type="text"
           className="w-full rounded-lg"
-          placeholder={codeStep ? 'Codigo' : '"usuario@gmail.com"'}
+          placeholder={codeStep ? 'Codigo' : 'usuario@gmail.com'}
           value={codeStep ? code : email}
           onChange={handleInput}
         />
       </div>
       <button
         type="submit"
-        className="bg-darkBlue text-white py-3 rounded-full"
+        className="bg-darkBlue text-white py-3 rounded-full hover:border"
         onClick={handleSubmit}
       >
         Continuar

@@ -22,7 +22,7 @@ export type initialPayType = {
 
 export type initialStateType = {
   location: initialLocationType;
-  delivery: string;
+  delivery: number;
   pay: initialPayType;
   cards: initialPayType[];
 };

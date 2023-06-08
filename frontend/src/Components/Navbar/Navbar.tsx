@@ -9,7 +9,7 @@ import Link from 'next/link';
 import CategoriesList from '../UI/CategoriesList';
 
 export default function NavbarComponent() {
-  const searchRef = useRef<HTMLInputElement>(null);
+  const searchRef = useRef<HTMLInputElement | null>(null);
   const [open, setOpen] = useState(false);
 
   //agregado para variar los link mostrados en el encabezado

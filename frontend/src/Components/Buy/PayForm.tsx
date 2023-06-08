@@ -5,6 +5,7 @@ import { SyntheticEvent, useEffect, useState } from 'react';
 import { initialPay, setCard } from '@/redux/buy';
 import { useDispatch } from 'react-redux';
 import Animation from '../Animation';
+import { selectCompany } from '@/utils/selectCompany';
 
 type payFormType = {
   callback: () => void;
@@ -47,7 +48,7 @@ export default function PayForm({ callback, cardType }: payFormType) {
 
   useEffect(() => {
     setStates({ ...states, type: cardType });
-  }, [cardType]);
+  }, [cardType, states]);
 
   return (
     <div className="absolute top-0 bg-white z-[200]">
@@ -55,8 +56,8 @@ export default function PayForm({ callback, cardType }: payFormType) {
 
       <div className="bg-payCard m-5 h-44 rounded-lg text-white flex flex-col justify-between p-5">
         <div className="flex flex-col items-start">
-          <span className="text-2xl font-bold min-h-[30px]">
-            {states.company === '' ? 'Companía' : states.company}
+          <span className="text-xl font-bold min-h-[30px] mb-1 text-white">
+            {selectCompany(states.company)}
           </span>
           <span>{cardType}</span>
         </div>

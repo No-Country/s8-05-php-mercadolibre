@@ -20,8 +20,6 @@ export default function Page() {
     apiClient
       .post('/validate-password', { password })
       .then((data) => {
-        console.log(data);
-
         dispatch(setComplete('password'));
         step <= 4 && dispatch(setStep(5));
         dispatch(setData({ password }));
@@ -53,7 +51,7 @@ export default function Page() {
       </div>
       <button
         type="submit"
-        className="bg-darkBlue text-white py-3 rounded-full"
+        className="bg-darkBlue text-white py-3 rounded-full hover:border"
         onClick={handleSubmit}
       >
         Continuar

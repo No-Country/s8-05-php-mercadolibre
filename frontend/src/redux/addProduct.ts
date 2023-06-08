@@ -29,7 +29,7 @@ const { actions, reducer } = createSlice({
     setDescription: (state: any, { payload }: PayloadAction<descriptionType>) => {
       state.description = payload;
     },
-    setPhotos: (state: any, { payload }: PayloadAction<string[]>) => {
+    setPhotos: (state: any, { payload }: PayloadAction<File[]>) => {
       state.photos = payload;
     },
     setDelivery: (state: any, { payload }: PayloadAction<any>) => {

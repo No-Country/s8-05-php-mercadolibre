@@ -6,6 +6,7 @@ import { IoHeartOutline } from 'react-icons/io5';
 import { AiFillThunderbolt } from 'react-icons/ai';
 import Link from 'next/link';
 import { apiClientPriv } from '@/utils/apiClient';
+import toast from 'react-hot-toast';
 
 type ProductType = {
   data: {
@@ -24,7 +25,7 @@ export default function Product({ data }: ProductType) {
         product_id: data.id,
         quantity: 1,
       })
-      .then((data) => alert(data.data.message))
+      .then((data) => toast.success(data.data.message))
       .catch((err) => console.log(err));
   };
 
@@ -36,15 +37,17 @@ export default function Product({ data }: ProductType) {
         </div>
         <span className="text-sm font-semibold block h-8">{data.brand}</span>
       </div>
-      <Link href={`/product/${data.slug}`}>
-        <Image
-          src={data.images[0]}
-          width={200}
-          height={200}
-          alt="laptop"
-          className="h-[150px] w-full object-cover"
-        />
-      </Link>
+      {data.images[0] && (
+        <Link href={`/product/${data.slug}`}>
+          <Image
+            src={data.images[0]}
+            width={200}
+            height={200}
+            alt={data.slug}
+            className="h-[150px] w-full object-cover"
+          />
+        </Link>
+      )}
       <div className="p-2">
         <span>
           <span className="font-semibold">AR</span> $ {data.price}
@@ -58,7 +61,7 @@ export default function Product({ data }: ProductType) {
         </div>
         <div className="flex flex-col gap-2 my-2 w-full">
           <Link
-            href={'/buy'}
+            href={`/buy/${data.slug}`}
             className="text-center rounded-full py-2 bg-darkBlue text-white font-semibold"
           >
             Comprar ahora

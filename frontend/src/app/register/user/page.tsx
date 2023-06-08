@@ -28,7 +28,6 @@ export default function Page() {
     apiClient
       .post('/validate-names', user)
       .then((data) => {
-        console.log(data);
         dispatch(setComplete('user'));
         step <= 2 && dispatch(setStep(3));
         dispatch(setData({ name: user.name, lastName: user.lastName }));
@@ -74,7 +73,7 @@ export default function Page() {
       </div>
       <button
         type="submit"
-        className="bg-darkBlue text-white py-3 rounded-full"
+        className="bg-darkBlue text-white py-3 rounded-full hover:border"
         onClick={handleSubmit}
       >
         Continuar

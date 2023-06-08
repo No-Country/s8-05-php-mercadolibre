@@ -14,10 +14,14 @@ export default function ProductInfo({ callback }: { callback: () => void }) {
             {selectCompany(data.company)}
           </div>
           <p className="text-neutral-800">{data.company}</p>
-          <p className="text-neutral-600 text-xs">
-            {'*'.repeat(data.cardNumber.length - 4)}
-            {data.cardNumber.slice(-4)}
-          </p>
+          {data.cardNumber ? (
+            <p className="text-neutral-600 text-xs">
+              {'*'.repeat(data.cardNumber.length - 4)}
+              {data.cardNumber.slice(-4)}
+            </p>
+          ) : (
+            'Efectivo'
+          )}
           <p className="text-neutral-600">{data.type}</p>
           <button
             className="bg-transparent text-darkBlue text-sm mt-3 rounded py-2"
