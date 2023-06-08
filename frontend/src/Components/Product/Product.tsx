@@ -6,6 +6,7 @@ import { IoHeartOutline } from 'react-icons/io5';
 import { AiFillThunderbolt } from 'react-icons/ai';
 import Link from 'next/link';
 import { apiClientPriv } from '@/utils/apiClient';
+import toast from 'react-hot-toast';
 
 type ProductType = {
   data: {
@@ -24,7 +25,7 @@ export default function Product({ data }: ProductType) {
         product_id: data.id,
         quantity: 1,
       })
-      .then((data) => alert(data.data.message))
+      .then((data) => toast.success(data.data.message))
       .catch((err) => console.log(err));
   };
 

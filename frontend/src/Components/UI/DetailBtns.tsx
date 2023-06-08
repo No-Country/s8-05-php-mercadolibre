@@ -2,6 +2,7 @@
 
 import { apiClientPriv } from '@/utils/apiClient';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 export default function DetailBtns({ id, slug }: any) {
   const handleCart = () => {
@@ -10,7 +11,7 @@ export default function DetailBtns({ id, slug }: any) {
         product_id: id,
         quantity: 1,
       })
-      .then((data) => alert(data.data.message))
+      .then((data) => toast.success(data.data.message))
       .catch((err) => console.log(err));
   };
 

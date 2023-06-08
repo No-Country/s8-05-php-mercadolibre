@@ -3,7 +3,7 @@ import { getDelivery, getDescription, getPhotos } from '@/redux/addProduct';
 import { useRouter } from 'next/navigation';
 import { apiClientPriv } from '@/utils/apiClient';
 import Detail from '@/Components/Product/Detail';
-import { create } from 'domain';
+import toast from 'react-hot-toast';
 
 export default function PostProduct() {
   const description = useSelector(getDescription);
@@ -36,7 +36,7 @@ export default function PostProduct() {
     apiClientPriv
       .post('/products', form)
       .then(() => {
-        alert('Producto agregado con éxito');
+        toast.success('Producto agregado con éxito');
         push('/');
       })
       .catch((err) => console.log(err));
