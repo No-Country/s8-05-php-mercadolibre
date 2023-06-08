@@ -5,12 +5,14 @@ import { apiClient } from '@/utils/apiClient';
 import { imgs } from '@/assets/carousel';
 
 async function getData() {
-  const { data } = await apiClient.get('/home');
+  const { data }: any = await apiClient.get('/home');
   return data;
 }
 
 export default async function Home() {
   const { data } = await getData();
+
+  console.log(data);
 
   return (
     <Layout>
