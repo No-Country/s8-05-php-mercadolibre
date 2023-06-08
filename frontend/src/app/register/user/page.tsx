@@ -13,7 +13,7 @@ type userState = {
   lastName: string;
 };
 
-export default function UserPage() {
+export default function Page() {
   const [user, setUser] = useState<userState>({
     name: '',
     lastName: '',
@@ -28,7 +28,6 @@ export default function UserPage() {
     apiClient
       .post('/validate-names', user)
       .then((data) => {
-        console.log(data);
         dispatch(setComplete('user'));
         step <= 2 && dispatch(setStep(3));
         dispatch(setData({ name: user.name, lastName: user.lastName }));

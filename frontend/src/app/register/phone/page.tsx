@@ -13,7 +13,7 @@ type phoneState = {
   second: string;
 };
 
-export default function PhonePage() {
+export default function Page() {
   const [phone, setPhone] = useState<phoneState>({
     first: '54',
     second: '',
@@ -28,7 +28,6 @@ export default function PhonePage() {
     apiClient
       .post('/validate-phone', { phone: Number(`${phone.first}${phone.second}`) })
       .then((data) => {
-        console.log(data);
         dispatch(setComplete('phone'));
         step <= 3 && dispatch(setStep(4));
         dispatch(setData({ phone: Number(`${phone.first}${phone.second}`) }));

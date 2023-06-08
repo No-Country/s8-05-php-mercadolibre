@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { apiClient } from '@/utils/apiClient';
 
-export default function PasswordPage() {
+export default function Page() {
   const [password, setPassword] = useState<string>('');
 
   const dispatch = useDispatch();
@@ -20,8 +20,6 @@ export default function PasswordPage() {
     apiClient
       .post('/validate-password', { password })
       .then((data) => {
-        console.log(data);
-
         dispatch(setComplete('password'));
         step <= 4 && dispatch(setStep(5));
         dispatch(setData({ password }));

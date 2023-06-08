@@ -4,12 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "http2.mlstatic.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "via.placeholder.com",
+        hostname: "*",
         pathname: "/**",
       },
     ],

@@ -18,17 +18,18 @@ return new class extends Migration
             $table->text('description');
             $table->float('price');
             $table->integer('stock');
-            $table->unsignedBigInteger('brand_id');
+            $table->text('measures');
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->foreign('brand_id')
                 ->references('id')
                 ->on('brands')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('subcategory_id');
+            $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->foreign('subcategory_id')
                 ->references('id')
                 ->on('subcategories')
                 ->onDelete('cascade');
-            $table->enum('status',[Product::PUBLISH, Product::UNPUBLISH]);
+            $table->enum('status',[Product::NEW, Product::USED])->default(Product::NEW);
             $table->timestamps();
         });
     }

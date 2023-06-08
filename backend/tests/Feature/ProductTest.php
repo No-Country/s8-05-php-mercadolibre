@@ -18,7 +18,11 @@ class ProductTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
+        $this->seed([
+            'Database\\Seeders\\BrandSeeder',
+            'Database\\Seeders\\CategorySeeder',
+            'Database\\Seeders\\SubcategorySeeder',
+        ]);
         $this->route_uri = 'api/products';
     }
 
@@ -26,10 +30,12 @@ class ProductTest extends TestCase
     {
         $defaultData = [
             'name' => 'celular',
+            'slug' => 'slug default',
             'description' => 'descripcion del celular',
             'price' => "10",
             'stock' => "10",
-            'status' =>  'PUBLISH',
+            'status' =>  'NEW',
+            'measures' =>  json_encode(['altura' => 10, 'ancho' => 20 , 'largo' => 30]),
             'brand_id' => 1,
             'subcategory_id' => 1,
             'image' => [
@@ -45,7 +51,6 @@ class ProductTest extends TestCase
     /** @test */
     public function create_product()
     {
-
         $this->withoutExceptionHandling();
 
         Storage::fake('public');
