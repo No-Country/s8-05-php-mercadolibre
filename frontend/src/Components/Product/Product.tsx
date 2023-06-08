@@ -35,22 +35,22 @@ export default function Product({ data }: ProductType) {
         <div className="w-full flex justify-end">
           <IoHeartOutline className="text-2xl" />
         </div>
-        <span className="text-sm font-semibold block h-8">{data.brand}</span>
+        <span className="text-sm font-semibold block h-8">{data?.brand}</span>
       </div>
-      {data.images[0] && (
-        <Link href={`/product/${data.slug}`}>
+      {data?.images[0] && (
+        <Link href={`/product/${data?.slug}`}>
           <Image
-            src={data.images[0]}
+            src={data?.images[0]}
             width={200}
             height={200}
-            alt={data.slug}
+            alt={data?.slug}
             className="h-[150px] w-full object-cover"
           />
         </Link>
       )}
       <div className="p-2">
         <span>
-          <span className="font-semibold">AR</span> $ {data.price}
+          <span className="font-semibold">AR</span> $ {data?.price}
         </span>
         <div className="flex justify-between items-end font-semibold">
           <span className="text-sm text-darkBlue">Llega gratis el lunes</span>
@@ -61,7 +61,7 @@ export default function Product({ data }: ProductType) {
         </div>
         <div className="flex flex-col gap-2 my-2 w-full">
           <Link
-            href={`/buy/${data.slug}`}
+            href={`/buy/${data?.slug}`}
             className="text-center rounded-full py-2 bg-darkBlue text-white font-semibold"
           >
             Comprar ahora

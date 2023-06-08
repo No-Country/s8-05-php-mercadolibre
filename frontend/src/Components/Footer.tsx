@@ -17,24 +17,30 @@ export default function Footer() {
       <RiSendPlaneFill className="absolute right-2 text-2xl text-darkGrey" />
     </div>
   </div>
-  <div className="p-5 flex flex-col md:flex-row gap-10 text-darkGrey justify-center">
-    <div className="flex flex-col gap-10 md:flex-row">
-      <ul className="flex flex-col gap-4 text-sm">
-        <li>Sobre Nosotros</li>
-        <li>Contacto</li>
-        <li>FAQ</li>
-        <li>Terminos & condiciones</li>
-      </ul>
-      <ul className="flex flex-col gap-4 text-sm">
-        <li>Mi Cuenta</li>
-        <li>Mis Compras</li>
-        <li>Guardados</li>
-        <li>Ayuda</li>
-      </ul>
-    </div>
-    <div className="text-sm">
-      <p className="font-medium">2023- Mercado Country SRL</p>
-      <span className="font-light">Av. Libertado, CP 1101, CABA</span>
+  <div className="container px-5 py-2 mx-auto">
+    <div className="flex flex-wrap md:text-left text-center  text-darkGrey">
+      <div className="lg:w-1/3 md:w-1/2 w-full px-4">
+        <ul className="flex flex-col gap-4 text-sm">
+          <li>Sobre Nosotros</li>
+          <li>Contacto</li>
+          <li>FAQ</li>
+          <li>Terminos & condiciones</li>
+        </ul>
+      </div>
+      <div className="lg:w-1/3 md:w-1/2 w-full px-4">
+        <ul className="flex flex-col gap-4 text-sm">
+          <li>Mi Cuenta</li>
+          <li>Mis Compras</li>
+          <li>Guardados</li>
+          <li>Ayuda</li>
+        </ul>
+      </div>
+      <div className="lg:w-1/3 md:w-1/2 w-full px-4">
+        <div className="text-sm">
+          <p className="font-medium">2023- Mercado Country SRL</p>
+          <span className="font-light">Av. Libertado, CP 1101, CABA</span>
+        </div>
+      </div>
     </div>
   </div>
 </footer>

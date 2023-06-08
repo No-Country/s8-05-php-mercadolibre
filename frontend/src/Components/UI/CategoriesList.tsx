@@ -10,13 +10,16 @@ export default function CategoriesList({ onChange, defaultValue, links }: any) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    apiClient.get(`/categories`).then(({ data }: { data: any }) => {
-      const categoriesData = data.data.map((item: any) => ({
-        name: item.attributes.name,
-        slug: item.attributes.slug,
-      }));
-      setCategories(categoriesData);
-    });
+    apiClient
+      .get(`/categories`)
+      .then(({ data }: { data: any }) => {
+        const categoriesData = data.data.map((item: any) => ({
+          name: item.attributes.name,
+          slug: item.attributes.slug,
+        }));
+        setCategories(categoriesData);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   links && (onChange = (e: any) => push(`/category/${e.target.value}`));

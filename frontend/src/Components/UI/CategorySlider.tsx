@@ -20,7 +20,7 @@ export default function CategorySlider({ route, title, products }: categoryProp)
         {products?.length > 0 ? (
           <>
             {products.map((product: any) => (
-              <Product key={product.attributes.id} data={product.attributes} />
+              <Product key={product?.attributes?.id} data={product?.attributes} />
             ))}
           </>
         ) : (

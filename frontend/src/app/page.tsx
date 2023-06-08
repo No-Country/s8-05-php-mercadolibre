@@ -6,7 +6,7 @@ import { apiClient } from '@/utils/apiClient';
 import { imgs } from '@/assets/carousel';
 
 async function getData() {
-  const { data } = await apiClient.get('/home');
+  const { data }: any = await apiClient.get('/home');
   return data;
 }
 
@@ -17,14 +17,14 @@ export default async function Home() {
     <Layout>
       <CarouselComponent imgs={imgs} />
       <TabsPay/>
-      {data.length > 0 ? (
-        data.map((category: any) =>
-          category.relationships.products.length ? (
+      {data?.length > 0 ? (
+        data?.map((category: any) =>
+          category?.relationships?.products?.length ? (
             <CategorySlider
-              route={`/category/${category.attributes.slug}`}
-              key={category.id}
-              title={category.attributes.name}
-              products={category.relationships.products}
+              route={`/category/${category?.attributes?.slug}`}
+              key={category?.id}
+              title={category?.attributes?.name}
+              products={category?.relationships?.products}
             />
           ) : null,
         )
