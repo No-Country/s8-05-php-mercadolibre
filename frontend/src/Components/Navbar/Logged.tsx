@@ -63,8 +63,8 @@ export default function Logged({ handleCloseSesion, handleSearch }: any) {
           <li className="flex flex-row gap-4 items-center text-2xl">
             <HiUserCircle /> Mi cuenta
           </li>
-          <li className="flex flex-row gap-4 items-center text-2xl">
-            <Link href={'/add-product'}>
+          <li>
+            <Link href={'/add-product'} className="flex flex-row gap-4 items-center text-2xl">
               <FaStore /> Vender
             </Link>
           </li>
