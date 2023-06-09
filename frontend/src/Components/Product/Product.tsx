@@ -37,17 +37,15 @@ export default function Product({ data }: ProductType) {
         </div>
         <span className="text-sm font-semibold block h-8">{data?.brand}</span>
       </div>
-      {data?.images[0] && (
-        <Link href={`/product/${data?.slug}`}>
-          <Image
-            src={data?.images[0]}
-            width={200}
-            height={200}
-            alt={data?.slug}
-            className="h-[150px] w-full object-cover"
-          />
-        </Link>
-      )}
+      <Link href={`/product/${data?.slug}`}>
+        <Image
+          src={data?.images[0]}
+          width={200}
+          height={200}
+          alt={data?.slug}
+          className="h-[150px] w-full object-cover"
+        />
+      </Link>
       <div className="p-2">
         <span>
           <span className="font-semibold">AR</span> $ {data?.price}
