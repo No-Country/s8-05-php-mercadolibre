@@ -3,7 +3,7 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 export default function Detail({ data }: any) {
   return (
-    <div className="p-5">
+    <div className="lg:w-full flex flex-wrap py-2">
       <Image
         className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
         src={data.image}
@@ -14,7 +14,7 @@ export default function Detail({ data }: any) {
       <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <div className="flex mb-4">
           <p className="text-xs title-font text-neutral-900 tracking-widest">product/{data.id}</p>
-          <span className="flex items-center ml-8 text-blue">
+          <span className="flex items-center ml-8 text-darkBlue">
             <AiFillStar />
             <AiFillStar />
             <AiFillStar />
@@ -23,7 +23,7 @@ export default function Detail({ data }: any) {
             <span className="text-gray-600 ml-3 text-xs">4.5</span>
           </span>
         </div>
-        <h1 className="text-blue text-3xl title-font font-medium mb-1">{data.name}</h1>
+        <h1 className="text-darkBlue text-3xl title-font font-medium mb-1">{data.name}</h1>
         <div className="flex mt-4">
           <span className="title-font font-medium text-3xl text-neutral-900">${data.price}</span>
         </div>

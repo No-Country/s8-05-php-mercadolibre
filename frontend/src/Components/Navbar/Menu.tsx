@@ -51,13 +51,15 @@ export default function Menu({
       onClick={handleClick}
       ref={containerRef}
     >
-      <div className="bg-white w-10/12 h-full flex flex-col gap-6 shadow-lg">
+      <div className="bg-white md:w-1/4 lg:1/2 w-full h-full flex flex-col gap-6 shadow-lg">
         {!isAuth ? (
           <div className="flex flex-col p-5 gap-8">
             <div className="flex flex-row gap-5">
               <HiOutlineMenuAlt2 className="text-2xl" onClick={menuToggle} />
               <div className="flex-grow">
-                <Link href={'/'}>Mercado Country</Link>
+                <Link href={'/'} className="font-black">
+                  Mercado <span className="text-darkBlue">C</span>ountry
+                </Link>
               </div>
             </div>
             <div className="flex flex-row gap-2 justify-between">

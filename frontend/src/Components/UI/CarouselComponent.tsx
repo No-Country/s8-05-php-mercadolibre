@@ -45,7 +45,7 @@ export default function CarouselComponent({ imgs }: { imgs: string[] }) {
     <div
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className="h-[200px] lg:h-[400px] w-[90%] mx-[5%] lg:w-full lg:mx-0"
+      className="h-[80px] md:h-[200px] lg:h-[300px] w-[90%] mx-[5%] lg:w-full lg:mx-0"
     >
       <Carousel leftControl={LeftArrow(showArrows)} rightControl={RightArrow(showArrows)}>
         {imgs.map((img: string, i: number) => (
@@ -55,7 +55,7 @@ export default function CarouselComponent({ imgs }: { imgs: string[] }) {
             width={1000}
             height={1000}
             alt="Carousel image"
-            className="object-cover h-full"
+            className="object-cover md:h-auto lg:h-auto h-20"
           />
         ))}
       </Carousel>

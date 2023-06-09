@@ -38,20 +38,25 @@ export default function Page() {
       <NavBack title={'Carrito de compras'} />
       {data?.length ? (
         <>
-          <div className="flex flex-col gap-5 my-5 min-h-[50vh]">
+          <div className="flex flex-wrap">
             {data.map((item: any, index: number) => (
-              <CartProduct
-                key={item.id}
-                data={{
-                  ...item.attributes,
-                  ...item.relationships.products.attributes,
-                  ...item.relationships.products.relationships,
-                  id: item.relationships.products.id,
-                }}
-                handleReload={handleReload}
-              />
+               
+               <div key={item.id} className="lg:w-1/3 sm:w-1/2 w-full">
+                <CartProduct
+                  data={{
+                    ...item.attributes,
+                    ...item.relationships.products.attributes,
+                    ...item.relationships.products.relationships,
+                    id: item.relationships.products.id,
+                  }}
+                  handleReload={handleReload}
+                />
+              </div>
             ))}
-            <button onClick={handleDeleteCart} className="w-max m-auto">
+            
+          </div>
+          <div className='flex m-4'>
+            <button onClick={handleDeleteCart} className="mx-auto bg-[#CD4737] text-white rounded-full py-3 px-8 text-center md:w-4/12 lg:w-4/12 w-full">
               Vaciar carrito
             </button>
           </div>
@@ -59,10 +64,13 @@ export default function Page() {
         </>
       ) : (
         <div className="flex flex-col m-5 gap-5 mt-[30vh]">
-          <h1 className="text-center text-xl">Tu carrito esta vacio!</h1>
-          <Link href={'/'} className="bg-darkBlue text-white rounded-full py-3 text-center">
-            Ir a comprar
-          </Link>
+          <h1 className="text-center text-xl">¡Tu carrito esta vacío!</h1>
+          <div className='mx-auto'>
+            <Link href={'/'} className="bg-darkBlue text-white rounded-full py-3 px-8 text-center md:w-4/12 lg:w-4/12 w-full">
+              Ir a comprar
+            </Link>
+          </div>
+          
         </div>
       )}
     </>

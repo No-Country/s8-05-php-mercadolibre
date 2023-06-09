@@ -13,8 +13,8 @@ type CardCategoryProps = {
 
 export default function CardCategory({ id, title, img, leave, store, price }: CardCategoryProps) {
   return (
-    <div className="lg:w-1/3 w-full p-2">
-      <div className="flex overflow-hidden bg-white ounded-lg border border-neutral-200 shadow-lg">
+    <div className="lg:w-1/3 md:1/2 w-full p-2">
+      <div className="flex overflow-hidden bg-white rounded-lg border border-neutral-200 shadow-lg">
         <div className="w-1/2 bg-cover">
           <Link href={`/product/${id}`}>
             <Image

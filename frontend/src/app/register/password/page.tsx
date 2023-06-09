@@ -51,7 +51,7 @@ export default function Page() {
       </div>
       <button
         type="submit"
-        className="bg-darkBlue text-white py-3 rounded-full"
+        className="bg-darkBlue text-white py-3 rounded-full hover:border"
         onClick={handleSubmit}
       >
         Continuar
